@@ -33,8 +33,13 @@ for(const page of pages){
   assert.ok(html.includes('id=azaddigitalschool.com'),'Exact Azad application ID');
  }
  if(page.endsWith('/lab')||['','en','ar'].includes(page)){
-  assert.ok(html.includes('عُرُوب البرمجة')&&html.includes('العلوم الغانمة'),'Two independent Creative Lab series');
+  assert.ok(html.includes('aria-labelledby="bl-title-uroob"')&&html.includes('aria-labelledby="bl-title-ghanima"'),'Two independent Beyond the Line showcases');
   assert.ok(html.includes('instagram-action'),'Prominent Creative Lab Instagram link');
+  assert.ok(html.includes('id="creative-lab"')&&html.includes('id="beyond-line"'),'Old and new section anchors remain available');
+  assert.ok(html.includes('aria-label="'+(lang==='ar'?'خارج السطر.':'Beyond the Line.')+'"'),'Localized signature title');
+  assert.ok(html.includes('/content/uroob-cover.png')&&html.includes('/content/ghanima-engineer.png'),'Actual original series covers');
+  assert.ok(!html.includes('غلاف المنشور غير متوفر'),'Supplied Ghanima covers replace the placeholder');
+  assert.equal((html.match(/class="bl-content-dialog"/g)||[]).length,2,'Each series has an accessible preview');
  }
  if(['','en','ar','en/about','ar/about'].includes(page)){
   assert.ok(html.includes('build-scene-3')&&html.includes('demo-load'),'Four functional build stages');
@@ -43,7 +48,7 @@ for(const page of pages){
   for(const href of approvedContacts)assert.ok(html.includes('href="'+href+'"'),`Missing contact ${href} on ${page}`);
   assert.ok(!html.includes('السيرة الذاتية')&&!html.includes('Details forthcoming'),'Old contact placeholders must be removed');
  }
- for(const heading of html.matchAll(/<h[1-3]\b[^>]*>([\s\S]*?)<\/h[1-3]>/g))assert.ok(!/\.(?:\s|$)/.test(heading[1].replace(/<[^>]*>/g,' ').trim()),`Heading punctuation: ${page}`);
+ for(const heading of html.matchAll(/<h[1-3]\b[^>]*>([\s\S]*?)<\/h[1-3]>/g))if(!heading[0].includes('id="beyond-title"'))assert.ok(!/\.(?:\s|$)/.test(heading[1].replace(/<[^>]*>/g,' ').trim()),`Heading punctuation: ${page}`);
  if(page==='ar')assert.ok(html.includes('أفكار تتحوّل')&&!html.includes('أبعد من الشيفرة'),'Updated Arabic hero copy');
 }
 assert.ok(fs.existsSync(path.join(root,'404.html')),'Missing 404 page');
@@ -53,6 +58,8 @@ assert.match(css,/\[hidden\][^{}]*\{[^}]*display:none!important/,'Hidden states 
 assert.ok(css.includes('prefers-reduced-motion:reduce'),'Reduced motion CSS');
 assert.ok(css.includes('.showcase-viewport')&&css.includes('.world-full')&&css.includes('.build-sticky'),'Signature interaction CSS is compiled');
 assert.ok(css.includes('[data-motion=reduce]'),'Explicit reduced-motion alternative is compiled');
+assert.ok(css.includes('.bl-expansion')&&css.includes('.bl-content-dialog')&&css.includes('.bl-gallery-ghanima'),'Beyond the Line narrative and previews are compiled');
+for(const file of ['uroob-cover.png','uroob-story.png','ghanima-engineer.png','ghanima-curiosity.png'])assert.ok(fs.statSync(path.join(root,'content',file)).size>10000,`Original content asset ${file}`);
 assert.equal(JSON.parse(fs.readFileSync(path.join(root,'demo/workflow.json'),'utf8')).tasks.length,3,'Demonstration data contract');
 assert.ok(css.includes('.signature-intro')&&css.includes('intro-safety-hide'),'Intro CSS safety deadline');
 assert.ok(css.includes('intro-type-in')&&css.includes('intro-shape-0')&&css.includes('intro-mask-exit'),'First-paint intro sequence is compiled');

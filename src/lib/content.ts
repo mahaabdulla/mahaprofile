@@ -34,7 +34,7 @@ export const copy = {
   process: { en: 'A little structure\nRoom for possibility', ar: 'منهجية واضحة\nومساحة للاحتمال' },
   labEyebrow: { en: 'BEYOND THE LINE / TWO WORLDS', ar: 'خارج السطر / عالمان' },
   labTitle: { en: 'Beyond the Line.', ar: 'خارج السطر.' },
-  labBody: { en: 'Two independent programming content series: Uroob Al Barmajah and Al Uloom Al Ghanima. Different ways into ideas, with software development at the core.', ar: 'عُرُوب البرمجة والعلوم الغانمة؛ سلسلتان مستقلتان أشرح فيهما أفكار البرمجة من زوايا مختلفة، وأترك للفهم فرصة أن يفاجئنا.' },
+  labBody: { en: 'Beyond the Line: Aroob Al-Barmaja and Al-Oloom Al-Ghanima. Unexpected perspectives on programming, alongside my software development work.', ar: 'عُرُوب البرمجة والعلوم الغانمة؛ سلسلتان مستقلتان أشرح فيهما أفكار البرمجة من زوايا مختلفة، وأترك للفهم فرصة أن يفاجئنا.' },
   labLink: { en: 'Explore Beyond the Line', ar: 'اكتشف خارج السطر' },
   cta: { en: ['Have an idea', 'worth building?'], ar: ['لديك فكرة', 'تستحق البناء؟'] },
   ctaBody: { en: 'Building a team, developing a product, or exploring a creative collaboration? Let’s make something meaningful.', ar: 'تبني فريقًا، أو تطوّر منتجًا، أو تبحث عن تعاون إبداعي؟ لنصنع شيئًا ذا معنى.' },
@@ -183,63 +183,7 @@ export const beyondLine = {
   "cta": {
     "ar": "اكتشف المحتوى",
     "en": "Explore the Content"
-  },
-  "angles": [
-    {
-      "label": {
-        "ar": "نسخة قريبة",
-        "en": "Keep it close"
-      },
-      "question": {
-        "ar": "ليش نعيد نفس المشوار؟",
-        "en": "Why make the same trip twice?"
-      },
-      "concept": {
-        "ar": "الذاكرة المؤقتة",
-        "en": "Caching"
-      },
-      "body": {
-        "ar": "نحتفظ بنتيجة قريبة لإعادة استخدامها، ونحدّثها حين تتغيّر المعلومة الأصلية.",
-        "en": "Keep a result nearby to use again, and refresh it when the original information changes."
-      }
-    },
-    {
-      "label": {
-        "ar": "مين أول؟",
-        "en": "Who goes first?"
-      },
-      "question": {
-        "ar": "اللي وصل أول، يطلع أول؟",
-        "en": "First in. First out?"
-      },
-      "concept": {
-        "ar": "الطوابير",
-        "en": "Queues"
-      },
-      "body": {
-        "ar": "في طابور FIFO، يُعالَج العنصر الأسبق وصولًا أولًا. طريقة بسيطة لتنظيم ما ينتظر دوره.",
-        "en": "A FIFO queue processes the earliest arrival first: a simple way to organise work waiting its turn."
-      }
-    },
-    {
-      "label": {
-        "ar": "إذا صار…",
-        "en": "When it happens…"
-      },
-      "question": {
-        "ar": "ضغطة صغيرة، وش يصير بعدها؟",
-        "en": "One small click. What happens next?"
-      },
-      "concept": {
-        "ar": "الأحداث",
-        "en": "Events"
-      },
-      "body": {
-        "ar": "تستمع الواجهة لحدث، مثل الضغط على زر، ثم تشغّل الاستجابة المرتبطة به. مثل تغيير هذه الزاوية.",
-        "en": "An interface listens for an event, such as a button click, then runs its response. Just like changing this angle."
-      }
-    }
-  ]
+  }
 };
 
 export const labSeries = [

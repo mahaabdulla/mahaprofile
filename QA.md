@@ -72,3 +72,17 @@ Eight intro tests pass for session-once behavior, fresh sessions, reduced-motion
 - Review images: maha-signature-intro.jpg, maha-signature-intro-mobile.jpg, maha-typography-desktop.jpg, and maha-typography-mobile.jpg.
 
 Public deployment was not performed. Palestine web licensing and actual licensed Riwaya files remain owner follow-ups as documented in LICENSES.md.
+
+## Beyond the Line — final validation, 25 October 2026
+
+- Both locales now use خارج السطر. / Beyond the Line. in the section and page metadata; navigation labels and old /lab/ routes remain functional. Software projects and the other sections remain in place.
+- TypeScript, ESLint, and the final production build pass. The static audit passes 15 bilingual pages and 518 internal links/assets. Initial route JavaScript is approximately 175 kB.
+- Actual browser scrolling changes the title word transform from identity to the intended break and morphs the SVG line from its straight path to its final curved composition. No pin spacers or scroll interception are introduced.
+- Arabic RTL and English LTR were inspected. English heading text bounds fit at 320px and 390px; Arabic mobile was checked at 390px. Tablet at 768px and desktop at 1440px have no horizontal overflow. Original Arabic artwork is retained inside the English interface.
+- The two owner-supplied Ghanima images match their source attachments byte for byte in public/ and out/. Uroob uses two original files from the named series archive; public/content/SOURCES.md records asset hashes and provenance. No publication dates, metrics, or individual post URLs are inferred.
+- Both Ghanima covers were navigated in the browser. Enlargement, keyboard arrows, Escape, modal focus, and focus restoration were checked. The mobile dialog fits within the 390 x 844 viewport and displays the full artwork.
+- The site reduced-motion control restores untransformed, visible headings and previews and removes the cursor. OS reduced-motion is also handled in the GSAP matchMedia query and CSS; browser OS preference emulation was unavailable. Content is readable in the server HTML and no animation-dependent hidden state is used.
+- Route navigation to Work removes the section and its dialogs; re-entry through the mobile navigation produces one section, two previews, and two dialogs. No console warnings or errors were recorded.
+- Review screenshots: maha-beyond-line-ghanima.jpg, maha-beyond-line-ghanima-second.jpg, and maha-beyond-line-mobile.jpg.
+
+This is a local source/export update. No public deployment was performed. Existing font license status is unchanged; see LICENSES.md.

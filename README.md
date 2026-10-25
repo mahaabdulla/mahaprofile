@@ -20,7 +20,7 @@ The brief and owner-provided follow-up contact details are the content sources f
 - Azad and Sigil Film replace the initial sample projects. The owner confirmed software development within a team for both. No framework, sole authorship, metrics, or engineering outcomes are inferred.
 - Project images come from the Azad Google Play listing and a screenshot of the live Sigil Film homepage. Project details include a concise overview, confirmed contribution, and the supplied live destination.
 - `site.contact.email`, `github`, `linkedin`, and `instagram` contain the contact destinations supplied by the owner. Instagram replaces Resume. Each channel has a labeled icon and working destination; the email row also offers copying. Shared contact sections show the actual email address. Tracking query parameters are omitted.
-- Creative Lab contains two independent content worlds: عُرُوب البرمجة (Arabic literature, poetry, history, storytelling) and العلوم الغانمة (wide-ranging programming topics with unexpected explanations). Examples are original interactive explanations, not fabricated post covers. Instagram links to the owner-supplied account.
+- Beyond the Line (خارج السطر) replaces the Creative Lab label and contains two independent content worlds: عُرُوب البرمجة (Arabic literature, poetry, history, storytelling) and العلوم الغانمة (wide-ranging programming topics with unexpected explanations). The two editorial showcases use original owner artwork. عُرُوب assets were found in the named Downloads series archive; العلوم الغانمة covers were attached by the owner. See public/content/SOURCES.md. Keyboard-accessible galleries and native modal previews display the complete artwork. Instagram links to the owner-supplied account.
 - No Notes section is included because real notes were not supplied.
 
 ## Routes and localization
@@ -29,7 +29,7 @@ The brief and owner-provided follow-up contact details are the content sources f
 
 ## Design and motion
 
-Charcoal `#111114`, ivory `#F1F0EB`, and lilac `#A6A0DF` define the main identity. Emerald, warm ivory, and gold are confined to the Arabic storytelling project. Layouts recompose at 1100, 760, 540, and 360px. Motion uses natural scrolling, one-shot heading reveals, a restrained hero orbit, a scroll-linked Lab motif, CSS hover feedback, and page entry reveals. The Lab uses sticky visual chapters on larger screens. Process tabs have keyboard support. GSAP is the only motion library. On larger screens, the process advances with natural scroll and remains directly selectable. Reduced-motion preferences disable transitions, animated reveals, smooth scrolling, and sticky storytelling.
+Charcoal `#111114`, ivory `#F1F0EB`, and lilac `#A6A0DF` define the main identity. Emerald, warm ivory, and gold are confined to the Arabic storytelling project. Layouts recompose at 1100, 760, 540, and 360px. Motion uses natural scrolling, one-shot heading reveals, a restrained hero orbit, a scroll-linked Beyond the Line motif, CSS hover feedback, and page entry reveals. Beyond the Line uses an unpinned scroll-linked typographic break, a bending editorial line, two full-width series showcases, and a restrained exit thread. Mobile uses smaller movement and natural document flow. Process tabs have keyboard support. GSAP is the only motion library. On larger screens, the process advances with natural scroll and remains directly selectable. Reduced-motion preferences disable transitions, animated reveals, smooth scrolling, and sticky storytelling.
 
 ## Typography and references
 
@@ -83,3 +83,9 @@ An original 2.52-second GSAP sequence draws a spark and orbital paths, transform
 The cover is hidden in server HTML. A tiny guarded pre-paint script activates the same 2.52-second sequence directly in CSS, so it does not wait for hydration. If the independent root-layout client component is ready within 300ms, its GSAP timeline takes over; otherwise the first-paint sequence continues uninterrupted. Independent CSS deadlines and a 3-second GSAP timer prevent a stuck cover. Pointer input, keyboard input, wheel input, the skip button, reduced motion, storage denial, and animation setup failure all dismiss or bypass the optional intro. The underlying document is never made inert, scroll-locked, or aria-busy. Native navigation fallback styles are included for disabled JavaScript.
 
 Run `npm run test:intro` for the eight session/failure-path tests.
+
+## Beyond the Line — 25 October 2026
+
+The existing `/lab/` routes remain stable in both locales. Navigation, page titles, page descriptions, home section, and series copy use the new name. `#creative-lab`, `#uroob`, and `#ghanima` remain supported; `#beyond-line` is also available. The signature title preserves whole Arabic words; GSAP + ScrollTrigger transform the active line into the two-world editorial narrative without pinning or replacing native scrolling. The existing motion preference control and OS preference restore the fully readable static state, and all GSAP contexts are reverted on navigation.
+
+Series previews use supplied original covers without cropping, invented metrics, publication dates, or assumed individual post links. Each preview supports previous/next, enlargement, keyboard arrows in its native modal, Escape, and focus restoration. Instagram CTAs point to the verified owner profile. Palestine remains the existing local display font with the unresolved web-license status documented in LICENSES.md; this task does not deploy the site.
