@@ -101,3 +101,9 @@ This is a local source/export update. No public deployment was performed. Existi
 - Review images: maha-refined-hero-desktop.jpg, maha-refined-about-desktop.jpg, maha-refined-work-desktop.jpg, maha-refined-contact-desktop.jpg, and matching -mobile.jpg views.
 
 This is a local source/export update. No public deployment or new font licensing claim is made.
+
+## Selected Work neutral palette — 25 October 2026
+
+Replaced the lilac project surrounds with neutral #E9E7E2 on the established #F1F0EB off-white section background. Text and frame borders are neutral; lilac remains on small hover/focus interactions. Original project imagery, content, layout, and other sections are preserved.
+
+Production build passed compilation, lint, type validation, and static export. The export audit passes 15 bilingual pages and 533 internal links/assets. Browser checks confirmed both surrounds compute to rgb(233,231,226) on rgb(241,240,235), with no horizontal overflow at 1440px Arabic desktop and 390px English mobile. Mobile uses one column. No console warnings/errors were recorded; temporary viewport settings were reset. Review images: maha-work-neutral-desktop.jpg and maha-work-neutral-mobile.jpg.

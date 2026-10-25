@@ -12,20 +12,20 @@
 .hero-cycle-index{font:8px 'JetBrains Mono',monospace;margin-inline-start:14px;color:#716a82}
 .hero .hero-bottom{grid-template-columns:30% 1fr;gap:4%;min-height:200px}
 .hero .hero-summary>p{max-width:530px}
-.selected.section{background:#eae8e4;color:#17161c}
+.selected.section{--work-surface:#e9e7e2;background:var(--paper);color:#17161c}
 .selected .work-signature-heading{max-width:1100px}
-.selected .content-note,.selected .page-intro{color:#6d6678;font-size:14px;max-width:640px;line-height:1.9}
+.selected .content-note,.selected .page-intro{color:#65646b;font-size:14px;max-width:640px;line-height:1.9}
 .selected .project-grid{grid-template-columns:1fr 1fr;gap:55px 36px}
 .selected .project-01{grid-column:auto}
 .selected .project{min-width:0;padding-bottom:24px;border-bottom:1px solid #17161c26}
-.selected .showcase-viewport{background:#dcd8f0;aspect-ratio:1.2;padding:8%;border:1px solid #bcb5d033;border-radius:2px}
+.selected .showcase-viewport{background:var(--work-surface);aspect-ratio:1.2;padding:8%;border:1px solid #17161c1a;border-radius:2px}
 .selected .showcase-frame{border-radius:3px;box-shadow:none}
-.selected .showcase-application .showcase-frame{width:47%;box-shadow:none;border:1px solid #385b4840}
-.selected .showcase-website .showcase-frame{border-color:#39324440}
+.selected .showcase-application .showcase-frame{width:47%;box-shadow:none;border:1px solid #17161c22}
+.selected .showcase-website .showcase-frame{border-color:#17161c22}
 .selected .showcase-controls{border-color:#17161c26}
-.selected .project-category,.selected .project-tags>span,.selected .published-label{color:#696374}
+.selected .project-category,.selected .project-tags>span,.selected .published-label{color:#69686d}
 .selected .project-info>p{color:#696374;font-size:13px;max-width:540px}
-.selected .project-role{color:#514a60}
+.selected .project-role{color:#54535a}
 .selected .showcase-zoom{box-shadow:none;border:1px solid #17161c22}
 .about-intro.section{padding-top:52px;padding-bottom:85px}
 .about-intro.section .page-heading{margin-top:32px;max-width:1100px;font-size:clamp(42px,5.2vw,86px)}
@@ -81,5 +81,9 @@
 @media(prefers-reduced-motion:reduce){.hero-cycle-control{display:none}.hero .hero-phrase{transform:none!important}.contact-idea-path{stroke-dashoffset:0!important}.thinking-blueprint *{transition:none!important;animation:none!important}}
 [data-motion=reduce] .hero .hero-phrase{transform:none!important}[data-motion=reduce] .contact-idea-path{stroke-dashoffset:0!important}
 
-.selected .showcase-website .showcase-viewport{background:#dcd8f0}
+.selected .showcase-website .showcase-viewport{background:var(--work-surface)}
 @media(max-width:760px){.about-biography{padding-top:0}.blueprint-drawing{height:auto;aspect-ratio:440/275}}
+
+/* Lilac stays on small interactive accents; original project imagery keeps its own identity. */
+.selected .showcase-zoom:hover,.selected .showcase-controls button:hover,.selected .showcase-controls>a:hover{background:var(--lilac);color:var(--ink)}
+.selected a:focus-visible,.selected button:focus-visible{outline-color:#685e9d}
