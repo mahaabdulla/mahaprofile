@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 const root=path.resolve('out');
 const pages=['','en','ar',...['en','ar'].flatMap(lang=>['work','about','lab','contact','work/azad','work/sigil-film'].map(p=>`${lang}/${p}`))];
 const approvedContacts=new Set(['mailto:mahaabdulla87@gmail.com','https://github.com/mahaabdulla','https://www.linkedin.com/in/maha-alattas-1478a92a3/','https://www.instagram.com/maha_devlop/']);
@@ -14,6 +15,10 @@ for(const page of pages){
  assert.equal((html.match(/<h1[\s>]/g)||[]).length,1,`One h1: ${page}`);
  assert.match(html,/<title>[^<]+<\/title>/,`Title: ${page}`);
  assert.match(html,/<meta name="description" content="[^"]+"/,`Description: ${page}`);
+ assert.match(html,/<div[^>]*class="signature-intro"[^>]*hidden=""/,`Intro fails open in server HTML: ${page}`);
+ assert.ok(!html.includes('aria-busy="true"'),'Intro must not mark the document busy');
+ assert.ok(html.includes('maha:intro:zero-creation-v2'),'Current introductory sequence session key');
+ assert.ok(html.includes('display:block!important}.desktop-nav'),'No-JavaScript streamed content fallback');
  const ids=new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]));
  for(const match of html.matchAll(/\b(?:href|src)="([^"?#]*)(?:\?[^"#]*)?(?:#([^"]*))?"/g)){
   const [,url,fragment]=match;if(/^https?:/.test(url)&&new URL(url).origin===siteOrigin){assert.ok(fs.existsSync(path.join(root,decodeURIComponent(new URL(url).pathname))),`Broken absolute internal link: ${url}`);links++;continue;}if(/^(https?:|mailto:)/.test(url)){assert.ok((approvedContacts.has(url)||approvedProjects.has(url)),`Unapproved external destination: ${url}`);continue;}if(url.startsWith('data:'))continue;
@@ -27,6 +32,13 @@ for(const page of pages){
   assert.equal((html.match(/class="project project-/g)||[]).length,2,'Two actual project cards');
   assert.ok(html.includes('id=azaddigitalschool.com'),'Exact Azad application ID');
  }
+ if(page.endsWith('/lab')||['','en','ar'].includes(page)){
+  assert.ok(html.includes('عُرُوب البرمجة')&&html.includes('العلوم الغانمة'),'Two independent Creative Lab series');
+  assert.ok(html.includes('instagram-action'),'Prominent Creative Lab Instagram link');
+ }
+ if(['','en','ar','en/about','ar/about'].includes(page)){
+  assert.ok(html.includes('build-scene-3')&&html.includes('demo-load'),'Four functional build stages');
+ }
  if(page.endsWith('/contact')){
   for(const href of approvedContacts)assert.ok(html.includes('href="'+href+'"'),`Missing contact ${href} on ${page}`);
   assert.ok(!html.includes('السيرة الذاتية')&&!html.includes('Details forthcoming'),'Old contact placeholders must be removed');
@@ -35,10 +47,16 @@ for(const page of pages){
  if(page==='ar')assert.ok(html.includes('أفكار تتحوّل')&&!html.includes('أبعد من الشيفرة'),'Updated Arabic hero copy');
 }
 assert.ok(fs.existsSync(path.join(root,'404.html')),'Missing 404 page');
-for(const font of ['inter.woff2','arabic-regular.ttf','arabic-medium.ttf','arabic-semibold.ttf','mono.ttf'])assert.ok(fs.statSync(path.join(root,'fonts',font)).size>1000,`Font ${font}`);
+for(const font of ['inter.woff2','arabic-regular.ttf','arabic-medium.ttf','arabic-semibold.ttf','mono.ttf','palestine-regular.ttf'])assert.ok(fs.statSync(path.join(root,'fonts',font)).size>1000,`Font ${font}`);
 const css=fs.readdirSync(path.join(root,'_next/static/css')).map(file=>fs.readFileSync(path.join(root,'_next/static/css',file),'utf8')).join('');
 assert.match(css,/\[hidden\][^{}]*\{[^}]*display:none!important/,'Hidden states must override display layouts');
 assert.ok(css.includes('prefers-reduced-motion:reduce'),'Reduced motion CSS');
-assert.ok(css.includes('.azad-gallery')&&css.includes('.website-preview'),'Published project layout CSS must be included');
+assert.ok(css.includes('.showcase-viewport')&&css.includes('.world-full')&&css.includes('.build-sticky'),'Signature interaction CSS is compiled');
+assert.ok(css.includes('[data-motion=reduce]'),'Explicit reduced-motion alternative is compiled');
+assert.equal(JSON.parse(fs.readFileSync(path.join(root,'demo/workflow.json'),'utf8')).tasks.length,3,'Demonstration data contract');
+assert.ok(css.includes('.signature-intro')&&css.includes('intro-safety-hide'),'Intro CSS safety deadline');
+assert.ok(css.includes('intro-type-in')&&css.includes('intro-shape-0')&&css.includes('intro-mask-exit'),'First-paint intro sequence is compiled');
+assert.ok(css.includes('--font-display-ar:Palestine'),'Actual Palestine display family');
+assert.equal(createHash('sha256').update(fs.readFileSync(path.join(root,'fonts/palestine-regular.ttf'))).digest('hex'),'d87183a7f37b7873934b0800a6da1ccd0305738f5df7b46967f20de297db0db1','Verified Palestine file identity');
 const og=fs.readFileSync(path.join(root,'og.png'));assert.equal(og.readUInt32BE(16),1200);assert.equal(og.readUInt32BE(20),630);
 console.log(`PASS: ${pages.length} bilingual pages, ${links} internal links/assets, language metadata, headings, descriptions, anchors, ARIA controls, fonts, and 404 export.`);

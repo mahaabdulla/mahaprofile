@@ -1,0 +1,20 @@
+{
+  "project": "MAHA interactive demonstration",
+  "tasks": [
+    {
+      "id": 1,
+      "ar": "فهم المتطلبات",
+      "en": "Understand requirements"
+    },
+    {
+      "id": 2,
+      "ar": "بناء الواجهة",
+      "en": "Build the interface"
+    },
+    {
+      "id": 3,
+      "ar": "مراجعة التجربة",
+      "en": "Review the experience"
+    }
+  ]
+}

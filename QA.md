@@ -1,54 +1,74 @@
 # Verification and handover
 
-23 October 2026. Windows, Node.js 22.13.1, Next.js 15.5.22.
+25 October 2026. Windows, Node.js 22.13.1, Next.js 15.5.22.
 
-## Automated checks
+## Current scope
 
-- TypeScript: passed (`tsc --noEmit`).
-- ESLint: passed without warnings on the final application source.
-- Final production build: passed, including compilation, lint, type validation, and static export. First-load JavaScript is approximately 169 kB according to the build report.
-- `npm ci --dry-run --offline --ignore-scripts`: passed, validating that package.json and the complete lockfile agree. This is a dry run, not a second fresh installation.
-- `npm run check:export`: verifies 15 portfolio pages and 492 internal links/asset references, one main heading per page, localized document attributes, titles, descriptions, anchors, ARIA control targets, local fonts, and the 404 export. It also checks the compiled hidden-state override, reduced-motion CSS, and 1200 × 630 Open Graph image.
+The established Next.js App Router architecture, bilingual routes, charcoal/ivory/lilac identity, Arabic typography, rounded controls, and real Azad/Sigil Film projects are retained. Software development remains the primary professional practice. Creative programming content is represented by two independent series with localized copy.
 
-## Browser inspection
+## Automated validation
 
-Inspected rendered English and Arabic pages at desktop, tablet, and mobile sizes. Captured desktop at 1440 × 1000 and Arabic mobile at 320 × 812; earlier checks also covered 1280, 768, and 390px widths. No document overflow was found in the checked layouts.
+- `tsc --noEmit`: passed on the updated application source.
+- ESLint CLI: passed without warnings or errors.
+- Final production build: passed compilation, lint, type validation, prerendering, and static export. Initial route JavaScript is approximately 175 kB (previously 169 kB).
+- Final static-export audit: passed 15 bilingual portfolio pages and 472 internal links/assets.
+- The export audit validates generated routes, lang/dir, one h1, metadata, internal assets, anchors, ARIA targets, approved contact/project URLs, exact Azad package ID, two project cards, both Creative Lab series, a prominent Lab Instagram link, four build stages, compiled motion CSS, demo data contract, self-hosted fonts, and the Open Graph image.
 
-- Arabic headings render as intact shaped text, with correct RTL layout and document `lang` / `dir`.
-- Language switching retains the current page (tested on Work).
-- Work now contains Azad and Sigil Film. Application and website filters each show one matching project. Both bilingual detail pages are included in the export.
-- Dedicated case-study navigation works with keyboard activation; native pointer navigation was also verified across About, Creative Lab, and Contact.
-- Capability disclosures switch their expanded state and content correctly.
-- Process keyboard selection passes End, Home, and Right Arrow checks. The selected stage retains priority over automatic scroll updates after direct interaction.
-- The mobile menu initially stays hidden, focuses its first link on opening, makes the main content inert, closes with Escape, and restores focus to the menu button. Only the active process panel is displayed.
-- Browser console captures from inspected pages contained no application errors or warnings.
+## Interaction implementation
 
-The browser session became intermittently slow during local compilation and was recovered before recording the final preview screenshots. A clean build was used after detecting an obsolete cached stylesheet. The final stylesheet is checked directly by the export audit.
+1. Hero: intact Arabic/English typography reveal and scroll-responsive title, signature, star, and orbit.
+2. Build journey: native scroll with four sticky scenes and GSAP crossfades. Keyboard-selectable stages. A functioning task interface and an actual HTTP request to the included static JSON resource demonstrate state and data flow.
+3. Project showcase: actual supplied project images; gallery navigation, pointer response, and native dialog preview with Escape and focus restoration.
+4. Creative Lab: independent Uroob and Al Uloom Al Ghanima worlds, scroll chapters, and reversible explanatory examples. No invented posts, thumbnails, metrics, publication counts, or performance results.
 
-## Accessibility and motion limits
+The integration demonstration uses `/demo/workflow.json`, a local static data resource, and is labeled accordingly. It is not an application backend. The portfolio remains a portable static export.
 
-Structural checks, visible focus states, native keyboard interactions, proper labels, semantic headings, and hidden-state behavior were inspected. This is not a complete screen-reader or WCAG audit. The connected browser does not expose reduced-motion emulation; reduced-motion handling was verified in the application code and compiled stylesheet, rather than through a simulated OS preference. No Lighthouse or real-user Core Web Vitals score is claimed.
+## Accessibility and performance
 
-## Contact and heading update
+OS reduced-motion preference and an explicit footer toggle disable the choreography. All four build scenes become readable in document flow; controls remain functional. Native dialogs provide background modality. Scene focus is gated with `inert`, stage controls support arrow keys/Home/End, and dynamic request/task results use status announcements. GSAP contexts, scroll listeners, media listeners, and in-flight fetches are cleaned up.
 
-Email, GitHub, LinkedIn, and Instagram were supplied by the owner and are configured with icons. Resume and forthcoming-contact placeholders were removed. Exact link destinations were checked; no messages were sent and external account ownership was not tested. Display headings no longer end in full stops. The new hero copy fits the checked 390px English and Arabic layouts without horizontal overflow; Arabic contact rows also fit at 390px and 1280px. Browser console inspection returned no errors or warnings.
+This is structural and interaction verification, not a complete screen-reader or WCAG audit. No Lighthouse or real-user Core Web Vitals score is claimed.
 
-## Content that needs owner input
+## Sources and publication
 
-- Repository links and any additional project screenshots the owner wants to show.
-- Specific responsibilities, requirements, engineering decisions, challenges, and outcomes for any future extended case studies.
-- Original Creative Lab stories and publication details.
-- The exact intended Palestine font files and their web embedding license. IBM Plex Sans Arabic is the documented licensed replacement.
-- A verified production origin for `NEXT_PUBLIC_SITE_URL`; current Open Graph URLs use the local preview origin.
+Owner-confirmed project role: software development within a team for Azad and Sigil Film. Project visual sources are documented in `public/projects/SOURCES.md`. Instagram is the owner-supplied https://www.instagram.com/maha_devlop/ and remains in Contact as well as Creative Lab. External links are checked as destinations; no messages are sent.
 
-Azad images are published promotional images from its Google Play listing. Sigil Film uses a captured screenshot of its live homepage. Sources are recorded in public/projects/SOURCES.md. The owner confirmed software development within a team for both; no framework, sole authorship, performance metrics, or implementation outcomes are claimed.
+WHOISJOA was the primary interaction reference. Hidden Heroes was secondary inspiration for editorial chapters; web text was accessible, but its browser page did not load in this environment. No assets or animation code from either reference were copied.
 
-## Publication
+The current production origin is the local preview http://127.0.0.1:4173. No new remote deployment was attempted. The existing Sites integration previously reported that Sites was not enabled. `out/` is the portable production export.
 
-Private publication was attempted through Sites. The connector reported: “Sites is not yet enabled for this workspace.” No remote site was created, and no public deployment is claimed. `out/` is the portable production export. The included Node server runs it locally at http://127.0.0.1:4173.
+## Remaining owner material
 
-## Published projects follow-up — 25 October 2026
+Specific engineering responsibilities, repository links, outcomes, and any future post covers can be added when supplied. The actual local Palestine font file has been found and verified by metadata/glyph coverage, and is used for the requested local heading preview. Its web license remains undocumented. 29LT Riwaya Informal files and web license have not been found. IBM Plex Sans Arabic remains the Arabic body/UI font.
 
-Replaced all three sample projects with Azad and Sigil Film, including home cards, Work filters, related cards, localized metadata, and two bilingual project detail routes. Clean production build passed compilation, lint, types, and export. The export audit passes 15 portfolio routes and 492 internal links/assets, checks the two cards and exact Azad package ID, rejects old project content, and confirms the published-project stylesheet is compiled.
+## Browser checks performed on this revision
 
-Browser inspection confirmed three loaded project images, exact live destinations, two desktop cards, one matching result per tested filter, and no horizontal overflow at desktop 1280px or English mobile 390px. Arabic project detail navigation showed overview and confirmed contribution. Console captures had no errors or warnings.
+- Hero scroll changed the second title line from no transform to a translated matrix while retaining intact Arabic words.
+- Stage selection reached the working interface; completing a task updated the count and pressed state. Backward scrolling returned from data to the interface stage. Home moved selection and keyboard focus to the first stage.
+- Arabic and English data requests returned 200 OK and all three demo tasks from the static JSON resource.
+- Reduced-motion control changed all four panels to visible, non-inert document-flow content and removed sticky positioning. OS preference support is implemented through matchMedia and CSS; the OS preference itself was not emulated in the connected browser.
+- Azad next-image control changed the source to azad-learning.png. The modal opened with focus on Close; Escape closed it and restored focus to the preview button.
+- Scrolling advanced the Creative Lab visual chapter. Ghanima could be switched to its concept explanation independently while Uroob stayed in its story view. Computed emerald and lilac world backgrounds are distinct.
+- No horizontal overflow was found on checked desktop 1280px, Arabic mobile 390px, and English 320px layouts. At English 320 × 812, the data scene remained within the viewport.
+- Browser console inspection returned no application errors or warnings.
+
+Final follow-up: at 375 × 524, the short-screen mode switched to a non-sticky stage selector and had no horizontal overflow. Reduced motion in that layout exposed four visible 490px panels in a 2052px document-flow stage container. MAHA signature direction is explicitly LTR within Arabic pages. Final console inspection returned no errors or warnings. Screenshots are saved as outputs/maha-creative-worlds.jpg and outputs/maha-build-interaction.jpg.
+
+## Typography and signature intro follow-up
+
+The actual local Palestine Regular v1.003 file was checked by internal names, SHA-256, Arabic sample glyph coverage, and GSUB/GPOS/GDEF presence. It is used for Arabic display headings with synthesis disabled; body/UI remains IBM Plex Sans Arabic. WHOISJOA live heading computed styles reported Inter, so licensed Inter remains the English display/body family. Riwaya was not found in Downloads or the relevant font/content archives and was not substituted or renamed. Palestine web licensing is still unresolved; see LICENSES.md.
+
+Eight intro tests pass for session-once behavior, fresh sessions, reduced-motion skipping, inaccessible storage, pre-paint timeout, and immediate keyboard cancellation. TypeScript passed. Cold-browser testing exposed the need to avoid waiting for hydration. The final intro therefore starts the full sequence in CSS at first paint. An independent root-layout GSAP timeline takes over only if ready within 300ms; otherwise CSS completes the sequence and the standalone guard remembers the session. Both paths have independent escape deadlines.
+
+## Final typography / intro validation
+
+- Final production build passed compilation, ESLint, TypeScript, prerendering, and export. Initial route JavaScript is approximately 176 kB.
+- Final export audit passes 15 bilingual pages and 509 internal links/assets, including the exact Palestine SHA-256, session key, first-paint animation CSS, server-hidden intro, and no-JavaScript streamed-content fallback.
+- Eight session/failure-path tests pass.
+- Desktop browser captured the MAHA wordmark and interface geometry during the introduction; its phase completed with the cover hidden and Hero revealed.
+- Mobile first visit was checked at 390 × 844 on the alternate loopback origin, capturing the English intro without horizontal overflow. Subsequent reload reported the intro skipped and the cover hidden. English display/body computed styles were Inter.
+- Arabic at 390 × 844 used Palestine for the Hero and IBM Plex Sans Arabic for body text. Heading text bounds fit between 22px and 352.67px. The actual desktop and mobile typography were visually inspected.
+- The tested browser used the equivalent first-paint CSS path when hydration was later than 300ms. The GSAP path is built and type-checked; both use the same sequence timings. OS reduced-motion behavior is covered by the session tests and CSS/source checks; OS media emulation was not available in the browser.
+- Review images: maha-signature-intro.jpg, maha-signature-intro-mobile.jpg, maha-typography-desktop.jpg, and maha-typography-mobile.jpg.
+
+Public deployment was not performed. Palestine web licensing and actual licensed Riwaya files remain owner follow-ups as documented in LICENSES.md.

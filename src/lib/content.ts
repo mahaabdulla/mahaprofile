@@ -10,13 +10,13 @@ export const site = {
     linkedin: 'https://www.linkedin.com/in/maha-alattas-1478a92a3/',
     instagram: 'https://www.instagram.com/maha_devlop/',
   },
-  description: { en: 'Software developer & creative technologist. Thoughtful applications, considered systems, and ideas beyond code.', ar: 'مطورة برمجيات تجمع بين هندسة التطبيقات وتحليل الأنظمة والسرد الإبداعي.' },
+  description: { en: 'Software developer and creative programming content creator. Applications, systems, and unexpected ways to explain code.', ar: 'مطورة برمجيات وصانعة محتوى برمجي إبداعي. أبني التطبيقات والأنظمة، وأشرح أفكار البرمجة بطريقتي.' },
 };
 export const copy = {
-  nav: { en: ['Work', 'About', 'Creative Lab', 'Let’s talk'], ar: ['الأعمال', 'عن مها', 'المختبر الإبداعي', 'لنتحدث'] },
-  role: { en: 'SOFTWARE DEVELOPER & CREATIVE TECHNOLOGIST', ar: 'مطورة برمجيات · تقنية بروح إبداعية' },
+  nav: { en: ['Work', 'About', 'Beyond the Line', 'Let’s talk'], ar: ['الأعمال', 'عن مها', 'خارج السطر', 'لنتحدث'] },
+  role: { en: 'SOFTWARE DEVELOPER · CREATIVE PROGRAMMING CREATOR', ar: 'مطورة برمجيات · صانعة محتوى برمجي' },
   hero: { en: ['From ideas', 'to experiences'], ar: ['أفكار تتحوّل', 'إلى تجارب'] },
-  intro: { en: 'I turn complex ideas into thoughtful digital experiences — from understanding the problem to building the product.', ar: 'أفهم المشكلة، وأحلّل تفاصيلها، ثم أحوّل الأفكار إلى حلول رقمية تجمع بين جودة الهندسة وجمال التجربة.' },
+  intro: { en: 'I build applications, connect systems, and care about the details that make them work. I also create programming content that opens a different door into an idea.', ar: 'أطوّر التطبيقات، وأربط الأنظمة، وأعتني بالتفاصيل التي تجعلها تعمل كما ينبغي. وأصنع محتوى يفتح لأفكار البرمجة بابًا مختلفًا.' },
   explore: { en: 'Explore my work', ar: 'اكتشف أعمالي' },
   contact: { en: 'Get in touch', ar: 'تواصل معي' },
   selected: { en: 'Selected work', ar: 'أعمال مختارة' },
@@ -32,10 +32,10 @@ export const copy = {
   aboutLink: { en: 'A little about me', ar: 'المزيد عني' },
   expertise: { en: 'From the big picture\nto the small details', ar: 'من الصورة الكبيرة\nإلى أدق التفاصيل' },
   process: { en: 'A little structure\nRoom for possibility', ar: 'منهجية واضحة\nومساحة للاحتمال' },
-  labEyebrow: { en: 'CREATIVE LAB / 01', ar: 'المختبر الإبداعي / ٠١' },
-  labTitle: { en: 'Where logic\nmeets imagination', ar: 'حين يلتقي المنطق\nبالخيال' },
-  labBody: { en: 'An ongoing exploration of programming through Arabic literature, history, and the stories that stay with us.', ar: 'مساحة لاستكشاف مفاهيم البرمجة من خلال الأدب العربي والتاريخ والحكايات التي تبقى معنا.' },
-  labLink: { en: 'Enter the creative lab', ar: 'ادخل المختبر الإبداعي' },
+  labEyebrow: { en: 'BEYOND THE LINE / TWO WORLDS', ar: 'خارج السطر / عالمان' },
+  labTitle: { en: 'Beyond the Line.', ar: 'خارج السطر.' },
+  labBody: { en: 'Two independent programming content series: Uroob Al Barmajah and Al Uloom Al Ghanima. Different ways into ideas, with software development at the core.', ar: 'عُرُوب البرمجة والعلوم الغانمة؛ سلسلتان مستقلتان أشرح فيهما أفكار البرمجة من زوايا مختلفة، وأترك للفهم فرصة أن يفاجئنا.' },
+  labLink: { en: 'Explore Beyond the Line', ar: 'اكتشف خارج السطر' },
   cta: { en: ['Have an idea', 'worth building?'], ar: ['لديك فكرة', 'تستحق البناء؟'] },
   ctaBody: { en: 'Building a team, developing a product, or exploring a creative collaboration? Let’s make something meaningful.', ar: 'تبني فريقًا، أو تطوّر منتجًا، أو تبحث عن تعاون إبداعي؟ لنصنع شيئًا ذا معنى.' },
   footer: { en: 'Made with intention. Built with curiosity.', ar: 'صُنع بعناية. وبُني بفضول.' },
@@ -162,3 +162,123 @@ export const projects = [
   }
 ];
 export type Project = (typeof projects)[number];
+
+export const beyondLine = {
+  "title": {
+    "ar": "خارج السطر.",
+    "en": "Beyond the Line."
+  },
+  "lead": {
+    "ar": "مو كل أفكاري تنتهي عند آخر سطر كود.",
+    "en": "Not all my ideas end with the last line of code."
+  },
+  "description": {
+    "ar": "بعضها يصير حكاية، وبعضها يبدأ بسؤال غريب، وبعضها يربط أشياء ما قد خطر ببالنا إنها تجتمع!",
+    "en": "Some become stories. Others begin with unexpected questions. And some connect things you would never imagine belonging together."
+  },
+  "bridge": {
+    "ar": "هنا أشارك البرمجة بطريقتي، من «عُرُوب البرمجة» إلى «العلوم الغانمة».",
+    "en": "This is where I explore programming my way — through Aroob Al-Barmaja and Al-Oloom Al-Ghanima."
+  },
+  "cta": {
+    "ar": "اكتشف المحتوى",
+    "en": "Explore the Content"
+  },
+  "angles": [
+    {
+      "label": {
+        "ar": "نسخة قريبة",
+        "en": "Keep it close"
+      },
+      "question": {
+        "ar": "ليش نعيد نفس المشوار؟",
+        "en": "Why make the same trip twice?"
+      },
+      "concept": {
+        "ar": "الذاكرة المؤقتة",
+        "en": "Caching"
+      },
+      "body": {
+        "ar": "نحتفظ بنتيجة قريبة لإعادة استخدامها، ونحدّثها حين تتغيّر المعلومة الأصلية.",
+        "en": "Keep a result nearby to use again, and refresh it when the original information changes."
+      }
+    },
+    {
+      "label": {
+        "ar": "مين أول؟",
+        "en": "Who goes first?"
+      },
+      "question": {
+        "ar": "اللي وصل أول، يطلع أول؟",
+        "en": "First in. First out?"
+      },
+      "concept": {
+        "ar": "الطوابير",
+        "en": "Queues"
+      },
+      "body": {
+        "ar": "في طابور FIFO، يُعالَج العنصر الأسبق وصولًا أولًا. طريقة بسيطة لتنظيم ما ينتظر دوره.",
+        "en": "A FIFO queue processes the earliest arrival first: a simple way to organise work waiting its turn."
+      }
+    },
+    {
+      "label": {
+        "ar": "إذا صار…",
+        "en": "When it happens…"
+      },
+      "question": {
+        "ar": "ضغطة صغيرة، وش يصير بعدها؟",
+        "en": "One small click. What happens next?"
+      },
+      "concept": {
+        "ar": "الأحداث",
+        "en": "Events"
+      },
+      "body": {
+        "ar": "تستمع الواجهة لحدث، مثل الضغط على زر، ثم تشغّل الاستجابة المرتبطة به. مثل تغيير هذه الزاوية.",
+        "en": "An interface listens for an event, such as a button click, then runs its response. Just like changing this angle."
+      }
+    }
+  ]
+};
+
+export const labSeries = [
+  {
+    "id": "uroob",
+    "name": {
+      "ar": "عُرُوب البرمجة",
+      "en": "Aroob Al-Barmaja"
+    },
+    "tagline": {
+      "ar": "للشيفرة من حكايات العرب نصيب.",
+      "en": "Where Arabic stories meet code."
+    },
+    "body": {
+      "ar": "بين حكايات العرب وأشعارهم، أبحث عن مفاهيم برمجية لم نتوقع أن نجدها هناك، وأعيد تقديمها بأسلوب يجمع أصالة الحكاية وحداثة التقنية.",
+      "en": "Exploring programming concepts through Arabic literature, poetry, history, and storytelling."
+    },
+    "lens": {
+      "ar": "أدب / شعر / تاريخ / شيفرة",
+      "en": "LITERATURE / POETRY / HISTORY / CODE"
+    }
+  },
+  {
+    "id": "ghanima",
+    "name": {
+      "ar": "العلوم الغانمة",
+      "en": "Al-Oloom Al-Ghanima"
+    },
+    "tagline": {
+      "ar": "البرمجة... من حيث لا تتوقع!",
+      "en": "Programming, from unexpected angles."
+    },
+    "body": {
+      "ar": "مواضيع برمجية أقدّمها من زوايا غير مألوفة؛ مرة بمثل شعبي، ومرة بموقف نعرفه، ومرة بفكرة غريبة تربط أشياء ما نتوقع أنها تجتمع.",
+      "en": "Reimagining programming topics through surprising connections, unconventional examples, and engaging storytelling."
+    },
+    "lens": {
+      "ar": "سؤال / تجربة / صلة غير متوقّعة",
+      "en": "QUESTIONS / EXPERIMENTS / UNEXPECTED CONNECTIONS"
+    }
+  }
+];
