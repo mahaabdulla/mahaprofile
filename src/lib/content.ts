@@ -1,0 +1,164 @@
+export type Lang = 'en' | 'ar';
+export type Localized = { en: string; ar: string };
+export const t = (value: Localized, lang: Lang) => value[lang];
+export const site = {
+  name: 'MAHA',
+  // Contact destinations supplied by the owner. Tracking query parameters are omitted.
+  contact: {
+    email: 'mahaabdulla87@gmail.com',
+    github: 'https://github.com/mahaabdulla',
+    linkedin: 'https://www.linkedin.com/in/maha-alattas-1478a92a3/',
+    instagram: 'https://www.instagram.com/maha_devlop/',
+  },
+  description: { en: 'Software developer & creative technologist. Thoughtful applications, considered systems, and ideas beyond code.', ar: 'مطورة برمجيات تجمع بين هندسة التطبيقات وتحليل الأنظمة والسرد الإبداعي.' },
+};
+export const copy = {
+  nav: { en: ['Work', 'About', 'Creative Lab', 'Let’s talk'], ar: ['الأعمال', 'عن مها', 'المختبر الإبداعي', 'لنتحدث'] },
+  role: { en: 'SOFTWARE DEVELOPER & CREATIVE TECHNOLOGIST', ar: 'مطورة برمجيات · تقنية بروح إبداعية' },
+  hero: { en: ['From ideas', 'to experiences'], ar: ['أفكار تتحوّل', 'إلى تجارب'] },
+  intro: { en: 'I turn complex ideas into thoughtful digital experiences — from understanding the problem to building the product.', ar: 'أفهم المشكلة، وأحلّل تفاصيلها، ثم أحوّل الأفكار إلى حلول رقمية تجمع بين جودة الهندسة وجمال التجربة.' },
+  explore: { en: 'Explore my work', ar: 'اكتشف أعمالي' },
+  contact: { en: 'Get in touch', ar: 'تواصل معي' },
+  selected: { en: 'Selected work', ar: 'أعمال مختارة' },
+  workTitle: { en: 'Thought through\nBuilt with intent', ar: 'فكرٌ متأنٍ\nوبناءٌ هادف' },
+  workIntro: { en: 'An educational application and a film equipment rental website. Two projects I contributed to through software development within a team.', ar: 'تطبيق تعليمي وموقع لتأجير معدات التصوير؛ مشروعان ساهمت في تطويرهما برمجيًا ضمن فريق.' },
+  viewAll: { en: 'View all work', ar: 'كل الأعمال' },
+  viewCase: { en: 'View project details', ar: 'تفاصيل المشروع' },
+  draft: { en: 'CASE STUDY DRAFT', ar: 'مسودة دراسة حالة' },
+  placeholder: { en: 'Illustrative concept · project evidence pending', ar: 'تصوّر توضيحي · بانتظار توثيق المشروع' },
+  beyond: { en: 'BEYOND THE CODE', ar: 'ما وراء الشيفرة' },
+  belief: { en: 'Good software starts before the first line of code', ar: 'البرمجيات الجيدة تبدأ قبل السطر الأول من الشيفرة' },
+  beliefBody: { en: 'Ask better questions. Understand the people. Connect the details. Then build something that makes sense — and makes a difference.', ar: 'أطرح الأسئلة، وأفهم احتياجات الناس، وأربط التفاصيل. ثم أبني تجربة منطقية تحمل قيمة حقيقية.' },
+  aboutLink: { en: 'A little about me', ar: 'المزيد عني' },
+  expertise: { en: 'From the big picture\nto the small details', ar: 'من الصورة الكبيرة\nإلى أدق التفاصيل' },
+  process: { en: 'A little structure\nRoom for possibility', ar: 'منهجية واضحة\nومساحة للاحتمال' },
+  labEyebrow: { en: 'CREATIVE LAB / 01', ar: 'المختبر الإبداعي / ٠١' },
+  labTitle: { en: 'Where logic\nmeets imagination', ar: 'حين يلتقي المنطق\nبالخيال' },
+  labBody: { en: 'An ongoing exploration of programming through Arabic literature, history, and the stories that stay with us.', ar: 'مساحة لاستكشاف مفاهيم البرمجة من خلال الأدب العربي والتاريخ والحكايات التي تبقى معنا.' },
+  labLink: { en: 'Enter the creative lab', ar: 'ادخل المختبر الإبداعي' },
+  cta: { en: ['Have an idea', 'worth building?'], ar: ['لديك فكرة', 'تستحق البناء؟'] },
+  ctaBody: { en: 'Building a team, developing a product, or exploring a creative collaboration? Let’s make something meaningful.', ar: 'تبني فريقًا، أو تطوّر منتجًا، أو تبحث عن تعاون إبداعي؟ لنصنع شيئًا ذا معنى.' },
+  footer: { en: 'Made with intention. Built with curiosity.', ar: 'صُنع بعناية. وبُني بفضول.' },
+  menu: { en: 'Menu', ar: 'القائمة' },
+  close: { en: 'Close menu', ar: 'إغلاق القائمة' },
+  all: { en: 'All projects', ar: 'كل الأعمال' },
+};
+export const capabilities = [
+  { title: {en:'Application development',ar:'تطوير التطبيقات'}, body:{en:'Interfaces that feel intuitive. Architecture that holds up behind them.',ar:'واجهات سهلة الاستخدام، ومعمارية تدعمها وتحافظ على قابليتها للتطوير.'}, tools:['Flutter','Dart','Responsive UI','API integration'], detail:{en:'From a user journey to a responsive interface, with clear boundaries between presentation, state, and data.',ar:'من رحلة المستخدم إلى الواجهة المتجاوبة، مع فصل واضح بين العرض والحالة والبيانات.'} },
+  { title: {en:'Backend development',ar:'تطوير الأنظمة الخلفية'}, body:{en:'The invisible systems that make a good experience possible.',ar:'الأنظمة التي تعمل خلف الكواليس لتجعل التجربة الجيدة ممكنة.'},tools:['Node.js','Express','REST APIs','MongoDB'],detail:{en:'Thoughtful API contracts, access boundaries, input validation, and server-side logic.',ar:'عقود واضحة للواجهات البرمجية، وحدود للصلاحيات، والتحقق من المدخلات، ومنطق الخادم.'} },
+  { title: {en:'Solution analysis & design',ar:'تحليل الحلول وتصميمها'}, body:{en:'Finding clarity in complexity, before making it into software.',ar:'إيجاد الوضوح وسط التعقيد، قبل تحويله إلى برمجيات.'}, tools:['Requirements','SRS','System workflows','UI/UX'],detail:{en:'Translate an ambiguous problem into user roles, workflows, constraints, and decisions a team can discuss.',ar:'تحويل المشكلة الغامضة إلى أدوار ومسارات وقيود وقرارات يمكن للفريق مناقشتها.'} },
+];
+export const processSteps = [
+  { title:{en:'Discover',ar:'أستكشف'}, body:{en:'Listen first. Understand who we’re building for and what actually needs to change.',ar:'أستمع أولًا. أفهم لمن نبني، وما الذي يحتاج فعلًا إلى التغيير.'}, output:{en:'A focused problem statement',ar:'تحديد واضح للمشكلة'} },
+  { title:{en:'Analyze',ar:'أحلّل'}, body:{en:'Map the moving parts. Turn assumptions into clear requirements and constraints.',ar:'أربط الأجزاء، وأحوّل الافتراضات إلى متطلبات وقيود واضحة.'},output:{en:'Requirements & user workflows',ar:'متطلبات ومسارات المستخدم'} },
+  { title:{en:'Design',ar:'أصمّم'}, body:{en:'Make the important decisions visible. Shape the experience and the system together.',ar:'أجعل القرارات المهمة مرئية، وأصمّم التجربة والنظام معًا.'},output:{en:'Interface & architecture direction',ar:'تصوّر الواجهة والمعمارية'} },
+  { title:{en:'Build',ar:'أبني'}, body:{en:'Bring the idea to life with readable code, clear boundaries, and deliberate details.',ar:'أحوّل الفكرة إلى تجربة بشيفرة مفهومة وحدود واضحة وتفاصيل مدروسة.'},output:{en:'A working, testable product',ar:'منتج يعمل ويمكن اختباره'} },
+  { title:{en:'Refine',ar:'أحسّن'}, body:{en:'Test the real experience. Question the friction. Keep making it more useful.',ar:'أختبر التجربة، وأراجع نقاط التعثر، وأحسّن القيمة التي تقدمها.'},output:{en:'Validated flows & a clearer next step',ar:'مسارات مختبرة وخطوة تالية أوضح'} },
+];
+export const projects = [
+  {
+    "slug": "azad",
+    "number": "01",
+    "kind": "application",
+    "category": {
+      "en": "APPLICATION DEVELOPMENT",
+      "ar": "تطوير التطبيقات"
+    },
+    "title": {
+      "en": "Azad\nLearning within reach",
+      "ar": "أزاد\nالتعلّم في متناولك"
+    },
+    "name": {
+      "en": "Azad",
+      "ar": "تطبيق أزاد"
+    },
+    "description": {
+      "en": "An educational application that helps students access learning content and supports continuity of education.",
+      "ar": "تطبيق تعليمي يسهّل وصول الطلاب إلى المحتوى الدراسي، ويدعم استمرارية التعلّم."
+    },
+    "stack": [
+      "Android",
+      "Education"
+    ],
+    "role": {
+      "en": "Software development as part of a team.",
+      "ar": "ساهمت في التطوير البرمجي للتطبيق ضمن فريق عمل."
+    },
+    "url": "https://play.google.com/store/apps/details?id=azaddigitalschool.com",
+    "linkLabel": {
+      "en": "View on Google Play",
+      "ar": "عرض على Google Play"
+    },
+    "status": {
+      "en": "Available on Google Play",
+      "ar": "متاح على Google Play"
+    },
+    "overview": {
+      "en": "Azad is part of the Azad Education Project. It provides accessible educational content for students, including during interruptions to in-person schooling.",
+      "ar": "أزاد تطبيق تابع لمشروع أزاد التعليمي، يقدّم محتوى تعليميًا متاحًا للطلاب، ويساعد على مواصلة الدراسة عند تعذّر التعليم الحضوري."
+    },
+    "image": "/projects/azad-screen.png",
+    "secondImage": "/projects/azad-learning.png",
+    "imageAlt": {
+      "en": "Azad promotional screenshot published on Google Play",
+      "ar": "صورة تعريفية لتطبيق أزاد منشورة على Google Play"
+    },
+    "imageCaption": {
+      "en": "App images from the official Google Play listing",
+      "ar": "صور التطبيق من صفحته الرسمية على Google Play"
+    }
+  },
+  {
+    "slug": "sigil-film",
+    "number": "02",
+    "kind": "website",
+    "category": {
+      "en": "WEB DEVELOPMENT",
+      "ar": "تطوير المواقع"
+    },
+    "title": {
+      "en": "Sigil Film\nMade for the frame",
+      "ar": "Sigil Film\nشريك صناعة الصورة"
+    },
+    "name": {
+      "en": "Sigil Film",
+      "ar": "Sigil Film"
+    },
+    "description": {
+      "en": "A website for cinema equipment, lighting, and camera movement rentals, introducing the services of Sigil Film Rental.",
+      "ar": "موقع لتأجير معدات السينما والإضاءة وحلول الحركة، والتعريف بخدمات Sigil Film Rental."
+    },
+    "stack": [
+      "Website",
+      "Film rental"
+    ],
+    "role": {
+      "en": "Software development as part of a team.",
+      "ar": "ساهمت في التطوير البرمجي للموقع ضمن فريق عمل."
+    },
+    "url": "https://sigilfilm.com/",
+    "linkLabel": {
+      "en": "Visit website",
+      "ar": "زيارة الموقع"
+    },
+    "status": {
+      "en": "Live website",
+      "ar": "موقع منشور"
+    },
+    "overview": {
+      "en": "Sigil Film Rental presents film production equipment rental services. Its website introduces the company and helps visitors explore its offering and get in touch.",
+      "ar": "يعرّف الموقع بخدمات Sigil Film Rental في تأجير تجهيزات الإنتاج والتصوير، ويتيح للزائر التعرّف على نشاط الشركة والتواصل معها."
+    },
+    "image": "/projects/sigil-film.jpg",
+    "secondImage": null,
+    "imageAlt": {
+      "en": "Screenshot of the Sigil Film Rental website",
+      "ar": "لقطة من موقع Sigil Film Rental"
+    },
+    "imageCaption": {
+      "en": "Screenshot of the live website",
+      "ar": "لقطة من الموقع المنشور"
+    }
+  }
+];
+export type Project = (typeof projects)[number];
