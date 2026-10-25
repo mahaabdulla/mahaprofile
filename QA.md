@@ -86,3 +86,18 @@ Public deployment was not performed. Palestine web licensing and actual licensed
 - Review screenshots: maha-beyond-line-ghanima.jpg, maha-beyond-line-ghanima-second.jpg, and maha-beyond-line-mobile.jpg.
 
 This is a local source/export update. No public deployment was performed. Existing font license status is unchanged; see LICENSES.md.
+
+## Signature motion and visual refinement — final validation, 25 October 2026
+
+- TypeScript and ESLint passed explicitly; the final production build also passed compilation, lint, types, prerendering, and static export. Route JavaScript is approximately 178 kB. The export audit passes 15 bilingual pages and 533 internal links/assets. Eight introductory-session regression tests pass.
+- The former Orbit component, its Hero/About instances, and the oversized Contact star are absent. Intro geometry uses three separate drafting strokes rather than intersecting orbital ellipses. Existing content covers and project screenshots remain unchanged.
+- The Arabic Hero was observed in all three automatic states. Its headline height remained 451.85px, and Selected Work remained at document position 945.29px across states. Pause held the same phrase for more than a cycle; resume works. Arabic words remain intact and the accessible heading stays stable. The loop pauses when the Hero or browser document is not visible.
+- English Hero text bounds fit at 320px and 390px, including the longest phrase. Desktop checks at 1440px pass in both locales. Arabic body uses IBM Plex Sans Arabic, major headings retain Palestine, and English headings retain Inter. No horizontal overflow was found in the inspected Hero, About, Work, or Contact layouts.
+- Blueprint selection was checked using keyboard activation on desktop and clicking on mobile. The diagram and relevant example update together. Mobile buttons measure approximately 94 x 87px. About biography lines are constrained to 490px on desktop; the blueprint was compacted from approximately 703px to 587px high.
+- Both Selected Work surrounds compute to #DCD8F0 on #EAE8E4. The actual Azad and Sigil Film images, links, and contribution statements are preserved. Both desktop and mobile layouts were inspected.
+- Actual Contact scroll changes its normalized path offset from 0.941177 to 0.368024 while the point moves along the SVG path. The standalone CTA aligns with the path endpoint and links directly to the supplied email address; all four contact channels remain available. The button remains immediately usable.
+- Reduced motion was checked through the site control: the Hero returns to its first readable phrase, the Contact path is fully drawn, and the point returns to the endpoint (245,240). The OS preference is also guarded in each component and CSS; browser OS emulation was unavailable.
+- Navigation among Home, About, Work, and Contact, language switching, and returning to the Hero were checked without console warnings or errors. GSAP contexts, delayed calls, visibility/intersection listeners, and pointer tweens have cleanup paths. Temporary viewport overrides were reset.
+- Review images: maha-refined-hero-desktop.jpg, maha-refined-about-desktop.jpg, maha-refined-work-desktop.jpg, maha-refined-contact-desktop.jpg, and matching -mobile.jpg views.
+
+This is a local source/export update. No public deployment or new font licensing claim is made.

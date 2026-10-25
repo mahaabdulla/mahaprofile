@@ -15,13 +15,14 @@ export const site = {
 export const copy = {
   nav: { en: ['Work', 'About', 'Beyond the Line', 'Let’s talk'], ar: ['الأعمال', 'عن مها', 'خارج السطر', 'لنتحدث'] },
   role: { en: 'SOFTWARE DEVELOPER · CREATIVE PROGRAMMING CREATOR', ar: 'مطورة برمجيات · صانعة محتوى برمجي' },
-  hero: { en: ['From ideas', 'to experiences'], ar: ['أفكار تتحوّل', 'إلى تجارب'] },
+  hero: { en: ['From ideas', 'Into experiences.'], ar: ['أفكار تتحوّل', 'إلى تجارب.'] },
+  heroPhrases: { en: ['Into experiences.', 'Into applications.', 'Into reality.'], ar: ['إلى تجارب.', 'إلى تطبيقات.', 'إلى واقع.'] },
   intro: { en: 'I build applications, connect systems, and care about the details that make them work. I also create programming content that opens a different door into an idea.', ar: 'أطوّر التطبيقات، وأربط الأنظمة، وأعتني بالتفاصيل التي تجعلها تعمل كما ينبغي. وأصنع محتوى يفتح لأفكار البرمجة بابًا مختلفًا.' },
   explore: { en: 'Explore my work', ar: 'اكتشف أعمالي' },
   contact: { en: 'Get in touch', ar: 'تواصل معي' },
   selected: { en: 'Selected work', ar: 'أعمال مختارة' },
-  workTitle: { en: 'Thought through\nBuilt with intent', ar: 'فكرٌ متأنٍ\nوبناءٌ هادف' },
-  workIntro: { en: 'An educational application and a film equipment rental website. Two projects I contributed to through software development within a team.', ar: 'تطبيق تعليمي وموقع لتأجير معدات التصوير؛ مشروعان ساهمت في تطويرهما برمجيًا ضمن فريق.' },
+  workTitle: { en: 'More than an idea.', ar: 'أفكار ما وقفت عند الفكرة.' },
+  workIntro: { en: 'Projects I helped build, from the first details to experiences people use.', ar: 'مشاريع ساهمت في بنائها، من أول التفاصيل إلى تجربة يستخدمها الناس.' },
   viewAll: { en: 'View all work', ar: 'كل الأعمال' },
   viewCase: { en: 'View project details', ar: 'تفاصيل المشروع' },
   draft: { en: 'CASE STUDY DRAFT', ar: 'مسودة دراسة حالة' },
@@ -36,8 +37,9 @@ export const copy = {
   labTitle: { en: 'Beyond the Line.', ar: 'خارج السطر.' },
   labBody: { en: 'Beyond the Line: Aroob Al-Barmaja and Al-Oloom Al-Ghanima. Unexpected perspectives on programming, alongside my software development work.', ar: 'عُرُوب البرمجة والعلوم الغانمة؛ سلسلتان مستقلتان أشرح فيهما أفكار البرمجة من زوايا مختلفة، وأترك للفهم فرصة أن يفاجئنا.' },
   labLink: { en: 'Explore Beyond the Line', ar: 'اكتشف خارج السطر' },
-  cta: { en: ['Have an idea', 'worth building?'], ar: ['لديك فكرة', 'تستحق البناء؟'] },
-  ctaBody: { en: 'Building a team, developing a product, or exploring a creative collaboration? Let’s make something meaningful.', ar: 'تبني فريقًا، أو تطوّر منتجًا، أو تبحث عن تعاون إبداعي؟ لنصنع شيئًا ذا معنى.' },
+  cta: { en: ['Have an idea?', 'Let’s see where it can go.'], ar: ['عندك فكرة؟', 'خلّينا نشوف إلى وين توصل.'] },
+  ctaBody: { en: 'A project that needs building, a team looking for a developer, or an idea worth trying — I’d love to start with the first question.', ar: 'سواء عندك مشروع يحتاج من يبنيه، أو فريق تبحث له عن مطوّرة، أو فكرة تستحق التجربة... يسعدني نبدأ من أول سؤال.' },
+  ctaAction: { en: 'Let’s begin', ar: 'خلّينا نبدأ' },
   footer: { en: 'Made with intention. Built with curiosity.', ar: 'صُنع بعناية. وبُني بفضول.' },
   menu: { en: 'Menu', ar: 'القائمة' },
   close: { en: 'Close menu', ar: 'إغلاق القائمة' },
@@ -225,4 +227,10 @@ export const labSeries = [
       "en": "QUESTIONS / EXPERIMENTS / UNEXPECTED CONNECTIONS"
     }
   }
+];
+
+export const blueprint = [
+{"verb":"THINK","label":{"ar":"أفهم","en":"Think"},"eyebrow":{"ar":"تحليل المتطلبات","en":"REQUIREMENTS ANALYSIS"},"example":{"ar":"من سيستخدم المنتج؟ ما الذي يحتاجه؟ وما السؤال الذي يستحق أن نبدأ منه؟","en":"Who will use it? What do they need? Find the question that gives the product a clear purpose."}},
+{"verb":"BUILD","label":{"ar":"أبني","en":"Build"},"eyebrow":{"ar":"تطوير التطبيقات","en":"APPLICATION DEVELOPMENT"},"example":{"ar":"أحوّل المتطلبات إلى واجهة تستجيب، ومنطق يربطها بالبيانات، وتفاصيل تجعل التجربة متماسكة.","en":"Turn requirements into a responsive interface, connect it to data, and make the details work together."}},
+{"verb":"CREATE","label":{"ar":"أحكي","en":"Create"},"eyebrow":{"ar":"محتوى برمجي إبداعي","en":"CREATIVE PROGRAMMING CONTENT"},"example":{"ar":"أبدأ بحكاية أو سؤال غير متوقّع، وأصل منه إلى شرح يجعل الفكرة البرمجية أقرب.","en":"Start with a story or an unexpected question, and follow it to a clearer way of understanding code."}}
 ];

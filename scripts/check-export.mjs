@@ -48,7 +48,14 @@ for(const page of pages){
   for(const href of approvedContacts)assert.ok(html.includes('href="'+href+'"'),`Missing contact ${href} on ${page}`);
   assert.ok(!html.includes('السيرة الذاتية')&&!html.includes('Details forthcoming'),'Old contact placeholders must be removed');
  }
- for(const heading of html.matchAll(/<h[1-3]\b[^>]*>([\s\S]*?)<\/h[1-3]>/g))if(!heading[0].includes('id="beyond-title"'))assert.ok(!/\.(?:\s|$)/.test(heading[1].replace(/<[^>]*>/g,' ').trim()),`Heading punctuation: ${page}`);
+ assert.ok(!html.includes('class="orbit')&&!html.includes('class="hero-orbit"')&&!html.includes('class="contact-star"'),'Removed atom mark and oversized contact star');
+ assert.ok(html.includes('contact-journey')&&html.includes('contact-cta'),'Signature contact journey and usable CTA');
+ if(['','en','ar'].includes(page)){
+  for(const phrase of lang==='ar'?['إلى تجارب.','إلى تطبيقات.','إلى واقع.']:['Into experiences.','Into applications.','Into reality.'])assert.ok(html.includes(phrase),'Complete localized rotating phrase');
+  assert.equal((html.match(/class="hero-phrase"/g)||[]).length,3,'Three intact rotating phrases');
+ }
+ if(page.endsWith('/about'))assert.ok(html.includes('thinking-blueprint')&&html.includes('data-blueprint-scene="2"'),'Interactive Think Build Create blueprint');
+ for(const heading of html.matchAll(/<h[1-3]\b[^>]*>([\s\S]*?)<\/h[1-3]>/g))if(!/id="beyond-title"|hero-signature-heading|work-signature-heading|contact-signature-heading/.test(heading[0]))assert.ok(!/\.(?:\s|$)/.test(heading[1].replace(/<[^>]*>/g,' ').trim()),`Heading punctuation: ${page}`);
  if(page==='ar')assert.ok(html.includes('أفكار تتحوّل')&&!html.includes('أبعد من الشيفرة'),'Updated Arabic hero copy');
 }
 assert.ok(fs.existsSync(path.join(root,'404.html')),'Missing 404 page');

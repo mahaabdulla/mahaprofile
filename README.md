@@ -29,7 +29,7 @@ The brief and owner-provided follow-up contact details are the content sources f
 
 ## Design and motion
 
-Charcoal `#111114`, ivory `#F1F0EB`, and lilac `#A6A0DF` define the main identity. Emerald, warm ivory, and gold are confined to the Arabic storytelling project. Layouts recompose at 1100, 760, 540, and 360px. Motion uses natural scrolling, one-shot heading reveals, a restrained hero orbit, a scroll-linked Beyond the Line motif, CSS hover feedback, and page entry reveals. Beyond the Line uses an unpinned scroll-linked typographic break, a bending editorial line, two full-width series showcases, and a restrained exit thread. Mobile uses smaller movement and natural document flow. Process tabs have keyboard support. GSAP is the only motion library. On larger screens, the process advances with natural scroll and remains directly selectable. Reduced-motion preferences disable transitions, animated reveals, smooth scrolling, and sticky storytelling.
+Charcoal `#111114`, ivory `#F1F0EB`, and lilac `#A6A0DF` define the main identity. Emerald, warm ivory, and gold are confined to the Arabic storytelling series. Selected Work uses off-white #EAE8E4, lilac #DCD8F0 surfaces, and charcoal type around the unchanged project screenshots. Layouts recompose at 1100, 760, 540, and 360px. Motion uses natural scrolling, one-shot heading reveals, a whole-phrase masked Hero headline, a scroll-linked Beyond the Line motif, CSS hover feedback, and page entry reveals. Beyond the Line uses an unpinned scroll-linked typographic break, a bending editorial line, two full-width series showcases, and a restrained exit thread. Mobile uses smaller movement and natural document flow. Process tabs have keyboard support. GSAP is the only motion library. On larger screens, the process advances with natural scroll and remains directly selectable. Reduced-motion preferences disable transitions, animated reveals, smooth scrolling, and sticky storytelling.
 
 ## Typography and references
 
@@ -89,3 +89,13 @@ Run `npm run test:intro` for the eight session/failure-path tests.
 The existing `/lab/` routes remain stable in both locales. Navigation, page titles, page descriptions, home section, and series copy use the new name. `#creative-lab`, `#uroob`, and `#ghanima` remain supported; `#beyond-line` is also available. The signature title preserves whole Arabic words; GSAP + ScrollTrigger transform the active line into the two-world editorial narrative without pinning or replacing native scrolling. The existing motion preference control and OS preference restore the fully readable static state, and all GSAP contexts are reverted on navigation.
 
 Series previews use supplied original covers without cropping, invented metrics, publication dates, or assumed individual post links. Each preview supports previous/next, enlargement, keyboard arrows in its native modal, Escape, and focus restoration. Instagram CTAs point to the verified owner profile. Palestine remains the existing local display font with the unresolved web-license status documented in LICENSES.md; this task does not deploy the site.
+
+## Signature motion refinement — 25 October 2026
+
+The React-like orbit mark is removed from Hero and About. The introduction now uses three independent drafting strokes that resolve into interface geometry, preserving its session-once behavior and fail-open guards.
+
+The Hero automatically cycles three complete localized phrases inside a fixed grid/mask. Each stays readable for 3.8 seconds, then transitions vertically. A keyboard-accessible pause/resume control is provided; the loop also stops outside the viewport, when the document is hidden, or when reduced motion is enabled. Its accessible heading stays stable rather than announcing every cycle.
+
+About uses an original THINK / BUILD / CREATE blueprint. Hover, focus, and tap select a stage, reveal a concrete example, and transform the diagram. Paragraph widths, spacing, and the illustration’s height are constrained for balance.
+
+Contact keeps the lilac background, replaces the oversized star with a drawn SVG idea path, and moves a point along its actual length with ScrollTrigger. The contact CTA remains immediately usable. Standalone Contact links directly to email while preserving all four social/contact channels. No new dependencies, project claims, screenshots, or publication details are introduced.

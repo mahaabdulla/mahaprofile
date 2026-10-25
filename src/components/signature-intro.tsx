@@ -4,7 +4,12 @@ import { gsap } from 'gsap';
 import type { Lang } from '@/lib/content';
 import { claimIntroSession } from '@/lib/intro-session.mjs';
 
-const orbit='M92 256 C92 219 165 189 256 189 C347 189 420 219 420 256 C420 293 347 323 256 323 C165 323 92 293 92 256';
+// Three distinct drafting strokes replace the former intersecting orbital loops.
+const drafting=[
+ 'M92 212 C92 212 174 212 174 212 C174 212 174 168 174 168 C174 168 338 168 338 168 C338 168 338 212 420 212',
+ 'M92 256 C92 256 174 256 174 256 C174 256 218 234 256 234 C294 234 338 256 338 256 C338 256 420 256 420 256',
+ 'M92 300 C92 300 174 300 174 300 C174 300 174 344 174 344 C174 344 338 344 338 344 C338 344 338 300 420 300',
+];
 const geometry=[
  'M132 176 C132 176 380 176 380 176 C380 176 380 336 380 336 C380 336 132 336 132 336 C132 336 132 176 132 176',
  'M157 202 C157 202 222 202 222 202 C222 202 222 310 222 310 C222 310 157 310 157 310 C157 310 157 202 157 202',
@@ -60,7 +65,7 @@ export function SignatureIntro({lang}:{lang:Lang}){
   <div className="intro-art" aria-hidden="true">
    <div className="intro-topline mono"><span>MAHA / 01</span><span>FROM ZERO TO CREATION</span></div>
    <div className="intro-center">
-    <svg className="intro-geometry" viewBox="0 0 512 512" fill="none"><g stroke="currentColor" strokeWidth="1"><path className="intro-orbit intro-orbit-0" pathLength="1" d={orbit} transform="rotate(-35 256 256)"/><path className="intro-orbit intro-orbit-1" pathLength="1" d={orbit} transform="rotate(35 256 256)"/><path className="intro-orbit intro-orbit-2" pathLength="1" d={orbit} transform="rotate(90 256 256)"/></g><rect className="intro-spark" x="251" y="251" width="10" height="10" fill="currentColor"/></svg>
+    <svg className="intro-geometry" viewBox="0 0 512 512" fill="none"><g stroke="currentColor" strokeWidth="1">{drafting.map((d,index)=><path key={index} className={`intro-orbit intro-orbit-${index}`} pathLength="1" d={d}/>)}</g><rect className="intro-spark" x="251" y="251" width="10" height="10" fill="currentColor"/></svg>
     <div className="intro-wordmark" dir="ltr">{[...'MAHA'].map((letter,index)=><span className="intro-letter-mask" key={index}><span className="intro-letter">{letter}</span></span>)}<span className="intro-period">.</span></div>
     <p className="intro-caption">{lang==='ar'?'من فكرة، يبدأ كل شيء':'Everything begins with an idea'}</p>
    </div>

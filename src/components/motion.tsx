@@ -23,14 +23,14 @@ export function MotionRoot(){
    if(hero){
     const rtl=document.documentElement.dir==='rtl';
     gsap.timeline({scrollTrigger:{trigger:hero,start:'top top',end:'bottom top',scrub:.65}})
-     .to('.hero .second-line',{xPercent:rtl?4:-4,ease:'none'},0).to('.hero-star',{rotation:110,ease:'none'},0)
-     .to('.hero-signature',{yPercent:-25,opacity:.15,ease:'none'},0).to('.hero-orbit',{rotation:30,y:65,ease:'none'},0);
+     .to('.hero .second-line',{xPercent:rtl?1.5:-1.5,ease:'none'},0)
+     .to('.hero-signature',{yPercent:-25,opacity:.15,ease:'none'},0);
    }
    gsap.utils.toArray<HTMLElement>('[data-reveal]').forEach(el=>gsap.from(el,{y:25,opacity:0,duration:.7,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 96%',once:true},clearProps:'all'}));
    gsap.utils.toArray<HTMLElement>('.showcase-frame').forEach(el=>gsap.from(el,{y:30,scale:.96,duration:.9,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 95%',once:true},clearProps:'all'}));
   });
   let entrance:gsap.Context|undefined;
-  const revealHero=()=>{if(reduced||!document.querySelector('.hero'))return;entrance?.revert();entrance=gsap.context(()=>{gsap.from('.hero-line > span',{yPercent:105,opacity:0,duration:.9,stagger:.12,ease:'power3.out',clearProps:'all'});gsap.from('.hero-signature span',{yPercent:110,rotate:6,duration:.8,stagger:.06,ease:'power3.out',clearProps:'all'});});};
+  const revealHero=()=>{if(reduced||!document.querySelector('.hero'))return;entrance?.revert();entrance=gsap.context(()=>{gsap.from('.hero-first > span,.hero-rotator-inner',{yPercent:105,opacity:0,duration:.9,stagger:.12,ease:'power3.out',clearProps:'all'});gsap.from('.hero-signature span',{yPercent:110,rotate:6,duration:.8,stagger:.06,ease:'power3.out',clearProps:'all'});});};
   if(['pending','playing'].includes(document.documentElement.dataset.intro??'')&&document.documentElement.dataset.introReveal!=='ready')window.addEventListener('maha:intro-end',revealHero,{once:true});else if(document.documentElement.dataset.introReveal!=='ready')revealHero();
   let frame=0;const update=()=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(()=>{const max=document.documentElement.scrollHeight-innerHeight;if(progress.current)progress.current.style.transform=`scaleX(${max>0?scrollY/max:0})`;});};
   addEventListener('scroll',update,{passive:true});update();return()=>{window.removeEventListener('maha:intro-end',revealHero);entrance?.revert();context.revert();cancelAnimationFrame(frame);removeEventListener('scroll',update);};

@@ -1,5 +1,6 @@
 @import './fonts.css';
 @import './beyond-line.css';
+@import './signature-refinements.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -147,9 +148,9 @@ body{font-family:var(--font-body-en)}[dir=rtl] .site-shell{font-family:var(--fon
 [data-intro=pending] .intro-caption{animation:intro-caption-in .3s ease-out 1.4s both}
 @keyframes intro-spark-in{0%{opacity:0;transform:rotate(45deg) scale(0)}32%,70%{opacity:1;transform:rotate(45deg) scale(1)}100%{opacity:1;transform:rotate(45deg) scale(.55)}}
 @keyframes intro-line-draw{to{stroke-dashoffset:0}}
-@keyframes intro-shape-0{from{transform:rotate(-35deg)}to{transform:rotate(0);d:path('M132 176 C132 176 380 176 380 176 C380 176 380 336 380 336 C380 336 132 336 132 336 C132 336 132 176 132 176')}}
-@keyframes intro-shape-1{from{transform:rotate(35deg)}to{transform:rotate(0);d:path('M157 202 C157 202 222 202 222 202 C222 202 222 310 222 310 C222 310 157 310 157 310 C157 310 157 202 157 202')}}
-@keyframes intro-shape-2{from{transform:rotate(90deg)}to{transform:rotate(0);d:path('M244 202 C244 202 355 202 355 202 C355 202 355 262 355 262 C355 262 244 262 244 262 C244 262 244 202 244 202')}}
+@keyframes intro-shape-0{from{transform:rotate(0)}to{transform:rotate(0);d:path('M132 176 C132 176 380 176 380 176 C380 176 380 336 380 336 C380 336 132 336 132 336 C132 336 132 176 132 176')}}
+@keyframes intro-shape-1{from{transform:rotate(0)}to{transform:rotate(0);d:path('M157 202 C157 202 222 202 222 202 C222 202 222 310 222 310 C222 310 157 310 157 310 C157 310 157 202 157 202')}}
+@keyframes intro-shape-2{from{transform:rotate(0)}to{transform:rotate(0);d:path('M244 202 C244 202 355 202 355 202 C355 202 355 262 355 262 C355 262 244 262 244 262 C244 262 244 202 244 202')}}
 @keyframes intro-geometry-out{to{transform:translateY(-20px) scale(.82);opacity:0}}
 @keyframes intro-type-in{from{transform:translateY(110%);opacity:0}to{transform:translateY(0);opacity:1}}
 @keyframes intro-dot-in{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
