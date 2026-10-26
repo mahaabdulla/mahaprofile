@@ -15,7 +15,7 @@ export const site = {
 export const copy = {
   nav: { en: ['Work', 'About', 'Beyond the Line', 'Let’s talk'], ar: ['الأعمال', 'عن مها', 'خارج السطر', 'لنتحدث'] },
   role: { en: 'SOFTWARE DEVELOPER · CREATIVE PROGRAMMING CREATOR', ar: 'مطورة برمجيات · صانعة محتوى برمجي' },
-  hero: { en: ['From ideas', 'Into experiences.'], ar: ['أفكار تتحوّل', 'إلى تجارب.'] },
+  hero: { en: ['Ideas turn', 'Into experiences.'], ar: ['أفكار تتحوّل', 'إلى تجارب.'] },
   heroPhrases: { en: ['Into experiences.', 'Into applications.', 'Into reality.'], ar: ['إلى تجارب.', 'إلى تطبيقات.', 'إلى واقع.'] },
   intro: { en: 'I build applications, connect systems, and care about the details that make them work. I also create programming content that opens a different door into an idea.', ar: 'أطوّر التطبيقات، وأربط الأنظمة، وأعتني بالتفاصيل التي تجعلها تعمل كما ينبغي. وأصنع محتوى يفتح لأفكار البرمجة بابًا مختلفًا.' },
   explore: { en: 'Explore my work', ar: 'اكتشف أعمالي' },
@@ -37,7 +37,7 @@ export const copy = {
   labTitle: { en: 'Beyond the Line.', ar: 'خارج السطر.' },
   labBody: { en: 'Beyond the Line: Aroob Al-Barmaja and Al-Oloom Al-Ghanima. Unexpected perspectives on programming, alongside my software development work.', ar: 'عُرُوب البرمجة والعلوم الغانمة؛ سلسلتان مستقلتان أشرح فيهما أفكار البرمجة من زوايا مختلفة، وأترك للفهم فرصة أن يفاجئنا.' },
   labLink: { en: 'Explore Beyond the Line', ar: 'اكتشف خارج السطر' },
-  cta: { en: ['Have an idea?', 'Let’s see where it can go.'], ar: ['عندك فكرة؟', 'خلّينا نشوف إلى وين توصل.'] },
+  cta: { en: ['Have an idea?', "Let's see", 'where it could go.'], ar: ['عندك فكرة؟', 'خلّينا نشوف', 'إلى وين توصل.'] },
   ctaBody: { en: 'A project that needs building, a team looking for a developer, or an idea worth trying — I’d love to start with the first question.', ar: 'سواء عندك مشروع يحتاج من يبنيه، أو فريق تبحث له عن مطوّرة، أو فكرة تستحق التجربة... يسعدني نبدأ من أول سؤال.' },
   ctaAction: { en: 'Let’s begin', ar: 'خلّينا نبدأ' },
   footer: { en: 'Made with intention. Built with curiosity.', ar: 'صُنع بعناية. وبُني بفضول.' },

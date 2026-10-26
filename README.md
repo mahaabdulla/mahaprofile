@@ -100,8 +100,14 @@ Series previews use supplied original covers without cropping, invented metrics,
 
 The React-like orbit mark is removed from Hero and About. The introduction now uses three independent drafting strokes that resolve into interface geometry, preserving its session-once behavior and fail-open guards.
 
-The Hero automatically cycles three complete localized phrases inside a fixed grid/mask. Each stays readable for 3.5 seconds, then transitions vertically. Escape pauses the loop; the loop also stops outside the viewport, when the document is hidden, or when reduced motion is enabled. Its accessible heading stays stable rather than announcing every cycle.
+The Hero automatically cycles three complete localized phrases inside a fixed grid/mask. Each stays readable for 3.5 seconds, then a complementary diagonal mask sweeps through both intact phrases in 580ms. The first line stays stationary. Escape pauses the loop; the loop also stops outside the viewport, when the document is hidden, or when reduced motion is enabled. Its accessible heading stays stable rather than announcing every cycle.
 
 About uses an original THINK / BUILD / CREATE blueprint. Hover, focus, and tap select a stage, reveal a concrete example, and transform the diagram. Paragraph widths, spacing, and the illustration’s height are constrained for balance.
 
-Contact keeps the lilac background, replaces the oversized star with a drawn SVG idea path, and moves a point along its actual length with ScrollTrigger. The contact CTA remains immediately usable. Standalone Contact provides one email row alongside all four social/contact channels, without a duplicate email CTA. No new dependencies, project claims, screenshots, or publication details are introduced.
+Contact keeps the lilac background, replaces the oversized star with a drawn SVG idea path, and moves a point along its actual length in a 900ms reveal triggered with the three editorial heading lines. The contact CTA remains immediately usable. Standalone Contact provides the requested Let’s begin email CTA alongside the four established contact channels. No new dependencies, project claims, screenshots, or publication details are introduced.
+
+## Final Hero and Contact refinement — 26 October 2026
+
+The approved opening GSAP sequence, SVG geometry, session bootstrap, and first-paint CSS are byte-identical to their state before this refinement. Only the subsequent living-headline transition changes: the words remain stationary behind two complementary slanted masks, sharing a fine geometric edge. The edge follows RTL/LTR reading direction and is hidden between transitions. Each phrase remains readable for 3.5 seconds; the sweep takes 580ms. No controls, character splitting, or question-mark opening were introduced. English begins with Ideas turn.
+
+Contact now has exactly three localized lines: عندك فكرة؟ / خلّينا نشوف / إلى وين توصل. and Have an idea? / Let's see / where it could go. Whole-line masks reveal with a short 85ms stagger on scroll entry. The existing curved path follows with its travelling point, guiding attention toward the requested CTA. Both animations have static, fully readable reduced-motion fallbacks and clean up on navigation. The lilac background and all other sections are preserved.

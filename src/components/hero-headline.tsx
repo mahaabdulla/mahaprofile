@@ -60,17 +60,31 @@ export function HeroHeadline({lang}:{lang:Lang}){
  useEffect(()=>{
   if(reduced||matchMedia('(prefers-reduced-motion: reduce)').matches){setPhase(0);return;}
   if(!ready||paused||!visible||!onScreen)return;
-  const elements=root.current?.querySelectorAll<HTMLElement>('.hero-phrase');if(!elements)return;
+  const element=root.current;const elements=element?.querySelectorAll<HTMLElement>('.hero-phrase');if(!elements||!element)return;
   const next=(phase+1)%phrases.length;let transition:gsap.core.Timeline|undefined;let wait:gsap.core.Tween|undefined;
-  const ctx=gsap.context(()=>{gsap.set(elements,{yPercent:0,autoAlpha:0});gsap.set(elements[phase],{autoAlpha:1});wait=gsap.delayedCall(3.5,()=>{transition=gsap.timeline({onComplete:()=>setPhase(next)})
-   .to(elements[phase],{yPercent:-112,autoAlpha:0,duration:.38,ease:'power3.inOut'},0)
-   .fromTo(elements[next],{yPercent:112,autoAlpha:1},{yPercent:0,autoAlpha:1,duration:.46,ease:'power3.inOut'},.04);});},root);
+  // Complementary diagonal masks share one travelling edge. Words stay intact
+  // and stationary; the opening geometry's flattened edge now reshapes the text.
+  const rtl=lang==='ar';const edge=root.current?.querySelector('.hero-phrase-edge');
+  const incomingStart=rtl?'polygon(100% 0%,100% 0%,108% 100%,100% 100%)':'polygon(0% 0%,0% 0%,-8% 100%,0% 100%)';
+  const incomingEnd=rtl?'polygon(100% 0%,-8% 0%,0% 100%,100% 100%)':'polygon(0% 0%,108% 0%,100% 100%,0% 100%)';
+  const outgoingStart=rtl?'polygon(0% 0%,100% 0%,108% 100%,0% 100%)':'polygon(0% 0%,100% 0%,100% 100%,-8% 100%)';
+  const outgoingEnd=rtl?'polygon(0% 0%,-8% 0%,0% 100%,0% 100%)':'polygon(108% 0%,100% 0%,100% 100%,100% 100%)';
+  const ctx=gsap.context(()=>{
+   gsap.set(elements,{yPercent:0,autoAlpha:0,clipPath:'none'});gsap.set(elements[phase],{autoAlpha:1});
+   wait=gsap.delayedCall(3.5,()=>{
+    gsap.set(elements[next],{autoAlpha:1,clipPath:incomingStart});gsap.set(elements[phase],{clipPath:outgoingStart});
+    transition=gsap.timeline({onComplete:()=>setPhase(next)})
+     .to(elements[phase],{clipPath:outgoingEnd,duration:.58,ease:'power2.inOut'},0)
+     .to(elements[next],{clipPath:incomingEnd,duration:.58,ease:'power2.inOut'},0);
+    if(edge)transition.fromTo(edge,{left:rtl?'108%':'-8%',autoAlpha:.7},{left:rtl?'-8%':'108%',autoAlpha:.7,duration:.58,ease:'power2.inOut'},0).set(edge,{autoAlpha:0});
+   });
+  },element);
   return()=>{wait?.kill();transition?.kill();ctx.revert();};
  },[lang,onScreen,paused,phase,phrases,ready,reduced,visible]);
 
  return <div className="hero-headline signature-hero" ref={root} data-phrase={phase} onMouseEnter={()=>setPaused(true)} onMouseLeave={()=>{if(!escapePaused.current)setPaused(false);}} onFocusCapture={()=>setPaused(true)} onBlurCapture={()=>{if(!escapePaused.current)setPaused(false);}}>
   <HeroTransformation lang={lang}/>
-  <h1 className="hero-signature-heading" aria-label={`${copy.hero[lang][0]} ${phrases[0]}`} aria-describedby="hero-motion-help"><span className="hero-line hero-first"><span>{copy.hero[lang][0]}</span></span><span className="hero-line second-line"><span className="hero-rotator-inner" aria-hidden="true">{phrases.map((phrase,i)=><span className="hero-phrase" data-active={phase===i?'':undefined} key={phrase}>{phrase}</span>)}</span></span></h1>
+  <h1 className="hero-signature-heading" aria-label={`${copy.hero[lang][0]} ${phrases[0]}`} aria-describedby="hero-motion-help"><span className="hero-line hero-first"><span>{copy.hero[lang][0]}</span></span><span className="hero-line second-line"><span className="hero-rotator-inner" aria-hidden="true">{phrases.map((phrase,i)=><span className="hero-phrase" data-active={phase===i?'':undefined} key={phrase}>{phrase}</span>)}<span className="hero-phrase-edge"/></span></span></h1>
   <span id="hero-motion-help" className="sr-only">{lang==='ar'?'يمكنك إيقاف تبديل العنوان بمفتاح Escape، أو تقليل الحركة من إعدادات الجهاز.':'Press Escape to pause the changing headline, or use your system’s reduced-motion setting.'}</span>
  </div>;
 }

@@ -52,10 +52,16 @@ for(const page of pages){
  }
  assert.ok(!html.includes('class="orbit')&&!html.includes('class="hero-orbit"')&&!html.includes('class="contact-star"'),'Removed atom mark and oversized contact star');
  assert.ok(html.includes('contact-journey'),'Signature contact journey');
- assert.ok(html.includes('contact-cta')||(page.endsWith('/contact')&&html.includes('contact-channel')),'Usable contact action');
+ assert.ok(html.includes('contact-cta'),'Usable contact action');
+ const contactHeading=html.match(/<h[12][^>]*class="contact-signature-heading"[^>]*>([\s\S]*?)<\/h[12]>/)?.[1];
+ assert.ok(contactHeading,'Editorial Contact heading');
+ const contactLines=[...contactHeading.matchAll(/class="contact-line-inner">([^<]+)<\/span>/g)].map(match=>match[1].replaceAll('&#x27;',"'").replaceAll('&#39;',"'"));
+ assert.deepEqual(contactLines,lang==='ar'?['عندك فكرة؟','خلّينا نشوف','إلى وين توصل.']:['Have an idea?',"Let's see",'where it could go.'],'Exact three-line Contact copy');
  if(['','en','ar'].includes(page)){
   for(const phrase of lang==='ar'?['إلى تجارب.','إلى تطبيقات.','إلى واقع.']:['Into experiences.','Into applications.','Into reality.'])assert.ok(html.includes(phrase),'Complete localized rotating phrase');
   assert.equal((html.match(/class="hero-phrase"/g)||[]).length,3,'Three intact rotating phrases');
+  assert.ok(html.includes('hero-phrase-edge'),'Shared geometric Hero phrase boundary');
+  if(lang==='en')assert.ok(html.includes('Ideas turn'),'Updated English Hero first line');
  }
  if(page.endsWith('/about'))assert.ok(html.includes('thinking-blueprint')&&html.includes('data-blueprint-scene="2"'),'Interactive Think Build Create blueprint');
  for(const heading of html.matchAll(/<h[1-3]\b[^>]*>([\s\S]*?)<\/h[1-3]>/g))if(!/id="beyond-title"|hero-signature-heading|work-signature-heading|contact-signature-heading/.test(heading[0]))assert.ok(!/\.(?:\s|$)/.test(heading[1].replace(/<[^>]*>/g,' ').trim()),`Heading punctuation: ${page}`);
