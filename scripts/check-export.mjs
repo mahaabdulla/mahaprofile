@@ -15,9 +15,11 @@ for(const page of pages){
  assert.equal((html.match(/<h1[\s>]/g)||[]).length,1,`One h1: ${page}`);
  assert.match(html,/<title>[^<]+<\/title>/,`Title: ${page}`);
  assert.match(html,/<meta name="description" content="[^"]+"/,`Description: ${page}`);
- assert.match(html,/<div[^>]*class="signature-intro"[^>]*hidden=""/,`Intro fails open in server HTML: ${page}`);
+ assert.ok(!html.includes('class="signature-intro"'),'No blocking introductory overlay');
  assert.ok(!html.includes('aria-busy="true"'),'Intro must not mark the document busy');
- assert.ok(html.includes('maha:intro:zero-creation-v2'),'Current introductory sequence session key');
+ assert.ok(html.includes('maha:hero:impossible-v1'),'Current Hero session key');
+ assert.ok(html.includes('class="site-logo-image"')&&html.includes('/brand/maha-logo.png'),'Original navbar artwork');
+ assert.ok(!/class="(?:hero-cycle-control|motion-toggle|scroll-hint|showcase-controls|bl-preview-controls|bl-dialog-controls)"/.test(html),'Redundant controls removed');
  assert.ok(html.includes('display:block!important}.desktop-nav'),'No-JavaScript streamed content fallback');
  const ids=new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]));
  for(const match of html.matchAll(/\b(?:href|src)="([^"?#]*)(?:\?[^"#]*)?(?:#([^"]*))?"/g)){
@@ -49,7 +51,8 @@ for(const page of pages){
   assert.ok(!html.includes('السيرة الذاتية')&&!html.includes('Details forthcoming'),'Old contact placeholders must be removed');
  }
  assert.ok(!html.includes('class="orbit')&&!html.includes('class="hero-orbit"')&&!html.includes('class="contact-star"'),'Removed atom mark and oversized contact star');
- assert.ok(html.includes('contact-journey')&&html.includes('contact-cta'),'Signature contact journey and usable CTA');
+ assert.ok(html.includes('contact-journey'),'Signature contact journey');
+ assert.ok(html.includes('contact-cta')||(page.endsWith('/contact')&&html.includes('contact-channel')),'Usable contact action');
  if(['','en','ar'].includes(page)){
   for(const phrase of lang==='ar'?['إلى تجارب.','إلى تطبيقات.','إلى واقع.']:['Into experiences.','Into applications.','Into reality.'])assert.ok(html.includes(phrase),'Complete localized rotating phrase');
   assert.equal((html.match(/class="hero-phrase"/g)||[]).length,3,'Three intact rotating phrases');
@@ -68,8 +71,10 @@ assert.ok(css.includes('[data-motion=reduce]'),'Explicit reduced-motion alternat
 assert.ok(css.includes('.bl-expansion')&&css.includes('.bl-content-dialog')&&css.includes('.bl-gallery-ghanima'),'Beyond the Line narrative and previews are compiled');
 for(const file of ['uroob-cover.png','uroob-story.png','ghanima-engineer.png','ghanima-curiosity.png'])assert.ok(fs.statSync(path.join(root,'content',file)).size>10000,`Original content asset ${file}`);
 assert.equal(JSON.parse(fs.readFileSync(path.join(root,'demo/workflow.json'),'utf8')).tasks.length,3,'Demonstration data contract');
-assert.ok(css.includes('.signature-intro')&&css.includes('intro-safety-hide'),'Intro CSS safety deadline');
-assert.ok(css.includes('intro-type-in')&&css.includes('intro-shape-0')&&css.includes('intro-mask-exit'),'First-paint intro sequence is compiled');
+assert.ok(css.includes('hero-type-first')&&css.includes('hero-shell')&&css.includes('hero-art'),'First-paint Hero sequence is compiled');
+assert.ok(css.includes('.gallery-surface .gallery-navigation')&&css.includes('.gallery-surface:focus-within'),'Image-local, focus-accessible gallery navigation');
+const logo=fs.readFileSync(path.join(root,'brand/maha-logo.png'));assert.equal(logo.readUInt32BE(16),500);assert.equal(logo.readUInt32BE(20),500);assert.equal(logo[25],6,'Original logo keeps its alpha channel');
+assert.equal(createHash('sha256').update(logo).digest('hex'),createHash('sha256').update(fs.readFileSync('public/brand/maha-logo.png')).digest('hex'),'Original logo exported unchanged');
 assert.ok(css.includes('--font-display-ar:Palestine'),'Actual Palestine display family');
 assert.equal(createHash('sha256').update(fs.readFileSync(path.join(root,'fonts/palestine-regular.ttf'))).digest('hex'),'d87183a7f37b7873934b0800a6da1ccd0305738f5df7b46967f20de297db0db1','Verified Palestine file identity');
 const og=fs.readFileSync(path.join(root,'og.png'));assert.equal(og.readUInt32BE(16),1200);assert.equal(og.readUInt32BE(20),630);

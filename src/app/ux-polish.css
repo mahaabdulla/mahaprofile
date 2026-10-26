@@ -1,0 +1,63 @@
+/* The owner’s original transparent artwork, at its native aspect ratio. */
+.brand-home{display:inline-flex;align-items:center;flex-shrink:0;border-radius:8px}
+.brand-home .site-logo{display:block;position:relative;width:150px;height:64px;animation:brand-arrive .4s var(--ease) both}
+.brand-home .site-logo-image{position:absolute;width:100%;height:auto;max-width:none;left:0;top:50%;transform:translateY(-46%);pointer-events:none}
+.footer .footer-brand{margin-inline-end:20px}
+@keyframes brand-arrive{from{opacity:0;translate:0 4px}to{opacity:1;translate:0 0}}
+
+/* A local Hero transformation, never a page-covering loading state. */
+.hero .signature-hero{position:relative;display:flow-root;isolation:isolate}
+.hero .signature-hero .hero-signature-heading{margin-bottom:26px}
+.signature-hero .hero-transform-art{position:absolute;left:50%;top:50%;width:min(640px,100%);height:auto;transform:translate(-50%,-50%);color:#a6a0df;opacity:0;visibility:hidden;pointer-events:none;z-index:3;overflow:visible}
+.signature-hero .hero-transform-art text{font-family:var(--font-body-en),var(--font-body-ar),sans-serif}
+.hero .signature-hero .hero-first>span{will-change:auto}
+.hero .signature-hero .hero-rotator-inner{width:100%}
+.hero .hero-rule{justify-content:space-between}
+.hero .hero-rule .rule-star{display:none}
+
+/* First-paint sequence also completes when the application bundle fails. GSAP
+   takes ownership only after seeking to the same elapsed time. */
+[data-hero-entry=pending] .signature-hero .hero-transform-art{visibility:visible;animation:hero-art 2.45s both}
+[data-hero-entry=pending] .signature-hero .hero-idea-spark{transform-box:fill-box;transform-origin:center;animation:hero-spark 2.45s both}
+[data-hero-entry=pending] .signature-hero .hero-drafting path{stroke-dasharray:1;animation:hero-draft 2.45s both}
+[data-hero-entry=pending] .signature-hero .hero-product-shell{transform-box:fill-box;transform-origin:center;animation:hero-shell 2.45s both}
+[data-hero-entry=pending] .signature-hero .hero-ui-wire{transform-box:fill-box;transform-origin:center;animation:hero-wire 2.45s both}
+[data-hero-entry=pending] .signature-hero .hero-ui-top{animation:hero-ui-top 2.45s both}
+[data-hero-entry=pending] .signature-hero .hero-ui-mid{animation:hero-ui-mid 2.45s both}
+[data-hero-entry=pending] .signature-hero .hero-ui-low{animation:hero-ui-low 2.45s both}
+[data-hero-entry=pending] .hero .signature-hero .hero-first>span{animation:hero-type-first 2.45s both}
+[data-hero-entry=pending] .hero .signature-hero .hero-rotator-inner{animation:hero-type-second 2.45s both}
+@keyframes hero-art{0%,93%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden}}
+@keyframes hero-spark{0%{opacity:0;transform:scale(0)}8%,19%{opacity:1;transform:scale(1)}27%,100%{opacity:0;transform:scale(1)}}
+@keyframes hero-draft{0%,4%{stroke-dashoffset:1;opacity:1}24%{stroke-dashoffset:0;opacity:1}38%,100%{stroke-dashoffset:0;opacity:0}}
+@keyframes hero-shell{0%,11%{opacity:0;transform:scale(.008);fill:#111114}34%{opacity:1;transform:scale(1);fill:#111114;animation-timing-function:var(--ease)}51%,63%{opacity:1;transform:scale(1);fill:#f1f0eb}80%,100%{opacity:0;transform:scale(1.6,.02);fill:#f1f0eb}}
+@keyframes hero-wire{0%,23%{opacity:0}35%{opacity:1;stroke:#a6a0df}51%,61%{opacity:1;stroke:#c4becf}75%,100%{opacity:0;stroke:#c4becf;transform:scaleX(1.2)}}
+@keyframes hero-ui-top{0%,40%{opacity:0;transform:none}52%,59%{opacity:1;transform:none}77%,100%{opacity:0;transform:translate(-90px,-45px) rotate(-5deg)}}
+@keyframes hero-ui-mid{0%,41%{opacity:0;transform:none}54%,61%{opacity:1;transform:none}79%,100%{opacity:0;transform:translate(120px,10px)}}
+@keyframes hero-ui-low{0%,43%{opacity:0;transform:none}55%,63%{opacity:1;transform:none}81%,100%{opacity:0;transform:translate(-80px,50px)}}
+@keyframes hero-type-first{0%,67%{opacity:0;transform:translateY(112%)}90%,100%{opacity:1;transform:none}}
+@keyframes hero-type-second{0%,75%{opacity:0;transform:translateY(112%)}98%,100%{opacity:1;transform:none}}
+
+/* Shared, intentionally looping galleries: controls belong to the image. */
+.gallery-surface{position:relative;touch-action:pan-y;user-select:none}
+.gallery-surface .gallery-navigation{position:absolute;inset:0;pointer-events:none;z-index:4}
+.gallery-surface .gallery-nav{position:absolute;top:50%;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid #f1f0eb66;background:#111114e8;color:#f1f0eb;box-shadow:0 3px 14px #0003;pointer-events:auto;opacity:0;transform:translateY(calc(-50% + 5px));transition:opacity .2s,transform .2s var(--ease),background .18s}
+.gallery-surface .gallery-previous{inset-inline-start:12px}
+.gallery-surface .gallery-next{inset-inline-end:12px}
+.gallery-surface:hover .gallery-nav,.gallery-surface:focus-within .gallery-nav,.gallery-surface .gallery-nav:focus-visible{opacity:1;transform:translateY(-50%)}
+.gallery-surface .gallery-nav:hover{background:#443c61}
+.gallery-surface .gallery-nav:focus-visible{outline:2px solid #c2baee;outline-offset:3px}
+.project-showcase .showcase-viewport{perspective:none}
+.project-showcase .showcase-frame{transform-style:flat}
+.bl-preview .bl-caption-row{border-top:1px solid var(--bl-rule);padding-top:16px;font-size:11px;line-height:1.8}
+.bl-preview .bl-original-page{transition:transform .25s var(--ease)}
+.bl-preview .bl-sheet-outline{transition:transform .3s var(--ease)}
+.bl-content-dialog .bl-dialog-stage{width:fit-content;max-width:100%;margin:auto}
+.bl-content-dialog .bl-dialog-profile{display:flex;gap:10px;align-items:center;width:fit-content;min-height:44px;margin-top:10px;font-size:12px}
+.signature-contact .contact-cta{transition-duration:.22s}
+.signature-contact .contact-cta:before{transition-duration:.25s}
+@media(max-width:760px),(hover:none),(pointer:coarse){.gallery-surface .gallery-nav{opacity:1;transform:translateY(-50%)}}
+@media(max-width:540px){.brand-home .site-logo{width:125px;height:50px}.footer .footer-brand{margin-inline-end:0}.hero .signature-hero .hero-signature-heading{margin-bottom:22px}.gallery-surface .gallery-previous{inset-inline-start:8px}.gallery-surface .gallery-next{inset-inline-end:8px}.bl-content-dialog .bl-dialog-stage{width:100%}}
+@media(prefers-reduced-motion:reduce){.signature-hero .hero-transform-art{display:none!important}.hero .signature-hero .hero-first>span,.hero .signature-hero .hero-rotator-inner{opacity:1!important;visibility:visible!important;transform:none!important;animation:none!important}.brand-home .site-logo{animation:none}.gallery-surface .gallery-nav{transition:none}}
+[data-motion=reduce] .signature-hero .hero-transform-art{display:none!important}
+[data-motion=reduce] .hero .signature-hero .hero-first>span,[data-motion=reduce] .hero .signature-hero .hero-rotator-inner{opacity:1!important;visibility:visible!important;transform:none!important}

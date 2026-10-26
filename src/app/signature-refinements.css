@@ -12,21 +12,21 @@
 .hero-cycle-index{font:8px 'JetBrains Mono',monospace;margin-inline-start:14px;color:#716a82}
 .hero .hero-bottom{grid-template-columns:30% 1fr;gap:4%;min-height:200px}
 .hero .hero-summary>p{max-width:530px}
-.selected.section{--work-surface:#e9e7e2;background:var(--paper);color:#17161c}
+.selected.section{--work-surface:#202027;--work-line:#ffffff26;background:#17171c;color:var(--paper)}
 .selected .work-signature-heading{max-width:1100px}
-.selected .content-note,.selected .page-intro{color:#65646b;font-size:14px;max-width:640px;line-height:1.9}
+.selected.section .content-note,.selected.section .page-intro{color:#b8b5c4;font-size:14px;max-width:640px;line-height:1.9}
 .selected .project-grid{grid-template-columns:1fr 1fr;gap:55px 36px}
 .selected .project-01{grid-column:auto}
-.selected .project{min-width:0;padding-bottom:24px;border-bottom:1px solid #17161c26}
-.selected .showcase-viewport{background:var(--work-surface);aspect-ratio:1.2;padding:8%;border:1px solid #17161c1a;border-radius:2px}
+.selected .project{min-width:0;padding-bottom:24px;border-bottom:1px solid var(--work-line)}
+.selected .showcase-viewport{background:var(--work-surface);aspect-ratio:1.2;padding:8%;border:1px solid var(--work-line);border-radius:2px}
 .selected .showcase-frame{border-radius:3px;box-shadow:none}
-.selected .showcase-application .showcase-frame{width:47%;box-shadow:none;border:1px solid #17161c22}
-.selected .showcase-website .showcase-frame{border-color:#17161c22}
-.selected .showcase-controls{border-color:#17161c26}
-.selected .project-category,.selected .project-tags>span,.selected .published-label{color:#69686d}
-.selected .project-info>p{color:#696374;font-size:13px;max-width:540px}
-.selected .project-role{color:#54535a}
-.selected .showcase-zoom{box-shadow:none;border:1px solid #17161c22}
+.selected .showcase-application .showcase-frame{width:47%;box-shadow:none;border:1px solid var(--work-line)}
+.selected .showcase-website .showcase-frame{border-color:var(--work-line)}
+.selected .showcase-controls{border-color:var(--work-line)}
+.selected .project-category,.selected .project-tags>span,.selected .published-label{color:#aaa6b5}
+.selected .project-info>p{color:#b8b5c4;font-size:13px;max-width:540px}
+.selected .project-info .project-role{color:#c2bdd4}
+.selected .showcase-zoom{background:#2c2935;color:var(--paper);box-shadow:none;border:1px solid #a6a0df50}
 .about-intro.section{padding-top:52px;padding-bottom:85px}
 .about-intro.section .page-heading{margin-top:32px;max-width:1100px;font-size:clamp(42px,5.2vw,86px)}
 .about-intro .about-grid{grid-template-columns:1.05fr 1fr;gap:7%;margin-top:38px;align-items:start}
@@ -77,7 +77,7 @@
 .signature-contact .contact-links{width:100%;min-width:0}
 @media(max-width:1000px){.hero .hero-rotator-inner{font-size:1em}.about-intro .about-grid{gap:5%;grid-template-columns:1fr 1fr}.thinking-blueprint{padding:19px}.blueprint-steps button{padding:12px 9px}.blueprint-caption{font-size:6px}.blueprint-caption>span:last-child{display:none}.blueprint-detail{min-height:140px}.about-grid .about-biography p{font-size:13px}.signature-contact .contact-heading{grid-template-columns:minmax(0,1fr) 160px;gap:5%}.signature-contact .contact-heading .contact-signature-heading{font-size:5.9vw}[dir=rtl] .signature-contact .contact-heading .contact-signature-heading{font-size:6.5vw}.selected .project-grid{gap:35px 23px}.selected .showcase-viewport{aspect-ratio:1.1}}
 @media(max-width:760px){.hero .hero-rotator-inner{font-size:1em}.selected .project-grid{gap:40px 23px}.about-intro .about-grid{grid-template-columns:1fr;gap:34px;max-width:600px}.about-biography{order:-1;max-width:560px}.thinking-blueprint{max-width:560px}.blueprint-caption{font-size:7px}.blueprint-caption>span:last-child{display:block;font-size:6px}.blueprint-detail{min-height:100px}.about-grid .about-biography p{font-size:14px}.signature-contact .contact-heading{grid-template-columns:minmax(0,1fr) 110px;gap:20px}.signature-contact .contact-heading .contact-signature-heading{font-size:6.5vw}[dir=rtl] .signature-contact .contact-heading .contact-signature-heading{font-size:7vw}.signature-contact .contact-bottom{gap:6%}.contact-invitation>p{font-size:13px}.signature-contact .contact-cta{min-width:200px}}
-@media(max-width:540px){.hero .hero-bottom{display:flex;gap:26px;min-height:0}.hero .hero-cycle-toolbar{margin-top:0;margin-bottom:15px}.hero-cycle-control{font-size:8px}.hero-cycle-index{font-size:7px;margin-inline-start:8px}.hero .hero-rotator-inner{font-size:1em;height:1.45em}.hero .second-line{padding-inline-start:4%}[dir=rtl] .hero .second-line{padding-inline-start:9.7%}[dir=rtl] .hero .hero-rotator-inner{font-size:1em;height:1.8em}.selected .project-grid{grid-template-columns:1fr;gap:40px}.selected .showcase-viewport{aspect-ratio:1.2;padding:7%}.selected .content-note,.selected .page-intro{font-size:13px}.selected .project-info>p{font-size:13px}.about-intro.section{padding-block:38px 55px}.about-intro .page-heading{margin-top:30px}.about-intro .about-grid{display:flex;flex-direction:column;gap:30px;margin-top:30px}.about-grid .about-biography h2{font-size:30px;margin-bottom:18px}.about-grid .about-biography p{margin-top:18px;line-height:1.95}.thinking-blueprint{padding:18px}.blueprint-steps{gap:6px;margin-top:22px}.blueprint-steps button{padding:11px 9px;min-height:87px}.blueprint-steps strong{font-size:16px}.blueprint-detail{min-height:128px}.signature-contact .contact-heading{grid-template-columns:minmax(0,1fr);margin-block:32px 25px;gap:20px}.signature-contact .contact-heading .contact-signature-heading{font-size:clamp(40px,10.5vw,57px);line-height:1.15}[dir=rtl] .signature-contact .contact-heading .contact-signature-heading{font-size:11.1vw;line-height:1.65}.signature-contact .contact-heading .contact-signature-heading>span{font-size:.88em}.contact-journey{width:130px;margin-top:-12px;margin-inline-start:auto;max-height:130px}.signature-contact .contact-bottom{display:flex;flex-direction:column;gap:28px;padding-top:24px}.contact-invitation>p{font-size:13px;max-width:42ch}.signature-contact .contact-cta{align-self:flex-end;min-width:220px}.signature-contact .contact-links{margin-top:0}.signature-contact .contact-note{margin-top:24px}.blueprint-drawing{margin-block:14px 8px}}
+@media(max-width:540px){.hero .hero-bottom{display:flex;gap:26px;min-height:0}.hero .hero-cycle-toolbar{margin-top:0;margin-bottom:15px}.hero-cycle-control{font-size:8px}.hero-cycle-index{font-size:7px;margin-inline-start:8px}.hero .hero-rotator-inner{font-size:1em;height:1.45em}.hero .second-line{padding-inline-start:4%}[dir=rtl] .hero .second-line{padding-inline-start:9.7%}[dir=rtl] .hero .hero-rotator-inner{font-size:1em;height:1.8em}.selected .project-grid{grid-template-columns:1fr;gap:40px}.selected .showcase-viewport{aspect-ratio:1.2;padding:7%}.selected.section .content-note,.selected.section .page-intro{font-size:13px}.selected .project-info>p{font-size:13px}.about-intro.section{padding-block:38px 55px}.about-intro .page-heading{margin-top:30px}.about-intro .about-grid{display:flex;flex-direction:column;gap:30px;margin-top:30px}.about-grid .about-biography h2{font-size:30px;margin-bottom:18px}.about-grid .about-biography p{margin-top:18px;line-height:1.95}.thinking-blueprint{padding:18px}.blueprint-steps{gap:6px;margin-top:22px}.blueprint-steps button{padding:11px 9px;min-height:87px}.blueprint-steps strong{font-size:16px}.blueprint-detail{min-height:128px}.signature-contact .contact-heading{grid-template-columns:minmax(0,1fr);margin-block:32px 25px;gap:20px}.signature-contact .contact-heading .contact-signature-heading{font-size:clamp(40px,10.5vw,57px);line-height:1.15}[dir=rtl] .signature-contact .contact-heading .contact-signature-heading{font-size:11.1vw;line-height:1.65}.signature-contact .contact-heading .contact-signature-heading>span{font-size:.88em}.contact-journey{width:130px;margin-top:-12px;margin-inline-start:auto;max-height:130px}.signature-contact .contact-bottom{display:flex;flex-direction:column;gap:28px;padding-top:24px}.contact-invitation>p{font-size:13px;max-width:42ch}.signature-contact .contact-cta{align-self:flex-end;min-width:220px}.signature-contact .contact-links{margin-top:0}.signature-contact .contact-note{margin-top:24px}.blueprint-drawing{margin-block:14px 8px}}
 @media(prefers-reduced-motion:reduce){.hero-cycle-control{display:none}.hero .hero-phrase{transform:none!important}.contact-idea-path{stroke-dashoffset:0!important}.thinking-blueprint *{transition:none!important;animation:none!important}}
 [data-motion=reduce] .hero .hero-phrase{transform:none!important}[data-motion=reduce] .contact-idea-path{stroke-dashoffset:0!important}
 
@@ -86,4 +86,17 @@
 
 /* Lilac stays on small interactive accents; original project imagery keeps its own identity. */
 .selected .showcase-zoom:hover,.selected .showcase-controls button:hover,.selected .showcase-controls>a:hover{background:var(--lilac);color:var(--ink)}
-.selected a:focus-visible,.selected button:focus-visible{outline-color:#685e9d}
+.selected a:focus-visible,.selected button:focus-visible{outline-color:var(--lilac)}
+
+/* Dark Selected Work: keep every surrounding surface within MAHA’s charcoal palette. */
+.selected .showcase-zoom{background:#2c2935;color:var(--paper)}
+.selected .showcase-controls>.mono{color:#aaa6b5}
+.selected .showcase-controls button,.selected .showcase-controls>a,.selected .circle-link,.selected .project-tags>span{border-color:var(--work-line)}
+.selected .project-tags .published-label{color:#c2bdd4;border-color:#a6a0df40}
+.selected .circle-link:hover{background:var(--lilac);color:var(--ink)}
+.selected .project-external{color:var(--lilac)}
+.selected .work-filters button{background:transparent;color:#c2bdd4;border-color:var(--work-line)}
+.selected .work-filters button:hover{background:#2c2935}
+.selected .work-filters button[aria-pressed=true]{background:var(--lilac);color:var(--ink);border-color:var(--lilac)}
+
+.selected .showcase-zoom:hover{background:var(--lilac);color:var(--ink)}

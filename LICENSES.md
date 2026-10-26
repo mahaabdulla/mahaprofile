@@ -31,3 +31,7 @@ The font is not declared or impersonated through another family name. It can be 
 ## Graphics
 
 Lucide icons are supplied by lucide-react under the package's ISC license. MAHA's drafting SVG intro, interface demonstration, and Creative Lab geometry are original code-native artwork. Actual Azad and Sigil Film images have their sources recorded in `public/projects/SOURCES.md`. No reference-site assets, fonts, or animation code were copied.
+
+## Owner-supplied MAHA logo — 26 October 2026
+
+Navbar and footer use the original owner-confirmed Downloads/مهو(1).png with its existing transparency. It is copied unchanged to public/brand/maha-logo.png (18,705 bytes); source identity and SHA-256 are recorded in public/brand/SOURCES.md. No reference-site artwork or substitute-font logo is used. The Impossible Transformation SVG is original code-native geometry.

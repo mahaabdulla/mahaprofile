@@ -1,6 +1,7 @@
 @import './fonts.css';
 @import './beyond-line.css';
 @import './signature-refinements.css';
+@import './ux-polish.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -118,42 +119,3 @@ body{font-family:var(--font-body-en)}[dir=rtl] .site-shell{font-family:var(--fon
 [dir=rtl] .hero h1,[dir=rtl] .page-heading,[dir=rtl] .section-heading,[dir=rtl] .belief,[dir=rtl] .build-editorial h2,[dir=rtl] .creative-heading-row h1,[dir=rtl] .creative-heading-row h2,[dir=rtl] .world-intro h3,[dir=rtl] .world-beat h3,[dir=rtl] .contact-heading h1,[dir=rtl] .contact-heading h2,[dir=rtl] .about-grid h2,.world-title h2:lang(ar){font-family:var(--font-display-ar);font-weight:400;font-synthesis:none;letter-spacing:normal;font-feature-settings:'rlig' 1,'calt' 1,'kern' 1;font-variant-ligatures:common-ligatures contextual}
 [dir=rtl] .hero-summary p,[dir=rtl] .creative-heading-row p,[dir=rtl] .world-intro p,[dir=rtl] .world-beat p,[dir=rtl] button,[dir=rtl] input{font-family:var(--font-body-ar)}
 .wordmark,.hero-signature,.intro-wordmark{font-family:var(--font-display-en)}
-/* Signature intro: hidden in server HTML; animation is an optional enhancement. */
-.signature-intro{position:fixed;inset:0;z-index:300;background:var(--ink);color:var(--paper);display:grid;place-items:center;pointer-events:none;clip-path:inset(0);animation:intro-safety-hide .01s linear 3.2s forwards}
-.intro-art{position:absolute;inset:0;overflow:hidden}.intro-topline{position:absolute;inset:34px 36px auto;display:flex;justify-content:space-between;gap:20px;font-size:8px;letter-spacing:.12em;color:#92909d;direction:ltr}.intro-center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column}.intro-geometry{position:absolute;width:min(460px,88vw);height:auto;color:var(--lilac);overflow:visible}.intro-orbit{stroke-dasharray:1;stroke-dashoffset:1}.intro-spark{opacity:0}.intro-wordmark{display:flex;align-items:baseline;position:relative;font-size:clamp(70px,12vw,154px);line-height:1.18;font-weight:600;letter-spacing:-.08em;isolation:isolate;direction:ltr}.intro-letter-mask{display:block;overflow:hidden;padding-inline:2px;padding-bottom:.05em;margin-bottom:-.05em}.intro-letter{display:block}.intro-period{color:var(--lilac);margin-inline-start:.025em;opacity:0}.intro-caption{position:absolute;top:calc(50% + 100px);text-align:center;font-size:12px;color:#b4afc5;letter-spacing:.02em;opacity:0}.intro-bottom{position:absolute;inset:auto 36px 40px;font-size:8px;letter-spacing:.12em;color:#74717f;direction:ltr}.intro-skip{position:absolute;inset:auto 36px 25px auto;pointer-events:auto;display:flex;align-items:center;gap:16px;border:1px solid #a6a0df44;border-radius:999px;min-height:44px;padding:10px 17px;color:#d7d2e4;font-size:11px;background:var(--ink)}.intro-skip:hover{background:#24212e}.intro-skip:focus-visible{outline:2px solid var(--lilac);outline-offset:4px}
-@keyframes intro-safety-hide{to{visibility:hidden;opacity:0}}
-@media(max-width:540px){.intro-topline{inset:25px 22px auto;font-size:6px;letter-spacing:.08em}.intro-wordmark{font-size:clamp(74px,20vw,108px)}.intro-caption{top:calc(50% + 70px);font-size:11px}.intro-geometry{width:min(350px,94vw)}.intro-bottom{inset:auto 22px 85px;font-size:6px;letter-spacing:.1em}.intro-skip{right:22px;bottom:22px;font-size:10px}}
-[data-motion=reduce] .signature-intro{display:none!important}
-@media(prefers-reduced-motion:reduce){.signature-intro{display:none!important}}
-
-[dir=rtl] .intro-caption{font-family:var(--font-body-ar);letter-spacing:normal}
-/* Pre-paint enhancement expires quickly if the app never starts. */
-[data-intro=pending] .signature-intro[hidden]{display:grid!important;animation:intro-pending-hide .01s linear 1.9s forwards}
-[data-intro=playing] .signature-intro{animation:intro-safety-hide .01s linear 3.2s forwards}
-.intro-letter{opacity:0;transform:translateY(110%)}
-@keyframes intro-pending-hide{to{visibility:hidden;opacity:0}}
-@media(prefers-reduced-motion:reduce){[data-intro=pending] .signature-intro[hidden]{display:none!important}}
-/* First-paint version of the same sequence; no bundle or font wait is required. */
-[data-intro=pending] .signature-intro[hidden]{animation:intro-mask-exit .58s cubic-bezier(.76,0,.24,1) 1.94s forwards,intro-safety-hide .01s linear 3.2s forwards}
-[data-intro=pending] .intro-spark{transform-box:fill-box;transform-origin:center;animation:intro-spark-in .9s ease-out both}
-[data-intro=pending] .intro-orbit{transform-box:view-box;transform-origin:50% 50%;stroke-dasharray:1;stroke-dashoffset:1;animation:intro-line-draw .5s ease-in-out .13s forwards,intro-shape-0 .48s cubic-bezier(.76,0,.24,1) .72s forwards}
-[data-intro=pending] .intro-orbit-1{animation-name:intro-line-draw,intro-shape-1;animation-delay:.2s,.72s}
-[data-intro=pending] .intro-orbit-2{animation-name:intro-line-draw,intro-shape-2;animation-delay:.27s,.72s}
-[data-intro=pending] .intro-geometry{transform-origin:center;animation:intro-geometry-out .4s ease-in 1.05s forwards}
-[data-intro=pending] .intro-letter{animation:intro-type-in .52s cubic-bezier(.22,1,.36,1) 1.04s both}
-[data-intro=pending] .intro-letter-mask:nth-child(2) .intro-letter{animation-delay:1.095s}
-[data-intro=pending] .intro-letter-mask:nth-child(3) .intro-letter{animation-delay:1.15s}
-[data-intro=pending] .intro-letter-mask:nth-child(4) .intro-letter{animation-delay:1.205s}
-[data-intro=pending] .intro-period{animation:intro-dot-in .3s ease-out 1.36s both}
-[data-intro=pending] .intro-caption{animation:intro-caption-in .3s ease-out 1.4s both}
-@keyframes intro-spark-in{0%{opacity:0;transform:rotate(45deg) scale(0)}32%,70%{opacity:1;transform:rotate(45deg) scale(1)}100%{opacity:1;transform:rotate(45deg) scale(.55)}}
-@keyframes intro-line-draw{to{stroke-dashoffset:0}}
-@keyframes intro-shape-0{from{transform:rotate(0)}to{transform:rotate(0);d:path('M132 176 C132 176 380 176 380 176 C380 176 380 336 380 336 C380 336 132 336 132 336 C132 336 132 176 132 176')}}
-@keyframes intro-shape-1{from{transform:rotate(0)}to{transform:rotate(0);d:path('M157 202 C157 202 222 202 222 202 C222 202 222 310 222 310 C222 310 157 310 157 310 C157 310 157 202 157 202')}}
-@keyframes intro-shape-2{from{transform:rotate(0)}to{transform:rotate(0);d:path('M244 202 C244 202 355 202 355 202 C355 202 355 262 355 262 C355 262 244 262 244 262 C244 262 244 202 244 202')}}
-@keyframes intro-geometry-out{to{transform:translateY(-20px) scale(.82);opacity:0}}
-@keyframes intro-type-in{from{transform:translateY(110%);opacity:0}to{transform:translateY(0);opacity:1}}
-@keyframes intro-dot-in{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
-@keyframes intro-caption-in{from{transform:translateY(7px);opacity:0}to{transform:translateY(0);opacity:1}}
-@keyframes intro-mask-exit{to{clip-path:inset(0 0 100% 0)}}
-@media(prefers-reduced-motion:reduce){[data-intro=pending] .signature-intro[hidden]{display:none!important;animation:none!important}}
