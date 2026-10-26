@@ -62,10 +62,14 @@
 [data-motion=reduce] .signature-hero .hero-transform-art{display:none!important}
 [data-motion=reduce] .hero .signature-hero .hero-first>span,[data-motion=reduce] .hero .signature-hero .hero-rotator-inner{opacity:1!important;visibility:visible!important;transform:none!important}
 
-/* The opening's flattened geometry continues as a shared typographic edge. */
-.hero .signature-hero .hero-rotator-inner{position:relative}
-.hero .signature-hero .hero-phrase-edge{position:absolute;top:0;left:-8%;width:1px;height:100%;background:currentColor;transform:skewX(-9deg);opacity:0;visibility:hidden;pointer-events:none;z-index:2}
-[dir=rtl] .hero .signature-hero .hero-phrase-edge{transform:skewX(9deg)}
+/* Fragment masks repeat the complete shaped phrase, then hand back to uncut ink. */
+.hero .signature-hero .hero-rotator-inner{position:relative;overflow:visible}
+.hero .signature-hero .second-line{overflow:visible}
+.hero .signature-hero .hero-phrase-source{display:inline-block;position:relative;vertical-align:top;white-space:nowrap;line-height:inherit}
+.hero .signature-hero .hero-phrase-ink{display:block}
+.hero .signature-hero .hero-fragment-layer{position:absolute;inset:0;visibility:hidden;opacity:0;pointer-events:none}
+.hero .signature-hero .hero-type-fragment{display:block;position:absolute;inset:0;font:inherit;letter-spacing:inherit;line-height:inherit;white-space:nowrap;opacity:0;backface-visibility:hidden}
+.hero .signature-hero[data-fragmenting] .hero-type-fragment{will-change:transform,opacity}
 
 /* Three deliberate editorial lines; padding protects Arabic marks in the mask. */
 .signature-contact.section .contact-heading .contact-signature-heading{font-size:clamp(38px,5.7vw,84px);line-height:1.16;min-width:0}
@@ -74,7 +78,9 @@
 [dir=rtl] .signature-contact.section .contact-heading .contact-signature-heading{font-family:var(--font-display-ar);font-size:clamp(45px,6.2vw,94px);line-height:1.55;letter-spacing:normal}
 @media(max-width:760px){.signature-contact.section .contact-heading .contact-signature-heading{font-size:5.8vw}[dir=rtl] .signature-contact.section .contact-heading .contact-signature-heading{font-size:6.8vw}}
 @media(max-width:540px){.signature-contact.section .contact-heading .contact-signature-heading{font-size:clamp(28px,8.8vw,47px);line-height:1.22}[dir=rtl] .signature-contact.section .contact-heading .contact-signature-heading{font-size:11.1vw;line-height:1.65}.signature-contact.section .contact-journey{width:120px;height:120px;margin-top:-8px}.signature-contact.section .contact-actions>.contact-cta{margin-bottom:28px}}
-@media(prefers-reduced-motion:reduce){.hero .signature-hero .hero-phrase{clip-path:none!important}.hero .signature-hero .hero-phrase-edge{display:none}.signature-contact .contact-line-inner{transform:none!important}}
+@media(prefers-reduced-motion:reduce){.hero .signature-hero .hero-phrase{clip-path:none!important}.hero .signature-hero .hero-fragment-layer{display:none!important}.hero .signature-hero .hero-phrase-ink{opacity:1!important;visibility:visible!important}.hero .signature-hero .hero-phrase-source{transform:none!important}.signature-contact .contact-line-inner{transform:none!important}}
 [data-motion=reduce] .hero .signature-hero .hero-phrase{clip-path:none!important}
-[data-motion=reduce] .hero .signature-hero .hero-phrase-edge{display:none}
+[data-motion=reduce] .hero .signature-hero .hero-fragment-layer{display:none!important}
+[data-motion=reduce] .hero .signature-hero .hero-phrase-ink{opacity:1!important;visibility:visible!important}
+[data-motion=reduce] .hero .signature-hero .hero-phrase-source{transform:none!important}
 [data-motion=reduce] .signature-contact .contact-line-inner{transform:none!important}

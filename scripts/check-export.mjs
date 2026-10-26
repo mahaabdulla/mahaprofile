@@ -60,7 +60,10 @@ for(const page of pages){
  if(['','en','ar'].includes(page)){
   for(const phrase of lang==='ar'?['إلى تجارب.','إلى تطبيقات.','إلى واقع.']:['Into experiences.','Into applications.','Into reality.'])assert.ok(html.includes(phrase),'Complete localized rotating phrase');
   assert.equal((html.match(/class="hero-phrase"/g)||[]).length,3,'Three intact rotating phrases');
-  assert.ok(html.includes('hero-phrase-edge'),'Shared geometric Hero phrase boundary');
+  assert.ok(!html.includes('hero-phrase-edge'),'Former sweep replaced by actual typographic fragments');
+  const fragments=[...html.matchAll(/class="hero-type-fragment"[^>]*>([^<]+)<\/span>/g)].map(match=>match[1]);
+  assert.deepEqual(fragments,(lang==='ar'?['إلى تجارب.','إلى تطبيقات.','إلى واقع.']:['Into experiences.','Into applications.','Into reality.']).flatMap(phrase=>Array(8).fill(phrase)),'Each fragment renders a complete shaped phrase');
+  assert.equal((html.match(/class="hero-phrase-ink"/g)||[]).length,3,'Uncut resting typography and no-JS fallback');
   if(lang==='en')assert.ok(html.includes('Ideas turn'),'Updated English Hero first line');
  }
  if(page.endsWith('/about'))assert.ok(html.includes('thinking-blueprint')&&html.includes('data-blueprint-scene="2"'),'Interactive Think Build Create blueprint');

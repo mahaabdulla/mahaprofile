@@ -68,7 +68,7 @@ Private publication via the Sites connector was attempted, but the workspace rep
 
 The existing Next.js routes, palette, typography, rounded controls, and bilingual RTL/LTR structure are retained. Software development remains the first professional focus; creative programming content is a second practice.
 
-- Hero: masked typography entrance and scroll-responsive title, signature, orbit and star. Arabic text is animated in intact shaped lines.
+- Hero: the approved geometric opening followed by Fragmented Reality typography. Full shaped phrases are masked into eight ink fragments, then return to uncut text.
 - Build journey: native scrolling with a sticky four-stage GSAP/ScrollTrigger sequence (idea, wireframe, working interface, data integration). Stage controls also support arrows, Home and End. The task interface changes state; the data example makes a real HTTP GET to the local static `/demo/workflow.json` resource and displays loading, success, or retry states. It demonstrates an integration contract and does not claim a live application backend.
 - Projects: real images with inside-image previous/next controls, RTL/LTR keyboard navigation, horizontal swipes, and a native modal with Escape, focus restoration, and actual project links.
 - Creative Lab: independent emerald/gold and lilac/ink worlds, scroll chapters, and reversible interactive explanations. No published content, thumbnails, metrics, or results are invented.
@@ -100,7 +100,7 @@ Series previews use supplied original covers without cropping, invented metrics,
 
 The React-like orbit mark is removed from Hero and About. The introduction now uses three independent drafting strokes that resolve into interface geometry, preserving its session-once behavior and fail-open guards.
 
-The Hero automatically cycles three complete localized phrases inside a fixed grid/mask. Each stays readable for 3.5 seconds, then a complementary diagonal mask sweeps through both intact phrases in 580ms. The first line stays stationary. Escape pauses the loop; the loop also stops outside the viewport, when the document is hidden, or when reduced motion is enabled. Its accessible heading stays stable rather than announcing every cycle.
+The Hero cycles three localized phrases inside a fixed grid. Each stays readable for 1.9 seconds, then fractures into eight parts of the fully shaped phrase. The next phrase assembles while the outgoing pieces depart. Escape pauses the loop; it also stops outside the viewport, when the document is hidden, or when reduced motion is enabled. Its accessible label changes only when a complete phrase has formed, without an aria-live announcement.
 
 About uses an original THINK / BUILD / CREATE blueprint. Hover, focus, and tap select a stage, reveal a concrete example, and transform the diagram. Paragraph widths, spacing, and the illustration’s height are constrained for balance.
 
@@ -108,6 +108,14 @@ Contact keeps the lilac background, replaces the oversized star with a drawn SVG
 
 ## Final Hero and Contact refinement — 26 October 2026
 
-The approved opening GSAP sequence, SVG geometry, session bootstrap, and first-paint CSS are byte-identical to their state before this refinement. Only the subsequent living-headline transition changes: the words remain stationary behind two complementary slanted masks, sharing a fine geometric edge. The edge follows RTL/LTR reading direction and is hidden between transitions. Each phrase remains readable for 3.5 seconds; the sweep takes 580ms. No controls, character splitting, or question-mark opening were introduced. English begins with Ideas turn.
+The approved opening GSAP sequence, SVG geometry, session bootstrap, and first-paint CSS remain unchanged. The subsequent living headline now uses the Fragmented Reality implementation below. English begins with Ideas turn.
 
 Contact now has exactly three localized lines: عندك فكرة؟ / خلّينا نشوف / إلى وين توصل. and Have an idea? / Let's see / where it could go. Whole-line masks reveal with a short 85ms stagger on scroll entry. The existing curved path follows with its travelling point, guiding attention toward the requested CTA. Both animations have static, fully readable reduced-motion fallbacks and clean up on navigation. The lilac background and all other sections are preserved.
+
+## Fragmented Reality — 26 October 2026
+
+Only the Hero headline animation changes. Each phrase has one uncut text rendering and eight complementary clip-path masks of the same fully shaped text. Shared polygon edges cover the whole text surface without holes or overlap; no characters are split and no polygon artwork is drawn. Deterministic transform variations scatter the actual ink, with a reading-direction stagger. Disintegration takes 440–482ms; the next assembly begins 180ms into it and takes 804ms including stagger, followed by a 100ms, 0.4% settling motion. At rest, fragment layers are hidden and the uncut phrase is shown, retaining exact font quality. The readable hold is 1.9 seconds.
+
+The existing fixed grid preserves height across all phrases. Only eight pieces per phrase are used on desktop and mobile, with at most two phrases moving. Geometry is cached on setup, font/layout changes, and resize; per-frame animation changes transforms and opacity only. Rotation-aware bounds use the usable viewport width, excluding the scrollbar. A responsive resize completes any active transition cleanly.
+
+Reduced motion keeps the first complete phrase and disables fragment layers. No-JavaScript HTML already contains the uncut first phrase. A failed animation restores the static current phrase; an independent 1.6-second watchdog also fails open. Timeline, delayed call, observer, resize listener, and watchdog cleanup happen on route, visibility, and preference changes. The approved opening effect, SVG, session logic, and first-paint CSS are fingerprint-verified unchanged. No new dependency or controls are added; Contact and all other sections remain as before.

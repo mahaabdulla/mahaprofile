@@ -4,6 +4,8 @@ import { gsap } from 'gsap';
 import { copy, type Lang } from '@/lib/content';
 import { claimHeroSession } from '@/lib/hero-session.mjs';
 import { HeroTransformation } from './hero-transformation';
+import { HeroPhrase } from './hero-phrase';
+import { HERO_FRAGMENTS, fragmentPose } from '@/lib/hero-fragments.mjs';
 import { useMotion } from './motion';
 
 export function HeroHeadline({lang}:{lang:Lang}){
@@ -61,30 +63,56 @@ export function HeroHeadline({lang}:{lang:Lang}){
   if(reduced||matchMedia('(prefers-reduced-motion: reduce)').matches){setPhase(0);return;}
   if(!ready||paused||!visible||!onScreen)return;
   const element=root.current;const elements=element?.querySelectorAll<HTMLElement>('.hero-phrase');if(!elements||!element)return;
-  const next=(phase+1)%phrases.length;let transition:gsap.core.Timeline|undefined;let wait:gsap.core.Tween|undefined;
-  // Complementary diagonal masks share one travelling edge. Words stay intact
-  // and stationary; the opening geometry's flattened edge now reshapes the text.
-  const rtl=lang==='ar';const edge=root.current?.querySelector('.hero-phrase-edge');
-  const incomingStart=rtl?'polygon(100% 0%,100% 0%,108% 100%,100% 100%)':'polygon(0% 0%,0% 0%,-8% 100%,0% 100%)';
-  const incomingEnd=rtl?'polygon(100% 0%,-8% 0%,0% 100%,100% 100%)':'polygon(0% 0%,108% 0%,100% 100%,0% 100%)';
-  const outgoingStart=rtl?'polygon(0% 0%,100% 0%,108% 100%,0% 100%)':'polygon(0% 0%,100% 0%,100% 100%,-8% 100%)';
-  const outgoingEnd=rtl?'polygon(0% 0%,-8% 0%,0% 100%,0% 100%)':'polygon(108% 0%,100% 0%,100% 100%,100% 100%)';
-  const ctx=gsap.context(()=>{
-   gsap.set(elements,{yPercent:0,autoAlpha:0,clipPath:'none'});gsap.set(elements[phase],{autoAlpha:1});
-   wait=gsap.delayedCall(3.5,()=>{
-    gsap.set(elements[next],{autoAlpha:1,clipPath:incomingStart});gsap.set(elements[phase],{clipPath:outgoingStart});
-    transition=gsap.timeline({onComplete:()=>setPhase(next)})
-     .to(elements[phase],{clipPath:outgoingEnd,duration:.58,ease:'power2.inOut'},0)
-     .to(elements[next],{clipPath:incomingEnd,duration:.58,ease:'power2.inOut'},0);
-    if(edge)transition.fromTo(edge,{left:rtl?'108%':'-8%',autoAlpha:.7},{left:rtl?'-8%':'108%',autoAlpha:.7,duration:.58,ease:'power2.inOut'},0).set(edge,{autoAlpha:0});
+  const next=(phase+1)%phrases.length;
+  const sources=Array.from(element.querySelectorAll<HTMLElement>('.hero-phrase-source'));
+  const inks=Array.from(element.querySelectorAll<HTMLElement>('.hero-phrase-ink'));
+  const layers=Array.from(element.querySelectorAll<HTMLElement>('.hero-fragment-layer'));
+  let frames:{width:number;height:number;left:number;viewport:number}[]=[];
+  let transition:gsap.core.Timeline|undefined;let wait:gsap.core.Tween|undefined;let ctx:gsap.Context|undefined;
+  let watchdog:ReturnType<typeof setTimeout>|undefined;let alive=true;
+  const measure=()=>{frames=sources.map(source=>{const box=source.getBoundingClientRect();return {width:box.width,height:box.height,left:box.left,viewport:document.documentElement.clientWidth};});};
+  const resize=()=>{measure();if(transition?.isActive())transition.progress(1);};
+  measure();const observer=typeof ResizeObserver==='function'?new ResizeObserver(measure):null;sources.forEach(source=>observer?.observe(source));
+  window.addEventListener('resize',resize,{passive:true});void document.fonts?.ready.then(()=>{if(alive)measure();});
+  const failOpen=()=>{
+   if(!alive)return;transition?.kill();ctx?.revert();delete element.dataset.fragmenting;
+   element.querySelectorAll<HTMLElement>('.hero-phrase,.hero-phrase-source,.hero-phrase-ink,.hero-fragment-layer,.hero-type-fragment').forEach(node=>{
+    ['opacity','visibility','transform','translate','rotate','scale'].forEach(property=>node.style.removeProperty(property));
    });
-  },element);
-  return()=>{wait?.kill();transition?.kill();ctx.revert();};
+   escapePaused.current=true;setPaused(true);
+  };
+  const order=(nodes:HTMLElement[])=>lang==='ar'?[...nodes.slice(0,4).reverse(),...nodes.slice(4).reverse()]:nodes;
+  try{
+   ctx=gsap.context(()=>{
+    gsap.set(elements,{yPercent:0,autoAlpha:0,clipPath:'none'});gsap.set(elements[phase],{autoAlpha:1});
+    gsap.set(inks,{autoAlpha:1});gsap.set(layers,{autoAlpha:0});
+    wait=gsap.delayedCall(1.9,()=>{
+     try{ctx?.add(()=>{
+      const departing=Array.from(layers[phase].querySelectorAll<HTMLElement>('.hero-type-fragment'));
+      const arriving=Array.from(layers[next].querySelectorAll<HTMLElement>('.hero-type-fragment'));
+      if(!frames[next]?.width){failOpen();return;}
+      element.dataset.fragmenting='';
+      gsap.set(layers[phase],{autoAlpha:1});gsap.set(departing,{x:0,y:0,rotation:0,scale:1,opacity:1});gsap.set(inks[phase],{autoAlpha:0});
+      gsap.set(elements[next],{autoAlpha:1});gsap.set(inks[next],{autoAlpha:0});gsap.set(layers[next],{autoAlpha:1});
+      arriving.forEach((fragment,index)=>gsap.set(fragment,{...fragmentPose(HERO_FRAGMENTS[index],frames[next]),opacity:0}));
+      transition=gsap.timeline({onComplete:()=>{if(watchdog)clearTimeout(watchdog);delete element.dataset.fragmenting;if(alive)setPhase(next);}});
+      order(departing).forEach((fragment,index)=>transition?.to(fragment,{...fragmentPose(HERO_FRAGMENTS[Number(fragment.dataset.fragment)],frames[phase],true),opacity:0,duration:.44,ease:'power2.in'},index*.006));
+      transition.set(elements[phase],{autoAlpha:0},.5)
+       .to(order(arriving),{x:0,y:0,rotation:0,scale:1,opacity:1,duration:.72,stagger:.012,ease:'power3.out'},.18)
+       // Restore one uncut text rendering for a perfectly crisp resting state.
+       .set(inks[next],{autoAlpha:1},.984).set(layers[next],{autoAlpha:0},.984)
+       .fromTo(sources[next],{scale:1.004},{scale:1,duration:.1,ease:'power2.out',clearProps:'transform',immediateRender:false},.984);
+      watchdog=setTimeout(failOpen,1600);
+     });}catch{failOpen();}
+    });
+   },element);
+  }catch{failOpen();}
+  return()=>{alive=false;wait?.kill();transition?.kill();if(watchdog)clearTimeout(watchdog);observer?.disconnect();window.removeEventListener('resize',resize);ctx?.revert();delete element.dataset.fragmenting;};
  },[lang,onScreen,paused,phase,phrases,ready,reduced,visible]);
 
  return <div className="hero-headline signature-hero" ref={root} data-phrase={phase} onMouseEnter={()=>setPaused(true)} onMouseLeave={()=>{if(!escapePaused.current)setPaused(false);}} onFocusCapture={()=>setPaused(true)} onBlurCapture={()=>{if(!escapePaused.current)setPaused(false);}}>
   <HeroTransformation lang={lang}/>
-  <h1 className="hero-signature-heading" aria-label={`${copy.hero[lang][0]} ${phrases[0]}`} aria-describedby="hero-motion-help"><span className="hero-line hero-first"><span>{copy.hero[lang][0]}</span></span><span className="hero-line second-line"><span className="hero-rotator-inner" aria-hidden="true">{phrases.map((phrase,i)=><span className="hero-phrase" data-active={phase===i?'':undefined} key={phrase}>{phrase}</span>)}<span className="hero-phrase-edge"/></span></span></h1>
+  <h1 className="hero-signature-heading" aria-label={`${copy.hero[lang][0]} ${phrases[phase]}`} aria-describedby="hero-motion-help"><span className="hero-line hero-first"><span>{copy.hero[lang][0]}</span></span><span className="hero-line second-line"><span className="hero-rotator-inner" aria-hidden="true">{phrases.map((phrase,i)=><HeroPhrase phrase={phrase} active={phase===i} key={phrase}/>)}</span></span></h1>
   <span id="hero-motion-help" className="sr-only">{lang==='ar'?'يمكنك إيقاف تبديل العنوان بمفتاح Escape، أو تقليل الحركة من إعدادات الجهاز.':'Press Escape to pause the changing headline, or use your system’s reduced-motion setting.'}</span>
  </div>;
 }

@@ -9,7 +9,7 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "check:export": "node scripts/check-export.mjs",
-    "test:motion": "node --test scripts/motion.test.mjs",
+    "test:motion": "node --test scripts/motion.test.mjs scripts/hero-fragments.test.mjs",
     "test:intro": "npm run test:motion"
   },
   "dependencies": {
