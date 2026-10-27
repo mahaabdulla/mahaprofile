@@ -1,15 +1,15 @@
 /* Original phone screenshots are framed, never redrawn or stretched. */
 .project-showcase .showcase-image .project-screen-crop,.project-dialog .dialog-image .project-screen-crop{position:relative;height:100%;width:auto;max-width:100%;overflow:hidden;background:#fff}
 .project-showcase .showcase-image .project-screen-crop>img,.project-dialog .dialog-image .project-screen-crop>img{position:absolute;left:0;top:0;display:block;width:100%;height:auto;max-height:none;max-width:none;object-fit:initial}
-.project-showcase.showcase-diabetes-tracker .showcase-frame{height:100%;width:auto;max-width:100%;aspect-ratio:482/988;border:0;border-radius:14px;background:#fff;box-shadow:0 0 0 1px #ffffff26}
-.selected .project-showcase.showcase-diabetes-tracker .showcase-frame{width:auto;height:100%;max-width:100%;border:0;border-radius:12px;box-shadow:0 0 0 1px #ffffff26}
-.case-hero .project-showcase.showcase-diabetes-tracker .showcase-frame{width:auto;min-width:0;height:100%;max-width:100%;aspect-ratio:482/988;border:0;box-shadow:0 0 0 1px #ffffff26}
+.project-showcase.showcase-screens .showcase-frame{height:100%;width:auto;max-width:100%;aspect-ratio:var(--project-screen-ratio);border:0;border-radius:14px;background:#fff;box-shadow:0 0 0 1px #ffffff26}
+.selected .project-showcase.showcase-screens .showcase-frame{width:auto;height:100%;max-width:100%;border:0;border-radius:12px;box-shadow:0 0 0 1px #ffffff26}
+.case-hero .project-showcase.showcase-screens .showcase-frame{width:auto;min-width:0;height:100%;max-width:100%;aspect-ratio:var(--project-screen-ratio);border:0;box-shadow:0 0 0 1px #ffffff26}
 .project-showcase .project-gallery-caption{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-top:13px;font-size:11px;line-height:1.6;color:#b8b5c4}
 .project-showcase .project-gallery-caption>.mono{flex-shrink:0;font-size:9px;color:#aaa6b5}
-.project-dialog.dialog-diabetes-tracker{width:min(660px,94vw)}
-.project-dialog.dialog-diabetes-tracker .dialog-image .project-screen-crop{width:min(100%,calc(min(66svh,680px)*482/988));height:auto;max-height:100%}
+.project-dialog.dialog-screens{width:min(660px,94vw)}
+.project-dialog.dialog-screens .dialog-image .project-screen-crop{width:min(100%,calc(min(66svh,680px)*var(--project-screen-ratio)));height:auto;max-height:100%}
 .project-dialog .dialog-caption{display:flex;justify-content:space-between;gap:20px}
 .project-dialog .unpublished-note{color:#bdb7d4}
-.case-hero .project-showcase.showcase-diabetes-tracker .showcase-viewport{aspect-ratio:1.45;max-height:680px;background:#202027}
-.case-hero .project-showcase.showcase-diabetes-tracker .project-gallery-caption{color:#626168}
-@media(max-width:540px){.case-hero .project-showcase.showcase-diabetes-tracker .showcase-viewport{aspect-ratio:.9;max-height:650px;padding:8% 15%}.project-showcase .project-gallery-caption{font-size:10px}.project-dialog.dialog-diabetes-tracker{padding:16px}}
+.case-hero .project-showcase.showcase-screens .showcase-viewport{aspect-ratio:1.45;max-height:680px;background:#202027}
+.case-hero .project-showcase.showcase-screens .project-gallery-caption{color:#626168}
+@media(max-width:540px){.case-hero .project-showcase.showcase-screens .showcase-viewport{aspect-ratio:.9;max-height:650px;padding:8% 15%}.project-showcase .project-gallery-caption{font-size:10px}.project-dialog.dialog-screens{padding:16px}}

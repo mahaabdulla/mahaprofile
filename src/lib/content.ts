@@ -82,6 +82,19 @@ const diabetesScreens: {file:string;ar:string;en:string}[] = [
   {file:'water',ar:'متابعة شرب الماء',en:'Water intake'},
   {file:'splash',ar:'شاشة الانطلاق',en:'Launch screen'},
 ];
+const nawelScreens = [
+  {file:'cover.png',ar:'ناول · غيرك ليستفيد',en:'Nawel · Give so others can benefit',width:1080,height:1920,top:0,bottom:0},
+  {file:'donate.jpg',ar:'إضافة تبرع بالأدوية أو المعدات الطبية',en:'Donate medicine or medical equipment'},
+  {file:'catalog.jpg',ar:'استعراض الأدوية والمستلزمات',en:'Browse medicines and supplies'},
+  {file:'basket.jpg',ar:'السلة وإدارة الكميات',en:'Basket and quantities',width:571,height:1280,top:48,bottom:62},
+  {file:'my-medicines.jpg',ar:'قائمة أدويتي',en:'My medicines'},
+  {file:'navigation.jpg',ar:'التنقل بين التبرعات والملف الشخصي',en:'Donation and profile navigation'},
+  {file:'profile.jpg',ar:'عرض الملف الشخصي',en:'Profile overview'},
+  {file:'edit-profile.jpg',ar:'تعديل بيانات الملف الشخصي',en:'Edit profile details'},
+  {file:'catalog-light.jpg',ar:'قائمة الأدوية · عرض آخر',en:'Medicine catalog · another view'},
+  {file:'basket-alternate.jpg',ar:'السلة · عرض آخر',en:'Basket · another view',width:571,height:1280,top:48,bottom:62},
+  {file:'edit-profile-alternate.jpg',ar:'تعديل الملف الشخصي · عرض آخر',en:'Edit profile · another view'},
+];
 export const projects: Project[] = [
   {
     "slug": "azad",
@@ -203,6 +216,23 @@ export const projects: Project[] = [
     imageAlt:{ar:'لوحة المتابعة اليومية في تطبيق تتبع سكري',en:'Daily dashboard in the Arabic Diabetes Tracker app'},
     imageCaption:{ar:'لقطات أصلية من مشروع التخرّج · التطبيق غير منشور',en:'Original graduation-project screenshots · app not published'},
     gallery:diabetesScreens.map(screen=>({src:`/projects/diabetes-tracker/${screen.file}.jpg`,width:482,height:1080,trim:{top:40,bottom:52},alt:{ar:`${screen.ar} في تطبيق تتبع سكري`,en:`${screen.en} in the Arabic Diabetes Tracker app`},caption:{ar:screen.ar,en:screen.en}})),
+  },
+  {
+    slug:'nawel',number:'04',kind:'application',
+    category:{ar:'تطوير التطبيقات',en:'APPLICATION DEVELOPMENT'},
+    title:{ar:'ناول\nغيرك ليستفيد',en:'Nawel\nGive so others can benefit'},
+    name:{ar:'تطبيق ناول',en:'Nawel'},
+    description:{ar:'تطبيق خيري للتبرع بالأدوية والأدوات الطبية للمحتاجين، طوّرتُه كمشروع في مخيم تدريب Flutter.',en:'A charitable app for donating medicine and medical equipment to people in need, developed as a Flutter bootcamp project.'},
+    stack:['Flutter','Donations','Medical supplies'],
+    role:{ar:'مشروع مخيم تدريب Flutter لمدة شهرين ونصف، بإشراف المهندس مختار غالب.',en:'A project from a two-and-a-half-month Flutter bootcamp, supervised by Engineer Mukhtar Ghaleb.'},
+    contributionLabel:{ar:'تطوير Flutter · مشروع مخيم تدريبي',en:'Flutter development · bootcamp project'},
+    url:null,linkLabel:null,
+    status:{ar:'مشروع تدريبي غير منشور',en:'Unpublished bootcamp project'},
+    overview:{ar:'«ناول» تطبيق خيري يهدف إلى تسهيل التبرع بالأدوية والأدوات الطبية للمحتاجين. تتضمن واجهاته إضافة التبرعات، واستعراض الأدوية والمستلزمات، وإدارة السلة والكميات والملف الشخصي. طوّرتُه كمشروع في مخيم تدريب Flutter استمر شهرين ونصف بإشراف المهندس مختار غالب. التطبيق غير منشور، والمعرض يعرض صوره الأصلية.',en:'Nawel is a charitable app designed to make it easier to donate medicine and medical equipment to people in need. Its interfaces cover adding donations, browsing medicines and supplies, managing basket quantities, and editing a profile. I developed it as a project during a two-and-a-half-month Flutter bootcamp supervised by Engineer Mukhtar Ghaleb. The app is unpublished; the gallery contains its original images.'},
+    image:'/projects/nawel/cover.png',secondImage:null,
+    imageAlt:{ar:'غلاف تطبيق ناول الخيري · غيرك ليستفيد',en:'Nawel charitable app cover · Give so others can benefit'},
+    imageCaption:{ar:'صور أصلية من مشروع مخيم Flutter · التطبيق غير منشور',en:'Original Flutter bootcamp project images · app not published'},
+    gallery:nawelScreens.map(screen=>({src:`/projects/nawel/${screen.file}`,width:screen.width??720,height:screen.height??1612,trim:{top:screen.top??60,bottom:screen.bottom??79},alt:{ar:`${screen.ar} في تطبيق ناول`,en:`${screen.en} in the Arabic Nawel app`},caption:{ar:screen.ar,en:screen.en}})),
   }
 ];
 

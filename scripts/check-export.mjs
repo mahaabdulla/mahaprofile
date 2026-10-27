@@ -3,7 +3,7 @@ import path from 'node:path';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 const root=path.resolve('out');
-const pages=['','en','ar',...['en','ar'].flatMap(lang=>['work','about','lab','contact','work/azad','work/sigil-film','work/diabetes-tracker'].map(p=>`${lang}/${p}`))];
+const pages=['','en','ar',...['en','ar'].flatMap(lang=>['work','about','lab','contact','work/azad','work/sigil-film','work/diabetes-tracker','work/nawel'].map(p=>`${lang}/${p}`))];
 const approvedContacts=new Set(['mailto:mahaabdulla87@gmail.com','https://github.com/mahaabdulla','https://www.linkedin.com/in/maha-alattas-1478a92a3/','https://www.instagram.com/maha_devlop/']);
 const approvedProjects=new Set(['https://play.google.com/store/apps/details','https://sigilfilm.com/']);
 const siteOrigin=new URL(process.env.NEXT_PUBLIC_SITE_URL||'http://127.0.0.1:4173').origin;
@@ -32,18 +32,29 @@ for(const page of pages){
  if(page.endsWith('/work')||['','en','ar'].includes(page)){
   assert.ok(html.includes('تطبيق أزاد')||html.includes('Azad'),'Azad card');assert.ok(html.includes('Sigil Film'),'Sigil card');
   assert.ok(!/CASE STUDY DRAFT|مسودة دراسة حالة|shipment-management|course-management|system-analysis/.test(html),'Remove old sample projects');
-  assert.equal((html.match(/class="project project-/g)||[]).length,3,'Three actual project cards');
+  assert.equal((html.match(/class="project project-/g)||[]).length,4,'Four actual project cards');
   assert.ok(html.includes('id=azaddigitalschool.com'),'Exact Azad application ID');
   const graduationCard=html.match(/<article class="project project-03">([\s\S]*?)<\/article>/)?.[1];
   assert.ok(graduationCard&&graduationCard.includes('Flutter'),'Flutter graduation project card');
   assert.ok(!graduationCard.includes('project-external'),'Unpublished project has no fake external action');
   assert.ok(graduationCard.includes(lang==='ar'?'مشروع تخرّج غير منشور':'Unpublished graduation project'),'Honest unpublished status');
+  const nawelCard=html.match(/<article class="project project-04">([\s\S]*?)<\/article>/)?.[1];
+  assert.ok(nawelCard&&nawelCard.includes('Flutter')&&nawelCard.includes('/work/nawel/'),'Nawel bootcamp project card');
+  assert.ok(!nawelCard.includes('project-external'),'Unpublished Nawel has no external action');
+  assert.ok(nawelCard.includes(lang==='ar'?'مشروع تدريبي غير منشور':'Unpublished bootcamp project'),'Nawel unpublished status');
  }
  if(page.endsWith('/work/diabetes-tracker')){
   assert.ok(html.includes('/projects/diabetes-tracker/dashboard.jpg'),'Owner-supplied dashboard cover');
   assert.ok(html.includes(lang==='ar'?'ضمن فريق من مطوّرتين':'two-person team'),'Confirmed two-person contribution');
   assert.ok(html.includes('11'),'Full screenshot gallery count');
   assert.ok(html.includes('project-screen-crop'),'Clean phone screenshot framing');
+ }
+ if(page.endsWith('/work/nawel')){
+  assert.ok(html.includes('/projects/nawel/cover.png'),'Original Nawel cover');
+  assert.ok(html.includes(lang==='ar'?'المهندس مختار غالب':'Engineer Mukhtar Ghaleb'),'Confirmed bootcamp supervisor');
+  assert.ok(html.includes(lang==='ar'?'شهرين ونصف':'two-and-a-half-month'),'Confirmed bootcamp duration');
+  assert.ok(html.includes(lang==='ar'?'مشروع تدريبي غير منشور':'Unpublished bootcamp project'),'Nawel publication status');
+  assert.ok(html.includes('11')&&html.includes('project-screen-crop'),'Complete original-image gallery');
  }
  if(page.endsWith('/lab')||['','en','ar'].includes(page)){
   assert.ok(html.includes('aria-labelledby="bl-title-uroob"')&&html.includes('aria-labelledby="bl-title-ghanima"'),'Two independent Beyond the Line showcases');
@@ -94,6 +105,11 @@ for(const name of ['dashboard','welcome','login','entry-choice','profile','predi
  assert.ok(exported.length>1000,`Original screenshot ${name}`);
  assert.ok(exported.equals(fs.readFileSync(path.join('public',file))),`Screenshot exported unchanged: ${name}`);
 }
+for(const name of fs.readdirSync('public/projects/nawel').filter(name=>/\.(png|jpg)$/.test(name))){
+ const file=`projects/nawel/${name}`;
+ assert.ok(fs.readFileSync(path.join(root,file)).equals(fs.readFileSync(path.join('public',file))),`Nawel image exported unchanged: ${name}`);
+}
+assert.ok(css.includes('--project-screen-ratio'),'Original galleries accommodate different screenshot proportions');
 assert.ok(css.includes('[data-motion=reduce]'),'Explicit reduced-motion alternative is compiled');
 assert.ok(css.includes('.bl-expansion')&&css.includes('.bl-content-dialog')&&css.includes('.bl-gallery-ghanima'),'Beyond the Line narrative and previews are compiled');
 for(const file of ['uroob-cover.png','uroob-story.png','ghanima-engineer.png','ghanima-curiosity.png'])assert.ok(fs.statSync(path.join(root,'content',file)).size>10000,`Original content asset ${file}`);
