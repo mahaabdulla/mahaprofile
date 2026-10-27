@@ -3,7 +3,7 @@ import path from 'node:path';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 const root=path.resolve('out');
-const pages=['','en','ar',...['en','ar'].flatMap(lang=>['work','about','lab','contact','work/azad','work/sigil-film'].map(p=>`${lang}/${p}`))];
+const pages=['','en','ar',...['en','ar'].flatMap(lang=>['work','about','lab','contact','work/azad','work/sigil-film','work/diabetes-tracker'].map(p=>`${lang}/${p}`))];
 const approvedContacts=new Set(['mailto:mahaabdulla87@gmail.com','https://github.com/mahaabdulla','https://www.linkedin.com/in/maha-alattas-1478a92a3/','https://www.instagram.com/maha_devlop/']);
 const approvedProjects=new Set(['https://play.google.com/store/apps/details','https://sigilfilm.com/']);
 const siteOrigin=new URL(process.env.NEXT_PUBLIC_SITE_URL||'http://127.0.0.1:4173').origin;
@@ -17,6 +17,7 @@ for(const page of pages){
  assert.match(html,/<meta name="description" content="[^"]+"/,`Description: ${page}`);
  assert.ok(!html.includes('class="signature-intro"'),'No blocking introductory overlay');
  assert.ok(!html.includes('aria-busy="true"'),'Intro must not mark the document busy');
+ assert.ok(!/href="(?:|#|null|undefined)"/.test(html),'No empty or placeholder project destinations');
  assert.ok(html.includes('maha:hero:impossible-v1'),'Current Hero session key');
  assert.ok(html.includes('class="site-logo-image"')&&html.includes('/brand/maha-logo.png'),'Original navbar artwork');
  assert.ok(!/class="(?:hero-cycle-control|motion-toggle|scroll-hint|showcase-controls|bl-preview-controls|bl-dialog-controls)"/.test(html),'Redundant controls removed');
@@ -31,8 +32,18 @@ for(const page of pages){
  if(page.endsWith('/work')||['','en','ar'].includes(page)){
   assert.ok(html.includes('تطبيق أزاد')||html.includes('Azad'),'Azad card');assert.ok(html.includes('Sigil Film'),'Sigil card');
   assert.ok(!/CASE STUDY DRAFT|مسودة دراسة حالة|shipment-management|course-management|system-analysis/.test(html),'Remove old sample projects');
-  assert.equal((html.match(/class="project project-/g)||[]).length,2,'Two actual project cards');
+  assert.equal((html.match(/class="project project-/g)||[]).length,3,'Three actual project cards');
   assert.ok(html.includes('id=azaddigitalschool.com'),'Exact Azad application ID');
+  const graduationCard=html.match(/<article class="project project-03">([\s\S]*?)<\/article>/)?.[1];
+  assert.ok(graduationCard&&graduationCard.includes('Flutter'),'Flutter graduation project card');
+  assert.ok(!graduationCard.includes('project-external'),'Unpublished project has no fake external action');
+  assert.ok(graduationCard.includes(lang==='ar'?'مشروع تخرّج غير منشور':'Unpublished graduation project'),'Honest unpublished status');
+ }
+ if(page.endsWith('/work/diabetes-tracker')){
+  assert.ok(html.includes('/projects/diabetes-tracker/dashboard.jpg'),'Owner-supplied dashboard cover');
+  assert.ok(html.includes(lang==='ar'?'ضمن فريق من مطوّرتين':'two-person team'),'Confirmed two-person contribution');
+  assert.ok(html.includes('11'),'Full screenshot gallery count');
+  assert.ok(html.includes('project-screen-crop'),'Clean phone screenshot framing');
  }
  if(page.endsWith('/lab')||['','en','ar'].includes(page)){
   assert.ok(html.includes('aria-labelledby="bl-title-uroob"')&&html.includes('aria-labelledby="bl-title-ghanima"'),'Two independent Beyond the Line showcases');
@@ -77,6 +88,12 @@ assert.match(css,/\[hidden\][^{}]*\{[^}]*display:none!important/,'Hidden states 
 assert.ok(css.includes('prefers-reduced-motion:reduce'),'Reduced motion CSS');
 assert.ok(css.includes('.showcase-viewport')&&css.includes('.world-full')&&css.includes('.build-sticky'),'Signature interaction CSS is compiled');
 assert.ok(css.includes('height:340svh')&&css.includes('.build-journey:not(.build-reduced) .build-sticky'),'Mobile native-scroll build story is compiled');
+assert.ok(css.includes('.project-screen-crop')&&css.includes('.project-gallery-caption'),'Expanded screenshot gallery CSS is compiled');
+for(const name of ['dashboard','welcome','login','entry-choice','profile','prediction','glucose','insulin','walking','water','splash']){
+ const file=`projects/diabetes-tracker/${name}.jpg`;const exported=fs.readFileSync(path.join(root,file));
+ assert.ok(exported.length>1000,`Original screenshot ${name}`);
+ assert.ok(exported.equals(fs.readFileSync(path.join('public',file))),`Screenshot exported unchanged: ${name}`);
+}
 assert.ok(css.includes('[data-motion=reduce]'),'Explicit reduced-motion alternative is compiled');
 assert.ok(css.includes('.bl-expansion')&&css.includes('.bl-content-dialog')&&css.includes('.bl-gallery-ghanima'),'Beyond the Line narrative and previews are compiled');
 for(const file of ['uroob-cover.png','uroob-story.png','ghanima-engineer.png','ghanima-curiosity.png'])assert.ok(fs.statSync(path.join(root,'content',file)).size>10000,`Original content asset ${file}`);

@@ -6,3 +6,7 @@ Reviewed 25 October 2026.
 - sigil-film.jpg: browser screenshot of https://sigilfilm.com/ captured for the owner-supplied portfolio project.
 
 The owner confirmed software development within a team for both projects. Images show the published products and do not attribute every visible design or feature to the owner.
+
+## Diabetes Tracker / تتبع سكري
+
+Added 27 October 2026 from eleven original owner attachments. The owner confirmed a Flutter graduation project developed with one teammate; it has not been published and has no store URL. See diabetes-tracker/SOURCES.md for the original attachment identities, dimensions, hashes, and CSS framing details.

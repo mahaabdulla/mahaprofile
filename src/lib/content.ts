@@ -57,7 +57,32 @@ export const processSteps = [
   { title:{en:'Build',ar:'أبني'}, body:{en:'Bring the idea to life with readable code, clear boundaries, and deliberate details.',ar:'أحوّل الفكرة إلى تجربة بشيفرة مفهومة وحدود واضحة وتفاصيل مدروسة.'},output:{en:'A working, testable product',ar:'منتج يعمل ويمكن اختباره'} },
   { title:{en:'Refine',ar:'أحسّن'}, body:{en:'Test the real experience. Question the friction. Keep making it more useful.',ar:'أختبر التجربة، وأراجع نقاط التعثر، وأحسّن القيمة التي تقدمها.'},output:{en:'Validated flows & a clearer next step',ar:'مسارات مختبرة وخطوة تالية أوضح'} },
 ];
-export const projects = [
+export type ProjectScreenshot = {
+  src: string; alt: Localized; caption: Localized; width: number; height: number;
+  trim?: { top: number; bottom: number };
+};
+export type Project = {
+  slug: string; number: string; kind: 'application' | 'website';
+  category: Localized; title: Localized; name: Localized; description: Localized;
+  stack: string[]; role: Localized; contributionLabel?: Localized;
+  url: string | null; linkLabel: Localized | null; status: Localized; overview: Localized;
+  image: string; secondImage: string | null; imageAlt: Localized; imageCaption: Localized;
+  gallery?: ProjectScreenshot[];
+};
+const diabetesScreens: {file:string;ar:string;en:string}[] = [
+  {file:'dashboard',ar:'لوحة المتابعة اليومية',en:'Daily tracking dashboard'},
+  {file:'welcome',ar:'بداية الاستخدام',en:'Welcome screen'},
+  {file:'login',ar:'تسجيل الدخول',en:'Sign-in screen'},
+  {file:'entry-choice',ar:'اختيار مسار الاستخدام',en:'Choose a user journey'},
+  {file:'profile',ar:'الملف الصحي',en:'Health profile'},
+  {file:'prediction',ar:'التنبؤ بإمكانية الإصابة بالسكري',en:'Diabetes prediction inputs'},
+  {file:'glucose',ar:'متابعة الجلوكوز',en:'Glucose tracking'},
+  {file:'insulin',ar:'متابعة الإنسولين',en:'Insulin tracking'},
+  {file:'walking',ar:'متابعة المشي',en:'Walking activity'},
+  {file:'water',ar:'متابعة شرب الماء',en:'Water intake'},
+  {file:'splash',ar:'شاشة الانطلاق',en:'Launch screen'},
+];
+export const projects: Project[] = [
   {
     "slug": "azad",
     "number": "01",
@@ -161,9 +186,31 @@ export const projects = [
       "en": "Screenshot of the live website",
       "ar": "لقطة من الموقع المنشور"
     }
+  },
+  {
+    slug:'diabetes-tracker', number:'03', kind:'application',
+    category:{ar:'تطوير التطبيقات',en:'APPLICATION DEVELOPMENT'},
+    title:{ar:'تتبع سكري\nمتابعة صحية في مكان واحد',en:'Diabetes Tracker\nDaily tracking in one place'},
+    name:{ar:'تطبيق تتبع سكري',en:'Diabetes Tracker'},
+    description:{ar:'تطبيق لمتابعة السكري والمؤشرات اليومية، مع مسار للتنبؤ بإمكانية الإصابة بالسكري اعتمادًا على البيانات المدخلة.',en:'An app for diabetes and daily health tracking, with a prediction flow based on entered data.'},
+    stack:['Flutter','Health tracking','Prediction'],
+    role:{ar:'مشروع تخرّج طوّرتُه مع زميلة باستخدام Flutter، ويجمع متابعة السكري وميزة التنبؤ بإمكانية الإصابة به.',en:'A Flutter graduation project developed with one teammate, combining diabetes tracking and a diabetes prediction feature.'},
+    contributionLabel:{ar:'تطوير Flutter ضمن فريق من مطوّرتين',en:'Flutter development · two-person team'},
+    url:null, linkLabel:null,
+    status:{ar:'مشروع تخرّج غير منشور',en:'Unpublished graduation project'},
+    overview:{ar:'يجمع «تتبع سكري» متابعة الجلوكوز والإنسولين والمشي وشرب الماء في واجهة عربية، مع ملف صحي وتذكيرات ومسار لإدخال البيانات والتنبؤ بإمكانية الإصابة بالسكري. نفّذتُ المشروع مع زميلة كمشروع تخرّج باستخدام Flutter. التطبيق غير منشور، وهذه لقطات أصلية من واجهاته.',en:'An Arabic mobile app bringing together glucose, insulin, walking and water tracking, with a health profile, reminder screens and a diabetes prediction input flow. Built with one teammate as a Flutter graduation project. The app is unpublished; the gallery shows original screenshots of its interfaces.'},
+    image:'/projects/diabetes-tracker/dashboard.jpg',secondImage:null,
+    imageAlt:{ar:'لوحة المتابعة اليومية في تطبيق تتبع سكري',en:'Daily dashboard in the Arabic Diabetes Tracker app'},
+    imageCaption:{ar:'لقطات أصلية من مشروع التخرّج · التطبيق غير منشور',en:'Original graduation-project screenshots · app not published'},
+    gallery:diabetesScreens.map(screen=>({src:`/projects/diabetes-tracker/${screen.file}.jpg`,width:482,height:1080,trim:{top:40,bottom:52},alt:{ar:`${screen.ar} في تطبيق تتبع سكري`,en:`${screen.en} in the Arabic Diabetes Tracker app`},caption:{ar:screen.ar,en:screen.en}})),
   }
 ];
-export type Project = (typeof projects)[number];
+
+export function projectScreenshots(project:Project):ProjectScreenshot[]{
+  if(project.gallery?.length)return project.gallery;
+  const screenshot=(src:string):ProjectScreenshot=>({src,alt:project.imageAlt,caption:project.imageCaption,width:project.kind==='website'?1280:600,height:project.kind==='website'?720:1200});
+  return [screenshot(project.image),...(project.secondImage?[screenshot(project.secondImage)]:[])];
+}
 
 export const beyondLine = {
   "title": {

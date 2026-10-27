@@ -13,7 +13,7 @@ Open http://127.0.0.1:3000. Use `npm run build` for the production static site i
 
 ## Content
 
-`src/lib/content.ts` is the single source for identity, localized navigation and section copy, process steps, capabilities, contact details, and the two owner-supplied projects. Long-form page scaffolding is in `src/components/portfolio.tsx`.
+`src/lib/content.ts` is the single source for identity, localized navigation and section copy, process steps, capabilities, contact details, and the owner-supplied projects. Long-form page scaffolding is in `src/components/portfolio.tsx`.
 
 The brief and owner-provided follow-up contact details are the content sources for this implementation. No employment, testimonials, metrics, or project results have been invented.
 
@@ -125,3 +125,11 @@ Reduced motion keeps the first complete phrase and disables fragment layers. No-
 The supplied 384 × 832, 6.72-second reference video shows the four-stage How I Build sequence progressing backward from data to wireframe and idea during native scrolling. The previous mobile breakpoint bypassed ScrollTrigger and applied build-short, leaving only tab selection. That bypass is removed. The same timeline now runs in both directions on mobile, with a 340svh story, native CSS sticky, lighter transforms, and 300ms scrub smoothing. Desktop timing is preserved.
 
 Stage selection stays synchronized on scroll and refresh; tabs still seek to their corresponding scroll positions. Mobile cards adapt to available viewport height, with a compact short-screen layout and a side-by-side landscape layout. Working tasks and the local data request remain interactive. OS reduced motion keeps the existing readable static stages. No scroll hijacking or new dependency is introduced.
+
+## Diabetes Tracker graduation project — 27 October 2026
+
+Added تتبع سكري / Diabetes Tracker as the third project, with Arabic/English detail pages and an application-filter entry. The owner confirmed an unpublished Flutter graduation project developed with one teammate. The copy describes diabetes tracking and the prediction input flow without inferring model architecture, validation, accuracy, or a store URL. The project has no external link or disabled/fake Visit action.
+
+All eleven supplied JPEGs are retained byte-for-byte under public/projects/diabetes-tracker. The dashboard is the cover; the gallery includes welcome, login, journey selection, health profile, prediction, glucose, insulin, walking, water, and launch screens. Each has localized alt text and a caption. A proportional CSS viewport hides only the 40px system status bar and 52px Android navigation bar, keeping the complete app interface visible without redrawing or stretching its pixels. See its SOURCES.md.
+
+The existing looping arrows, RTL/LTR keys, swipes, enlargement, Escape, and focus restoration work across the expanded gallery. Screenshot arrays and optional publication links are now supported by the shared showcase; Azad and Sigil Film retain their original images and destinations.

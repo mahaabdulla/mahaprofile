@@ -3,6 +3,7 @@
 @import './signature-refinements.css';
 @import './ux-polish.css';
 @import './build-mobile.css';
+@import './project-gallery.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
