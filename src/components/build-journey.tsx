@@ -21,16 +21,18 @@ export function BuildJourney({lang}:{lang:Lang}){
  useEffect(()=>{const query=matchMedia('(max-width:760px)');const sync=()=>setCompact(query.matches);sync();query.addEventListener('change',sync);return()=>query.removeEventListener('change',sync);},[]);
  useEffect(()=>{
   gsap.registerPlugin(ScrollTrigger);
-  if(reduced||compact){trigger.current=null;return;}
+  const element=root.current;
+  if(!element||reduced||matchMedia('(prefers-reduced-motion: reduce)').matches){trigger.current=null;return;}
   const ctx=gsap.context(()=>{
    const panels=gsap.utils.toArray<HTMLElement>('.build-scene');
-   gsap.set(panels,{autoAlpha:0,y:25,scale:.96});gsap.set(panels[0],{autoAlpha:1,y:0,scale:1});
-   const tl=gsap.timeline({scrollTrigger:{trigger:root.current,start:'top top',end:'bottom bottom',scrub:.45,invalidateOnRefresh:true,onUpdate:self=>{const next=Math.min(3,Math.floor(self.progress*4));if(next!==activeRef.current){activeRef.current=next;setActive(next);}}}});
-   panels.forEach((panel,i)=>{if(i)tl.to(panels[i-1],{autoAlpha:0,y:-20,scale:1.025,duration:.18},i).to(panel,{autoAlpha:1,y:0,scale:1,duration:.28},i+.02);});
+   gsap.set(panels,{autoAlpha:0,y:compact?14:25,scale:compact?.985:.96});gsap.set(panels[0],{autoAlpha:1,y:0,scale:1});
+   const syncStage=(self:ScrollTrigger)=>{const next=Math.min(3,Math.floor(self.progress*4));if(next!==activeRef.current){activeRef.current=next;setActive(next);}};
+   const tl=gsap.timeline({scrollTrigger:{trigger:element,start:'top top',end:'bottom bottom',scrub:compact?.3:.45,invalidateOnRefresh:true,onUpdate:syncStage,onRefresh:syncStage}});
+   panels.forEach((panel,i)=>{if(i)tl.to(panels[i-1],{autoAlpha:0,y:compact?-12:-20,scale:compact?1.01:1.025,duration:.18},i).to(panel,{autoAlpha:1,y:0,scale:1,duration:.28},i+.02);});
    tl.to('.build-line-fill',{scaleX:1,duration:4,ease:'none'},0);trigger.current=tl.scrollTrigger??null;
-  },root);
+  },element);
   return()=>{ctx.revert();trigger.current=null;};
- },[reduced,compact]);
+ },[reduced,compact,lang]);
  const choose=(index:number)=>{
   activeRef.current=index;setActive(index);
   if(trigger.current&&!reduced){const st=trigger.current;window.scrollTo({top:st.start+(st.end-st.start)*((index+.35)/4),behavior:'instant'});}
@@ -39,9 +41,9 @@ export function BuildJourney({lang}:{lang:Lang}){
   abort.current?.abort();const controller=new AbortController();abort.current=controller;setRequest('loading');
   try{const response=await fetch('/demo/workflow.json',{signal:controller.signal,cache:'no-store'});if(!response.ok)throw Error('Request failed');const value:DemoData=await response.json();if(!Array.isArray(value.tasks))throw Error('Invalid data');setData(value);setRequest('success');}catch{if(!controller.signal.aborted)setRequest('error');}
  };
- return <section className={`build-journey ${reduced?'build-reduced':''} ${compact?'build-short':''}`} ref={root} id="building">
+ return <section className={`build-journey ${reduced?'build-reduced':''} ${compact?'build-mobile':''}`} ref={root} id="building">
   <div className="build-sticky section">
-   <div className="build-editorial"><div className="eyebrow"><span className="index">04 /</span><span>{lang==='ar'?'كيف أبني':'HOW I BUILD'}</span></div><h2>{lang==='ar'?<>من فكرة<br/><em>إلى شيء يعمل</em></>:<>From a thought<br/><em>to a working thing</em></>}</h2><p>{compact?(lang==='ar'?'اختر مرحلة لتجرب الفكرة':'Choose a stage to explore the idea'):(lang==='ar'?'مرّر لترى التحوّل، أو اختر مرحلة لتجربتها':'Scroll through the transformation, or choose a stage to try it')}</p>
+   <div className="build-editorial"><div className="eyebrow"><span className="index">04 /</span><span>{lang==='ar'?'كيف أبني':'HOW I BUILD'}</span></div><h2 aria-label={lang==='ar'?'من فكرة إلى شيء يعمل':'From a thought to a working thing'}>{lang==='ar'?<>من فكرة<br/><em>إلى شيء يعمل</em></>:<>From a thought<br/><em>to a working thing</em></>}</h2><p>{lang==='ar'?'مرّر لترى التحوّل، أو اختر مرحلة لتجربتها':'Scroll through the transformation, or choose a stage to try it'}</p>
     <div className="build-tabs" role="tablist" aria-label={lang==='ar'?'مراحل البناء':'Build stages'}>{stages.map((stage,i)=><button key={i} id={`build-tab-${i}`} role="tab" aria-selected={active===i} aria-controls={`build-scene-${i}`} tabIndex={active===i?0:-1} onClick={()=>choose(i)} onKeyDown={e=>{let n=i;if(e.key==='ArrowRight'||e.key==='ArrowDown')n=(i+1)%4;else if(e.key==='ArrowLeft'||e.key==='ArrowUp')n=(i+3)%4;else if(e.key==='Home')n=0;else if(e.key==='End')n=3;else return;e.preventDefault();choose(n);root.current?.querySelector<HTMLButtonElement>(`#build-tab-${n}`)?.focus({preventScroll:true});}}><span>0{i+1}</span>{t(stage.title,lang)}</button>)}</div>
     <div className="build-line" aria-hidden="true"><i className="build-line-fill"/></div>
    </div>

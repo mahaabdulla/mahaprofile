@@ -76,6 +76,7 @@ const css=fs.readdirSync(path.join(root,'_next/static/css')).map(file=>fs.readFi
 assert.match(css,/\[hidden\][^{}]*\{[^}]*display:none!important/,'Hidden states must override display layouts');
 assert.ok(css.includes('prefers-reduced-motion:reduce'),'Reduced motion CSS');
 assert.ok(css.includes('.showcase-viewport')&&css.includes('.world-full')&&css.includes('.build-sticky'),'Signature interaction CSS is compiled');
+assert.ok(css.includes('height:340svh')&&css.includes('.build-journey:not(.build-reduced) .build-sticky'),'Mobile native-scroll build story is compiled');
 assert.ok(css.includes('[data-motion=reduce]'),'Explicit reduced-motion alternative is compiled');
 assert.ok(css.includes('.bl-expansion')&&css.includes('.bl-content-dialog')&&css.includes('.bl-gallery-ghanima'),'Beyond the Line narrative and previews are compiled');
 for(const file of ['uroob-cover.png','uroob-story.png','ghanima-engineer.png','ghanima-curiosity.png'])assert.ok(fs.statSync(path.join(root,'content',file)).size>10000,`Original content asset ${file}`);

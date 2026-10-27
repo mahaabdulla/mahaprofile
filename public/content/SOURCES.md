@@ -16,9 +16,9 @@ SHA-256: 47addeec1c1bf2e7ebf6e5ffcb21fdb0eb49d168341fe913327fe71728c4a108
 
 ## ghanima-engineer.png
 
-Owner attachment codex-clipboard-d3e37dbb-61b4-4e46-a366-381a31b589bf.png; المهندس ما يتكرر.
+Owner replacement supplied 27 October 2026: codex-clipboard-5504c47b-33b0-4a22-94d4-189693fc5a15.png; المهندس ما يتكرر. Original blue-gradient artwork, copied without pixel changes.
 
-SHA-256: 3717b04e41dacd4d107ff094a867b866b36b307e9d269bf3054c6c67d8d7c4b1
+SHA-256: 844fc27c4876e6b147be202debb7ee79477072a3ee06f33cef7a8fe77214fbca
 
 ## ghanima-curiosity.png
 
