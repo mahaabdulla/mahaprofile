@@ -74,3 +74,7 @@ Source: codex-clipboard-7c898410-ad23-40ae-b9c1-22f81b4a7860.jpg
 
 The original files above remain unchanged. At the owner's request, the gallery now uses ten image_gen-refined interface concepts from refined/*.webp, with fictional illustrative data. Cover/splash remains the original. Masters, full prompts and provenance are in design/nawel-refinement. These are visual concepts, not captures of a rebuilt or newly published application.
 
+
+## Nawel display name and footer cleanup — 28 October 2026
+
+Removed the illustrative-data wording from the gallery note and project overview in both locales. Each refined image is framed above its old footer using the existing proportional viewport; all interface fields and buttons remain visible. The profile, edit-profile and drawer presentations show مها, with maha@example.com in the drawer. These are native SVG/HTML presentation layers aligned to the original image coordinate system; original image files remain unchanged. The image editor returned usage_limit_reached, so no replacement raster images or API/CLI calls were produced. No Flutter code or approved splash artwork changed.

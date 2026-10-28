@@ -55,7 +55,9 @@ for(const page of pages){
   assert.ok(html.includes(lang==='ar'?'شهرين ونصف':'two-and-a-half-month'),'Confirmed bootcamp duration');
   assert.ok(html.includes(lang==='ar'?'مشروع تدريبي غير منشور':'Unpublished bootcamp project'),'Nawel publication status');
   assert.ok(html.includes('11')&&html.includes('project-screen-crop'),'Complete original-image gallery');
-  assert.ok(html.includes(lang==='ar'?'بيانات توضيحية':'illustrative data'),'Refinements are identified as presentation concepts');
+  assert.ok(html.includes(lang==='ar'?'واجهات محسّنة للعرض':'refined interface concepts'),'Refinements are identified as presentation concepts');
+  const note=html.match(/class="content-note">([^<]*)</)?.[1]??'';
+  assert.ok(!/بيانات توضيحية|illustrative data/.test(note),'Requested footer note removed');
  }
  if(page.endsWith('/lab')||['','en','ar'].includes(page)){
   assert.ok(html.includes('aria-labelledby="bl-title-uroob"')&&html.includes('aria-labelledby="bl-title-ghanima"'),'Two independent Beyond the Line showcases');

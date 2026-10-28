@@ -60,6 +60,7 @@ export const processSteps = [
 export type ProjectScreenshot = {
   src: string; alt: Localized; caption: Localized; width: number; height: number;
   trim?: { top: number; bottom: number };
+  identity?: 'profile' | 'edit-profile' | 'navigation';
 };
 export type Project = {
   slug: string; number: string; kind: 'application' | 'website';
@@ -82,17 +83,17 @@ const diabetesScreens: {file:string;ar:string;en:string}[] = [
   {file:'walking',ar:'متابعة المشي',en:'Walking activity'},
   {file:'water',ar:'متابعة شرب الماء',en:'Water intake'},
 ];
-const nawelScreens = [
-  {file:'cover.png',ar:'ناول · غيرك ليستفيد',en:'Nawel · Give so others can benefit',width:1080,height:1920,top:0,bottom:0},
+const nawelScreens: {file:string;ar:string;en:string;width?:number;height?:number;bottom?:number;identity?:ProjectScreenshot['identity']}[] = [
+  {file:'cover.png',ar:'ناول · غيرك ليستفيد',en:'Nawel · Give so others can benefit',width:1080,height:1920,bottom:0},
   {file:'refined/donate.webp',ar:'إضافة تبرع · نسخة محسّنة',en:'Donation form · refined concept',width:1045,height:1505},
   {file:'refined/catalog.webp',ar:'استعراض الأدوية والمستلزمات · نسخة محسّنة',en:'Medicine catalog · refined concept'},
   {file:'refined/basket.webp',ar:'السلة وإدارة الكميات · نسخة محسّنة',en:'Basket and quantities · refined concept'},
   {file:'refined/my-medicines.webp',ar:'قائمة أدويتي · نسخة محسّنة',en:'My medicines · refined concept'},
-  {file:'refined/navigation.webp',ar:'قائمة التنقل · نسخة محسّنة',en:'Navigation drawer · refined concept'},
-  {file:'refined/profile.webp',ar:'الملف الشخصي · نسخة محسّنة',en:'Profile overview · refined concept'},
-  {file:'refined/edit-profile.webp',ar:'تعديل الملف الشخصي · نسخة محسّنة',en:'Edit profile · refined concept'},
+  {file:'refined/navigation.webp',ar:'قائمة التنقل · نسخة محسّنة',en:'Navigation drawer · refined concept',bottom:110,identity:'navigation'},
+  {file:'refined/profile.webp',ar:'الملف الشخصي · نسخة محسّنة',en:'Profile overview · refined concept',bottom:110,identity:'profile'},
+  {file:'refined/edit-profile.webp',ar:'تعديل الملف الشخصي · نسخة محسّنة',en:'Edit profile · refined concept',identity:'edit-profile'},
   {file:'refined/catalog-light.webp',ar:'تصفية المعدات الطبية · نسخة محسّنة',en:'Medical equipment filter · refined concept'},
-  {file:'refined/basket-alternate.webp',ar:'تعديل كميات السلة · نسخة محسّنة',en:'Updated basket quantities · refined concept'},
+  {file:'refined/basket-alternate.webp',ar:'تعديل كميات السلة · نسخة محسّنة',en:'Updated basket quantities · refined concept',bottom:40},
   {file:'refined/edit-profile-alternate.webp',ar:'حقول الملف قبل الإدخال · نسخة محسّنة',en:'Empty profile fields · refined concept'},
 ];
 export const projects: Project[] = [
@@ -228,11 +229,11 @@ export const projects: Project[] = [
     contributionLabel:{ar:'تطوير Flutter · مشروع مخيم تدريبي',en:'Flutter development · bootcamp project'},
     url:null,linkLabel:null,
     status:{ar:'مشروع تدريبي غير منشور',en:'Unpublished bootcamp project'},
-    overview:{ar:'«ناول» تطبيق خيري يهدف إلى تسهيل التبرع بالأدوية والأدوات الطبية للمحتاجين. تتضمن واجهاته إضافة التبرعات، واستعراض الأدوية والمستلزمات، وإدارة السلة والكميات والملف الشخصي. طوّرتُه كمشروع في مخيم تدريب Flutter استمر شهرين ونصف بإشراف المهندس مختار غالب. التطبيق غير منشور. يعرض المعرض الغلاف الأصلي مع نسخ محسّنة بصريًا للواجهات ببيانات توضيحية؛ وهي تصورات للعرض وليست لقطات من إصدار جديد للتطبيق.',en:'Nawel is a charitable app designed to make it easier to donate medicine and medical equipment to people in need. Its interfaces cover adding donations, browsing medicines and supplies, managing basket quantities, and editing a profile. I developed it as a project during a two-and-a-half-month Flutter bootcamp supervised by Engineer Mukhtar Ghaleb. The app is unpublished. The gallery pairs the original cover with visually refined interface concepts using illustrative data; these are presentation concepts, not screenshots of a new app release.'},
+    overview:{ar:'«ناول» تطبيق خيري يهدف إلى تسهيل التبرع بالأدوية والأدوات الطبية للمحتاجين. تتضمن واجهاته إضافة التبرعات، واستعراض الأدوية والمستلزمات، وإدارة السلة والكميات والملف الشخصي. طوّرتُه كمشروع في مخيم تدريب Flutter استمر شهرين ونصف بإشراف المهندس مختار غالب. التطبيق غير منشور. يعرض المعرض الغلاف الأصلي مع نسخ محسّنة بصريًا للواجهات؛ وهي تصورات للعرض وليست لقطات من إصدار جديد للتطبيق.',en:'Nawel is a charitable app designed to make it easier to donate medicine and medical equipment to people in need. Its interfaces cover adding donations, browsing medicines and supplies, managing basket quantities, and editing a profile. I developed it as a project during a two-and-a-half-month Flutter bootcamp supervised by Engineer Mukhtar Ghaleb. The app is unpublished. The gallery pairs the original cover with visually refined interface concepts; these are presentation concepts, not screenshots of a new app release.'},
     image:'/projects/nawel/cover.png',secondImage:null,
     imageAlt:{ar:'غلاف تطبيق ناول الخيري · غيرك ليستفيد',en:'Nawel charitable app cover · Give so others can benefit'},
-    imageCaption:{ar:'الغلاف الأصلي وواجهات محسّنة للعرض · بيانات توضيحية · التطبيق غير منشور',en:'Original cover and refined interface concepts · illustrative data · app not published'},
-    gallery:nawelScreens.map(screen=>({src:`/projects/nawel/${screen.file}`,width:screen.width??1046,height:screen.height??1504,trim:{top:0,bottom:0},alt:{ar:`${screen.ar} في تطبيق ناول`,en:`${screen.en} in the Arabic Nawel app`},caption:{ar:screen.ar,en:screen.en}})),
+    imageCaption:{ar:'الغلاف الأصلي وواجهات محسّنة للعرض · التطبيق غير منشور',en:'Original cover and refined interface concepts · app not published'},
+    gallery:nawelScreens.map(screen=>({src:`/projects/nawel/${screen.file}`,width:screen.width??1046,height:screen.height??1504,trim:{top:0,bottom:screen.bottom??60},identity:screen.identity,alt:{ar:`${screen.ar}${screen.identity?' · مها':''} في تطبيق ناول`,en:`${screen.en}${screen.identity?' · Maha':''} in the Arabic Nawel app`},caption:{ar:screen.ar,en:screen.en}})),
   }
 ];
 

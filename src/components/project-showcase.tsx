@@ -6,11 +6,12 @@ import { ArrowUpRight, Maximize2, X } from 'lucide-react';
 import { type Lang, type Project, type ProjectScreenshot, projectScreenshots, t } from '@/lib/content';
 import { useMotion } from './motion';
 import { GalleryNavigation, useGalleryNavigation } from './gallery-navigation';
+import { NawelIdentity } from './nawel-identity';
 
 function Screenshot({screen,lang}:{screen:ProjectScreenshot;lang:Lang}){
  const picture=<Image src={screen.src} alt={t(screen.alt,lang)} width={screen.width} height={screen.height} unoptimized draggable={false} style={screen.trim?{transform:`translateY(${-screen.trim.top/screen.height*100}%)`}:undefined}/>;
  if(!screen.trim)return picture;
- return <div className="project-screen-crop" style={{aspectRatio:`${screen.width}/${screen.height-screen.trim.top-screen.trim.bottom}`}}>{picture}</div>;
+ return <div className="project-screen-crop" style={{aspectRatio:`${screen.width}/${screen.height-screen.trim.top-screen.trim.bottom}`}}>{picture}<NawelIdentity screen={screen}/></div>;
 }
 
 export function ProjectShowcase({project,lang}:{project:Project;lang:Lang}){

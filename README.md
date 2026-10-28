@@ -148,3 +148,7 @@ The owner-requested gallery sequence is now launch, welcome, sign-in, journey se
 
 Ten non-splash Nawel gallery images now use refined Arabic interface concepts generated from the original screenshots: coherent fields, clearer data, matching product pictures and consistent cards/icons. The approved cover is byte-identical and all original captures are retained. Both locales identify the new images and data as presentation concepts; no Flutter source change or new release is claimed. See design/nawel-refinement for masters, prompts, provenance and lossless WebP exports.
 
+
+## Nawel display name and footer cleanup — 28 October 2026
+
+Removed the illustrative-data wording from the gallery note and project overview in both locales. Each refined image is framed above its old footer using the existing proportional viewport; all interface fields and buttons remain visible. The profile, edit-profile and drawer presentations show مها, with maha@example.com in the drawer. These are native SVG/HTML presentation layers aligned to the original image coordinate system; original image files remain unchanged. The image editor returned usage_limit_reached, so no replacement raster images or API/CLI calls were produced. No Flutter code or approved splash artwork changed.
