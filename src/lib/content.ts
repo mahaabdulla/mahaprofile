@@ -70,17 +70,17 @@ export type Project = {
   gallery?: ProjectScreenshot[];
 };
 const diabetesScreens: {file:string;ar:string;en:string}[] = [
-  {file:'dashboard',ar:'لوحة المتابعة اليومية',en:'Daily tracking dashboard'},
+  {file:'splash',ar:'شاشة الانطلاق',en:'Launch screen'},
   {file:'welcome',ar:'بداية الاستخدام',en:'Welcome screen'},
   {file:'login',ar:'تسجيل الدخول',en:'Sign-in screen'},
   {file:'entry-choice',ar:'اختيار مسار الاستخدام',en:'Choose a user journey'},
   {file:'profile',ar:'الملف الصحي',en:'Health profile'},
   {file:'prediction',ar:'التنبؤ بإمكانية الإصابة بالسكري',en:'Diabetes prediction inputs'},
+  {file:'dashboard',ar:'لوحة المتابعة اليومية',en:'Daily tracking dashboard'},
   {file:'glucose',ar:'متابعة الجلوكوز',en:'Glucose tracking'},
   {file:'insulin',ar:'متابعة الإنسولين',en:'Insulin tracking'},
   {file:'walking',ar:'متابعة المشي',en:'Walking activity'},
   {file:'water',ar:'متابعة شرب الماء',en:'Water intake'},
-  {file:'splash',ar:'شاشة الانطلاق',en:'Launch screen'},
 ];
 const nawelScreens = [
   {file:'cover.png',ar:'ناول · غيرك ليستفيد',en:'Nawel · Give so others can benefit',width:1080,height:1920,top:0,bottom:0},
@@ -212,8 +212,8 @@ export const projects: Project[] = [
     url:null, linkLabel:null,
     status:{ar:'مشروع تخرّج غير منشور',en:'Unpublished graduation project'},
     overview:{ar:'يجمع «تتبع سكري» متابعة الجلوكوز والإنسولين والمشي وشرب الماء في واجهة عربية، مع ملف صحي وتذكيرات ومسار لإدخال البيانات والتنبؤ بإمكانية الإصابة بالسكري. نفّذتُ المشروع مع زميلة كمشروع تخرّج باستخدام Flutter. التطبيق غير منشور، وهذه لقطات أصلية من واجهاته.',en:'An Arabic mobile app bringing together glucose, insulin, walking and water tracking, with a health profile, reminder screens and a diabetes prediction input flow. Built with one teammate as a Flutter graduation project. The app is unpublished; the gallery shows original screenshots of its interfaces.'},
-    image:'/projects/diabetes-tracker/dashboard.jpg',secondImage:null,
-    imageAlt:{ar:'لوحة المتابعة اليومية في تطبيق تتبع سكري',en:'Daily dashboard in the Arabic Diabetes Tracker app'},
+    image:'/projects/diabetes-tracker/splash.jpg',secondImage:null,
+    imageAlt:{ar:'شاشة الانطلاق في تطبيق تتبع سكري',en:'Launch screen in the Arabic Diabetes Tracker app'},
     imageCaption:{ar:'لقطات أصلية من مشروع التخرّج · التطبيق غير منشور',en:'Original graduation-project screenshots · app not published'},
     gallery:diabetesScreens.map(screen=>({src:`/projects/diabetes-tracker/${screen.file}.jpg`,width:482,height:1080,trim:{top:40,bottom:52},alt:{ar:`${screen.ar} في تطبيق تتبع سكري`,en:`${screen.en} in the Arabic Diabetes Tracker app`},caption:{ar:screen.ar,en:screen.en}})),
   },

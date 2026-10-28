@@ -44,7 +44,7 @@ for(const page of pages){
   assert.ok(nawelCard.includes(lang==='ar'?'مشروع تدريبي غير منشور':'Unpublished bootcamp project'),'Nawel unpublished status');
  }
  if(page.endsWith('/work/diabetes-tracker')){
-  assert.ok(html.includes('/projects/diabetes-tracker/dashboard.jpg'),'Owner-supplied dashboard cover');
+  assert.ok(html.includes('/projects/diabetes-tracker/splash.jpg'),'Owner-supplied launch screen first');
   assert.ok(html.includes(lang==='ar'?'ضمن فريق من مطوّرتين':'two-person team'),'Confirmed two-person contribution');
   assert.ok(html.includes('11'),'Full screenshot gallery count');
   assert.ok(html.includes('project-screen-crop'),'Clean phone screenshot framing');
