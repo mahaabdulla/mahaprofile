@@ -152,3 +152,7 @@ Ten non-splash Nawel gallery images now use refined Arabic interface concepts ge
 ## Nawel display name and footer cleanup — 28 October 2026
 
 Removed the illustrative-data wording from the gallery note and project overview in both locales. Each refined image is framed above its old footer using the existing proportional viewport; all interface fields and buttons remain visible. The profile, edit-profile and drawer presentations show مها, with maha@example.com in the drawer. These are native SVG/HTML presentation layers aligned to the original image coordinate system; original image files remain unchanged. The image editor returned usage_limit_reached, so no replacement raster images or API/CLI calls were produced. No Flutter code or approved splash artwork changed.
+
+## Nawel phone presentation size — 28 October 2026
+
+Nawel now uses the same 482:988 phone frame as Diabetes Tracker in project cards, case pages and enlarged previews. Original image proportions and the prior footer/name edits are preserved: each image fits from the top inside the shared phone canvas, with a matching background extending the remaining space. No image pixels are stretched or new interface content clipped. Cover/splash file bytes remain unchanged.

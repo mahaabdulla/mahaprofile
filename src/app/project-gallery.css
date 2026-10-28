@@ -12,4 +12,9 @@
 .project-dialog .unpublished-note{color:#bdb7d4}
 .case-hero .project-showcase.showcase-screens .showcase-viewport{aspect-ratio:1.45;max-height:680px;background:#202027}
 .case-hero .project-showcase.showcase-screens .project-gallery-caption{color:#626168}
+/* Nawel shares the Diabetes Tracker phone size; its artwork keeps its own proportions. */
+.project-showcase.showcase-nawel .showcase-frame{background:var(--project-screen-background,#fcf8ff)}
+.project-showcase.showcase-nawel .showcase-image .project-screen-crop{width:100%;height:auto}
+.project-dialog.dialog-nawel .dialog-image .project-phone-screen{width:min(100%,calc(min(66svh,680px)*var(--project-screen-ratio)));aspect-ratio:var(--project-screen-ratio);overflow:hidden;background:var(--project-screen-background,#fcf8ff);border-radius:14px}
+.project-dialog.dialog-nawel .dialog-image .project-phone-screen>.project-screen-crop{width:100%;height:auto}
 @media(max-width:540px){.case-hero .project-showcase.showcase-screens .showcase-viewport{aspect-ratio:.9;max-height:650px;padding:8% 15%}.project-showcase .project-gallery-caption{font-size:10px}.project-dialog.dialog-screens{padding:16px}}

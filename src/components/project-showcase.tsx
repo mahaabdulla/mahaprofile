@@ -18,7 +18,11 @@ export function ProjectShowcase({project,lang}:{project:Project;lang:Lang}){
  const [index,setIndex]=useState(0);const [open,setOpen]=useState(false);
  const dialog=useRef<HTMLDialogElement>(null);const image=useRef<HTMLDivElement>(null);const opener=useRef<HTMLButtonElement|null>(null);const id=useId();const {reduced}=useMotion();
  const images=projectScreenshots(project);const current=images[index];const navigation=useGalleryNavigation(images.length,lang,setIndex);
- const screenStyle=project.gallery?{'--project-screen-ratio':current.width/(current.height-(current.trim?.top??0)-(current.trim?.bottom??0))} as CSSProperties:undefined;
+ const nawel=project.slug==='nawel';
+ const screenStyle=project.gallery?{
+  '--project-screen-ratio':nawel?482/988:current.width/(current.height-(current.trim?.top??0)-(current.trim?.bottom??0)),
+  '--project-screen-background':nawel?(index===0?'#09695d':current.identity==='navigation'?'linear-gradient(90deg,#5b5d60 22.4%,#088778 22.4%)':'#fcf8ff'):undefined,
+ } as CSSProperties:undefined;
  const galleryLabel=lang==='ar'?`صور ${t(project.name,lang)}`:`Images of ${t(project.name,lang)}`;
  useEffect(()=>{if(reduced||!image.current)return;const ctx=gsap.context(()=>gsap.fromTo(image.current,{opacity:.6,x:10},{opacity:1,x:0,duration:.3,ease:'power2.out'}));return()=>ctx.revert();},[index,reduced]);
  useEffect(()=>{if(!open)return;const el=dialog.current;if(!el)return;el.showModal();el.querySelector<HTMLButtonElement>('[data-dialog-close]')?.focus();const old=document.body.style.overflow;document.body.style.overflow='hidden';return()=>{el.close();document.body.style.overflow=old;opener.current?.focus({preventScroll:true});};},[open]);
@@ -32,7 +36,7 @@ export function ProjectShowcase({project,lang}:{project:Project;lang:Lang}){
   {images.length>2&&<p className="project-gallery-caption"><span>{t(current.caption,lang)}</span><span className="mono" dir="ltr">{String(index+1).padStart(2,'0')} / {String(images.length).padStart(2,'0')}</span></p>}
   {open&&<dialog className={`project-dialog dialog-${project.slug}${project.gallery?' dialog-screens':''}`} ref={dialog} aria-labelledby={id} onKeyDown={navigation.onKeyDown} onCancel={event=>{event.preventDefault();setOpen(false);}} onClick={event=>{if(event.target===event.currentTarget)setOpen(false);}}>
    <div className="dialog-toolbar"><h2 id={id}>{t(project.name,lang)}</h2><button data-dialog-close aria-label={lang==='ar'?'إغلاق المعاينة':'Close preview'} onClick={()=>setOpen(false)}><X size={22}/></button></div>
-   <div className="dialog-image gallery-surface" {...navigation.surfaceProps}><Screenshot screen={current} lang={lang}/><GalleryNavigation lang={lang} count={images.length} previous={navigation.previous} next={navigation.next} label={galleryLabel}/></div>
+   <div className="dialog-image gallery-surface" {...navigation.surfaceProps}>{nawel?<div className="project-phone-screen"><Screenshot screen={current} lang={lang}/></div>:<Screenshot screen={current} lang={lang}/>}<GalleryNavigation lang={lang} count={images.length} previous={navigation.previous} next={navigation.next} label={galleryLabel}/></div>
    <p className="dialog-caption"><span>{t(current.caption,lang)}</span><span dir="ltr">{index+1} / {images.length}</span></p>
    {project.url&&project.linkLabel?<a href={project.url} target="_blank" rel="noopener noreferrer">{t(project.linkLabel,lang)}<ArrowUpRight size={17}/></a>:<p className="unpublished-note">{t(project.status,lang)}</p>}
   </dialog>}
