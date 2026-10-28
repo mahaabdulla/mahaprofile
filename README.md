@@ -156,3 +156,7 @@ Removed the illustrative-data wording from the gallery note and project overview
 ## Nawel phone presentation size — 28 October 2026
 
 Nawel now uses the same 482:988 phone frame as Diabetes Tracker in project cards, case pages and enlarged previews. Original image proportions and the prior footer/name edits are preserved: each image fits from the top inside the shared phone canvas, with a matching background extending the remaining space. No image pixels are stretched or new interface content clipped. Cover/splash file bytes remain unchanged.
+
+## Selected Work smoky-violet palette — 28 October 2026
+
+Applied the approved palette to Selected Work on Home and Work in both locales: section #242230, project showcase surfaces #343144, existing paper headings #F1F0EB and lilac #A6A0DF interactive accents. Preview buttons use the section shade, with established lilac hover/focus states. Original project images, phone sizes, layouts and all other sections are preserved.

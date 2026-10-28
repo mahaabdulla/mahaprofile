@@ -12,7 +12,8 @@
 .hero-cycle-index{font:8px 'JetBrains Mono',monospace;margin-inline-start:14px;color:#716a82}
 .hero .hero-bottom{grid-template-columns:30% 1fr;gap:4%;min-height:200px}
 .hero .hero-summary>p{max-width:530px}
-.selected.section{--work-surface:#202027;--work-line:#ffffff26;background:#17171c;color:var(--paper)}
+.selected.section{--work-surface:#343144;--work-line:#ffffff26;background:#242230;color:var(--paper)}
+.selected .section-top>.text-link,.selected .gallery-nav{color:var(--lilac)}
 .selected .work-signature-heading{max-width:1100px}
 .selected.section .content-note,.selected.section .page-intro{color:#b8b5c4;font-size:14px;max-width:640px;line-height:1.9}
 .selected .project-grid{grid-template-columns:1fr 1fr;gap:55px 36px}
@@ -26,7 +27,7 @@
 .selected .project-category,.selected .project-tags>span,.selected .published-label{color:#aaa6b5}
 .selected .project-info>p{color:#b8b5c4;font-size:13px;max-width:540px}
 .selected .project-info .project-role{color:#c2bdd4}
-.selected .showcase-zoom{background:#2c2935;color:var(--paper);box-shadow:none;border:1px solid #a6a0df50}
+.selected .showcase-zoom{background:#242230;color:var(--paper);box-shadow:none;border:1px solid #a6a0df50}
 .about-intro.section{padding-top:52px;padding-bottom:85px}
 .about-intro.section .page-heading{margin-top:32px;max-width:1100px;font-size:clamp(42px,5.2vw,86px)}
 .about-intro .about-grid{grid-template-columns:1.05fr 1fr;gap:7%;margin-top:38px;align-items:start}
@@ -88,15 +89,15 @@
 .selected .showcase-zoom:hover,.selected .showcase-controls button:hover,.selected .showcase-controls>a:hover{background:var(--lilac);color:var(--ink)}
 .selected a:focus-visible,.selected button:focus-visible{outline-color:var(--lilac)}
 
-/* Dark Selected Work: keep every surrounding surface within MAHA’s charcoal palette. */
-.selected .showcase-zoom{background:#2c2935;color:var(--paper)}
+/* Smoky violet separates Selected Work from the charcoal sections. */
+.selected .showcase-zoom{background:#242230;color:var(--paper)}
 .selected .showcase-controls>.mono{color:#aaa6b5}
 .selected .showcase-controls button,.selected .showcase-controls>a,.selected .circle-link,.selected .project-tags>span{border-color:var(--work-line)}
 .selected .project-tags .published-label{color:#c2bdd4;border-color:#a6a0df40}
 .selected .circle-link:hover{background:var(--lilac);color:var(--ink)}
 .selected .project-external{color:var(--lilac)}
 .selected .work-filters button{background:transparent;color:#c2bdd4;border-color:var(--work-line)}
-.selected .work-filters button:hover{background:#2c2935}
+.selected .work-filters button:hover{background:var(--work-surface)}
 .selected .work-filters button[aria-pressed=true]{background:var(--lilac);color:var(--ink);border-color:var(--lilac)}
 
 .selected .showcase-zoom:hover{background:var(--lilac);color:var(--ink)}
