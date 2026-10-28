@@ -69,3 +69,8 @@ Source: codex-clipboard-18007dc7-0abc-4033-9258-277657c4e482.jpg
 Source: codex-clipboard-7c898410-ad23-40ae-b9c1-22f81b4a7860.jpg
 
 115302 bytes. SHA-256: bc3619f7d7318f92df0f39226518cd61e056ed5f5fd25c2a4c7f5349c3c97198
+
+## Presentation refinement — 28 October 2026
+
+The original files above remain unchanged. At the owner's request, the gallery now uses ten image_gen-refined interface concepts from refined/*.webp, with fictional illustrative data. Cover/splash remains the original. Masters, full prompts and provenance are in design/nawel-refinement. These are visual concepts, not captures of a rebuilt or newly published application.
+

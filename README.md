@@ -143,3 +143,8 @@ All eleven supplied images are retained byte-for-byte in public/projects/nawel, 
 ## Diabetes Tracker gallery order — 28 October 2026
 
 The owner-requested gallery sequence is now launch, welcome, sign-in, journey selection, health profile, prediction, dashboard, glucose, insulin, walking and water. Launch is also the project cover everywhere in both locales. All eleven original images, captions and existing navigation behavior are retained.
+
+## Nawel interface refinement — 28 October 2026
+
+Ten non-splash Nawel gallery images now use refined Arabic interface concepts generated from the original screenshots: coherent fields, clearer data, matching product pictures and consistent cards/icons. The approved cover is byte-identical and all original captures are retained. Both locales identify the new images and data as presentation concepts; no Flutter source change or new release is claimed. See design/nawel-refinement for masters, prompts, provenance and lossless WebP exports.
+

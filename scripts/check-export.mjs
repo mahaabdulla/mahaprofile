@@ -55,6 +55,7 @@ for(const page of pages){
   assert.ok(html.includes(lang==='ar'?'شهرين ونصف':'two-and-a-half-month'),'Confirmed bootcamp duration');
   assert.ok(html.includes(lang==='ar'?'مشروع تدريبي غير منشور':'Unpublished bootcamp project'),'Nawel publication status');
   assert.ok(html.includes('11')&&html.includes('project-screen-crop'),'Complete original-image gallery');
+  assert.ok(html.includes(lang==='ar'?'بيانات توضيحية':'illustrative data'),'Refinements are identified as presentation concepts');
  }
  if(page.endsWith('/lab')||['','en','ar'].includes(page)){
   assert.ok(html.includes('aria-labelledby="bl-title-uroob"')&&html.includes('aria-labelledby="bl-title-ghanima"'),'Two independent Beyond the Line showcases');
@@ -108,6 +109,16 @@ for(const name of ['dashboard','welcome','login','entry-choice','profile','predi
 for(const name of fs.readdirSync('public/projects/nawel').filter(name=>/\.(png|jpg)$/.test(name))){
  const file=`projects/nawel/${name}`;
  assert.ok(fs.readFileSync(path.join(root,file)).equals(fs.readFileSync(path.join('public',file))),`Nawel image exported unchanged: ${name}`);
+}
+const nawelCover=fs.readFileSync('public/projects/nawel/cover.png');
+assert.equal(createHash('sha256').update(nawelCover).digest('hex'),'6b9e37495dd191c293b7552e6c96ec31039120d241f673d6ee5050954476d17d','Approved Nawel splash stays byte-identical');
+const refinedScreens=fs.readdirSync('public/projects/nawel/refined').filter(name=>name.endsWith('.webp'));
+assert.equal(refinedScreens.length,10,'All ten non-splash Nawel screens refined');
+const clientScripts=fs.readdirSync(path.join(root,'_next/static/chunks'),{recursive:true}).filter(name=>name.endsWith('.js')).map(name=>fs.readFileSync(path.join(root,'_next/static/chunks',name),'utf8')).join('');
+for(const name of refinedScreens){
+ const file=`projects/nawel/refined/${name}`;
+ assert.ok(clientScripts.includes(`refined/${name}`),`Refined screen wired into client gallery: ${name}`);
+ assert.ok(fs.readFileSync(path.join(root,file)).equals(fs.readFileSync(path.join('public',file))),`Refined Nawel screen exported unchanged: ${name}`);
 }
 assert.ok(css.includes('--project-screen-ratio'),'Original galleries accommodate different screenshot proportions');
 assert.ok(css.includes('[data-motion=reduce]'),'Explicit reduced-motion alternative is compiled');

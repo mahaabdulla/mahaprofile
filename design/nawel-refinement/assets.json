@@ -1,0 +1,72 @@
+[
+  {
+    "file": "public/projects/nawel/refined/basket-alternate.webp",
+    "width": 1046,
+    "height": 1504,
+    "bytes": 830816,
+    "sha256": "02a477cbfe5ccaf9d8957a4c65b73243102d809e5dbb73bd561e6957f6e94667"
+  },
+  {
+    "file": "public/projects/nawel/refined/basket.webp",
+    "width": 1046,
+    "height": 1504,
+    "bytes": 764026,
+    "sha256": "3ef77f17ed2ddc31bea001a588a51267afb565858863a936ace41aff9ff8b1b3"
+  },
+  {
+    "file": "public/projects/nawel/refined/catalog-light.webp",
+    "width": 1046,
+    "height": 1504,
+    "bytes": 971996,
+    "sha256": "669ba51f8a8c87c1b3eedab4eed98daa3748df0d1dca2ab2bd5dda1edcc7e0a4"
+  },
+  {
+    "file": "public/projects/nawel/refined/catalog.webp",
+    "width": 1046,
+    "height": 1504,
+    "bytes": 884388,
+    "sha256": "6ac927bc6ce57e05ced58ddfe6238771536b5c9ee60c7dce23f8ea9b69ba9935"
+  },
+  {
+    "file": "public/projects/nawel/refined/donate.webp",
+    "width": 1045,
+    "height": 1505,
+    "bytes": 734004,
+    "sha256": "42da7108602096463da243aeb70d2e854df75028afdd207132f06ba8056a2078"
+  },
+  {
+    "file": "public/projects/nawel/refined/edit-profile-alternate.webp",
+    "width": 1046,
+    "height": 1504,
+    "bytes": 703918,
+    "sha256": "868d2d1182ebc79e39798afe0da73d3787ab94fff1a7aa9060509fb31b751e69"
+  },
+  {
+    "file": "public/projects/nawel/refined/edit-profile.webp",
+    "width": 1046,
+    "height": 1504,
+    "bytes": 674748,
+    "sha256": "ddd08be0743737cb8d54b0b42ffda7bddf7a71e94f9a7d199c735f7f93459859"
+  },
+  {
+    "file": "public/projects/nawel/refined/my-medicines.webp",
+    "width": 1046,
+    "height": 1504,
+    "bytes": 873364,
+    "sha256": "28fe0d760654795b623cf943cd3f7fdfc38a47785b70a08ea389702c09c78eac"
+  },
+  {
+    "file": "public/projects/nawel/refined/navigation.webp",
+    "width": 1046,
+    "height": 1504,
+    "bytes": 784762,
+    "sha256": "a3f186bcf451acb1896f4bcdd07ad0bab5984f854ec208952eec1b294a4d8c62"
+  },
+  {
+    "file": "public/projects/nawel/refined/profile.webp",
+    "width": 1046,
+    "height": 1504,
+    "bytes": 679074,
+    "sha256": "7c32732aed4f3c2c084e5d184ca7eaecd7290ce1113bcd427aed12cd014bcf7a"
+  }
+]
