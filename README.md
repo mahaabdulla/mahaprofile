@@ -160,3 +160,11 @@ Nawel now uses the same 482:988 phone frame as Diabetes Tracker in project cards
 ## Selected Work smoky-violet palette — 28 October 2026
 
 Applied the approved palette to Selected Work on Home and Work in both locales: section #242230, project showcase surfaces #343144, existing paper headings #F1F0EB and lilac #A6A0DF interactive accents. Preview buttons use the section shade, with established lilac hover/focus states. Original project images, phone sizes, layouts and all other sections are preserved.
+
+## Gallery loading repair — 31 October 2026
+
+Project screenshot changes now mount a fresh eager image, preload neighboring sources near the viewport, and show loading/error feedback with retry instead of retaining an unrelated previous bitmap. Nawel retains the shared phone-width allocation but centers its native artwork on a transparent canvas, replacing the earlier white extension. Original images, splash artwork, Maha presentation layers and gallery order remain unchanged. Desktop/mobile Arabic and English checks, TypeScript, production build and export audit passed; see QA.md.
+
+## Temporarily pause Nawel and Diabetes Tracker screens — 31 October 2026
+
+Owner requested suspending both interface galleries for now. A reversible galleryPaused flag keeps each project's original cover and professional description visible, while the interactive component (arrows, swipe/key handlers, counters, enlargement and neighbor preloading) is not mounted. This applies to Home, Work, case pages and related cards in both locales. Original galleries and all assets remain available for later restoration. Case image notes now describe the static app cover.

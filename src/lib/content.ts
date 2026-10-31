@@ -69,6 +69,7 @@ export type Project = {
   url: string | null; linkLabel: Localized | null; status: Localized; overview: Localized;
   image: string; secondImage: string | null; imageAlt: Localized; imageCaption: Localized;
   gallery?: ProjectScreenshot[];
+  galleryPaused?: boolean;
 };
 const diabetesScreens: {file:string;ar:string;en:string}[] = [
   {file:'splash',ar:'شاشة الانطلاق',en:'Launch screen'},
@@ -202,7 +203,7 @@ export const projects: Project[] = [
     }
   },
   {
-    slug:'diabetes-tracker', number:'03', kind:'application',
+    slug:'diabetes-tracker', number:'03', kind:'application', galleryPaused:true,
     category:{ar:'تطوير التطبيقات',en:'APPLICATION DEVELOPMENT'},
     title:{ar:'تتبع سكري\nمتابعة صحية في مكان واحد',en:'Diabetes Tracker\nDaily tracking in one place'},
     name:{ar:'تطبيق تتبع سكري',en:'Diabetes Tracker'},
@@ -219,7 +220,7 @@ export const projects: Project[] = [
     gallery:diabetesScreens.map(screen=>({src:`/projects/diabetes-tracker/${screen.file}.jpg`,width:482,height:1080,trim:{top:40,bottom:52},alt:{ar:`${screen.ar} في تطبيق تتبع سكري`,en:`${screen.en} in the Arabic Diabetes Tracker app`},caption:{ar:screen.ar,en:screen.en}})),
   },
   {
-    slug:'nawel',number:'04',kind:'application',
+    slug:'nawel',number:'04',kind:'application',galleryPaused:true,
     category:{ar:'تطوير التطبيقات',en:'APPLICATION DEVELOPMENT'},
     title:{ar:'ناول\nغيرك ليستفيد',en:'Nawel\nGive so others can benefit'},
     name:{ar:'تطبيق ناول',en:'Nawel'},

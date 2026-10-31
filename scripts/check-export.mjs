@@ -42,11 +42,15 @@ for(const page of pages){
   assert.ok(nawelCard&&nawelCard.includes('Flutter')&&nawelCard.includes('/work/nawel/'),'Nawel bootcamp project card');
   assert.ok(!nawelCard.includes('project-external'),'Unpublished Nawel has no external action');
   assert.ok(nawelCard.includes(lang==='ar'?'مشروع تدريبي غير منشور':'Unpublished bootcamp project'),'Nawel unpublished status');
+  for(const card of [graduationCard,nawelCard]){
+   assert.ok(card.includes('data-gallery-paused="true"'),'Requested project gallery is paused');
+   assert.ok(!/showcase-zoom|gallery-navigation|project-gallery-caption|gallery-surface/.test(card),'Paused gallery has no browsing controls');
+  }
  }
  if(page.endsWith('/work/diabetes-tracker')){
   assert.ok(html.includes('/projects/diabetes-tracker/splash.jpg'),'Owner-supplied launch screen first');
   assert.ok(html.includes(lang==='ar'?'ضمن فريق من مطوّرتين':'two-person team'),'Confirmed two-person contribution');
-  assert.ok(html.includes('11'),'Full screenshot gallery count');
+  assert.ok(html.includes('data-gallery-paused="true"'),'Screenshot gallery temporarily paused');
   assert.ok(html.includes('project-screen-crop'),'Clean phone screenshot framing');
  }
  if(page.endsWith('/work/nawel')){
@@ -54,8 +58,7 @@ for(const page of pages){
   assert.ok(html.includes(lang==='ar'?'المهندس مختار غالب':'Engineer Mukhtar Ghaleb'),'Confirmed bootcamp supervisor');
   assert.ok(html.includes(lang==='ar'?'شهرين ونصف':'two-and-a-half-month'),'Confirmed bootcamp duration');
   assert.ok(html.includes(lang==='ar'?'مشروع تدريبي غير منشور':'Unpublished bootcamp project'),'Nawel publication status');
-  assert.ok(html.includes('11')&&html.includes('project-screen-crop'),'Complete original-image gallery');
-  assert.ok(html.includes(lang==='ar'?'واجهات محسّنة للعرض':'refined interface concepts'),'Refinements are identified as presentation concepts');
+  assert.ok(html.includes('data-gallery-paused="true"')&&html.includes('project-screen-crop'),'Static cover while gallery is paused');
   const note=html.match(/class="content-note">([^<]*)</)?.[1]??'';
   assert.ok(!/بيانات توضيحية|illustrative data/.test(note),'Requested footer note removed');
  }
